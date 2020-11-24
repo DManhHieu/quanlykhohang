@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="quanlykhohang:war exploded">
+    <output-path>$PROJECT_DIR$/target/quanlykhohang-1.0</output-path>
+    <root id="archive" name="quanlykhohang_war exploded.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="quanlykhohang" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/quanlykhohang-1.0/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="quanlykhohang/web/Web" />
+    </root>
+  </artifact>
+</component>
