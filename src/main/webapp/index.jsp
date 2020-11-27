@@ -8,10 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Title</title>
+    <meta http-equiv="refresh" content="0;url=dist/index.html">
+    <title>SB Admin</title>
+    <script language="javascript">
+        window.location.href = "dist/login.html"
+    </script>
 </head>
 <body>
-    <h1 class="header"> Hello các bạn </h1>
+Go to <a href="dist/login.html">/dist/index.html</a>
 </body>
+
 </html>
