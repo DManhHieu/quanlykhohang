@@ -8,7 +8,7 @@
       </options>
     </properties>
     <root id="archive" name="quanlykhohang-1.0.war">
-      <element id="artifact" artifact-name="quanlykhohang" />
+      <element id="artifact" artifact-name="quanlykhohang:war exploded" />
     </root>
   </artifact>
 </component>

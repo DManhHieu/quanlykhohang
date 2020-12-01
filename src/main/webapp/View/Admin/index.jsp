@@ -1,20 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: Doan Hieu
-  Date: 11/24/2020
-  Time: 7:26 AM
+  Date: 12/1/2020
+  Time: 10:39 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>SB Admin</title>
-    <script language="javascript">
-        window.location.href = "Login"
-    </script>
+    <title>Quan ly</title>
 </head>
 <body>
-Go to <a href="Login">Login</a>
+<h1> Chao quan ly </h1>
 </body>
-
 </html>

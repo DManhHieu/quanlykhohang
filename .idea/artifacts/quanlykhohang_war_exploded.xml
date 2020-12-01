@@ -1,11 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="quanlykhohang">
+  <artifact type="exploded-war" name="quanlykhohang:war exploded">
     <output-path>$PROJECT_DIR$/target/quanlykhohang-1.0</output-path>
-    <root id="archive" name="quanlykhohang.war">
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>quanlykhohang</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="quanlykhohang" />
-          <element id="jpa-descriptors" facet="quanlykhohang/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.30" />
