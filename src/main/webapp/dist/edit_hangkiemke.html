@@ -91,10 +91,6 @@
                                 </nav>
                             </div> -->
                             <div class="sb-sidenav-menu-heading">Nhân viên</div>
-                           <!--  <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a> -->
                             <a class="nav-link" href="phieunhaphang.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Phiếu nhập hàng
@@ -106,6 +102,10 @@
                             <a class="nav-link" href="nhanvien_kiemke.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Kiểm kê hàng hóa
+                            </a>
+                            <a class="nav-link" href="thongtincanhan.html">
+                                <div class="sb-nav-link-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                                Thông tin cá nhân
                             </a>
                         </div>
                     </div>
@@ -120,15 +120,11 @@
                     <div class="container-fluid">
                         <h1 class="mt-4">Phiếu kiểm kê hàng hóa</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Kiểm kê hàng hóa</li>
+                            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="nhanvien_kiemke.html">Kiểm kê hàng hóa</a></li>
+                            <li class="breadcrumb-item active">Edit hàng hóa</li>
                         </ol>
                         <div class="card mb-4">
-                        <!--     <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div> -->
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
@@ -137,6 +133,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
+                                    <form>
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
@@ -164,16 +161,13 @@
                                                 <td><!-- <input type="text" name="viTri" style="border: none; width: 100%"> --></td>
                                                 <td><input type="text" name="txttinhTrang" style="border: none; width: 100%"></td>
                                                 <td>
-                                                <form action="index.html" style="display: inline-block;">
                                                     <input type="submit" name="Save" style="border: none;background-color: white;color: blue">
-
-                                                </form>
-                                                <button style="border: none;background-color: white;color: blue; display: inline-block; size: auto">Cancel</button> 
+                                                    <button style="border: none;background-color: white;color: blue; display: inline-block; size: auto" type="reset">Cancel</button>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-
+                                    </form>
                                 </div>
                             </div>
                         </div>
