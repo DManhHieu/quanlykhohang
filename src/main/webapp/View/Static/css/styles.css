@@ -10247,3 +10247,14 @@ body {
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
 }
+
+textarea {
+  width: 100%;
+  height: 150px;
+  margin: 0;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: monospace;
+}
+
