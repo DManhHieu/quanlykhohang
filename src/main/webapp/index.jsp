@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>SB Admin</title>
+    <title>Quản lý kho hàng</title>
     <script language="javascript">
         window.location.href = "Login"
     </script>
