@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Quản lý kho hàng</title>
+    <title>Quản lý hàng hóa</title>
     <script language="javascript">
         window.location.href = "Login"
     </script>
@@ -16,5 +16,4 @@
 <body>
 Go to <a href="Login">Login</a>
 </body>
-
 </html>
