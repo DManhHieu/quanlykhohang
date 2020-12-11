@@ -24,29 +24,29 @@ public class NhanVien {
     private NhomNhanVien nhomNhanVien;
 
     @OneToMany
-    @JoinColumn(name = "MaNhanVien", referencedColumnName = "NV_Tao")
+    @JoinColumn(name = "NV_Tao")
     private List<MatHang> MatHangs;
 
     @OneToMany
-    @JoinColumn(name="MaNhanVien",referencedColumnName = "MaNV_NhapKho")
+    @JoinColumn(name="MaNV_NhapKho")
     private List<HangHoa> HangNhapKho;
 
     @OneToMany
-    @JoinColumn(name="MaNhanVien",referencedColumnName = "MaNV_XuatKho")
+    @JoinColumn(name="MaNV_XuatKho")
     private List<HangHoa> HangXuatKho;
 
 
     @OneToMany
-    @JoinColumn(name="MaNhanVien",referencedColumnName = "MaNV_KiemKe")
+    @JoinColumn(name="MaNV_KiemKe")
     private List<HangHoa> HangKiemKe;
 
 
    @OneToMany
-    @JoinColumn(name = "MaNhanVien", referencedColumnName = "Ma_NhanVien_Nhap")
+    @JoinColumn(name = "Ma_NhanVien_Nhap")
     private List<PhieuNhapHang> PhieuNhapHangs;
 
     @OneToMany
-    @JoinColumn(name="MaNhanVien",referencedColumnName = "Ma_NhanVien_Xuat")
+    @JoinColumn(name="Ma_NhanVien_Xuat")
     private List<PhieuXuatHang> PhieuXuatHangs;
 
 
