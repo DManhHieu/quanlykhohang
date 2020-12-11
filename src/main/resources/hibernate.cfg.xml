@@ -11,7 +11,14 @@
         <property name="hibernate.show_sql">true</property>
         <property name="current_session_context_class">thread</property>
         <property name="hbm2ddl.auto">update</property>
-        <mapping resource="nhanvien.hbm.xml"/>
+        <mapping class="QLKH.models.NhanVien"/>
+        <mapping class="QLKH.models.NhomNhanVien"/>
+        <mapping class="QLKH.models.MatHang"/>
+        <mapping class="QLKH.models.PhieuNhapHang"/>
+        <mapping class="QLKH.models.PhieuXuatHang"/>
+        <mapping class="QLKH.models.TinhTrang"/>
+        <mapping class="QLKH.models.HangNhap"/>
+        <mapping class="QLKH.models.HangHoa"/>
     </session-factory>
 
 </hibernate-configuration>

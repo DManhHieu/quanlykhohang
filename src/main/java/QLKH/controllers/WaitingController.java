@@ -19,7 +19,7 @@ public class WaitingController extends HttpServlet {
             NhanVien u=(NhanVien) session.getAttribute("account");
             req.setAttribute("username", u.getTenDangNhap());
 
-            if(u.getId_nhom()==0) {
+            if(u.getNhomNhanVien().getID()==0) {
                 req.getRequestDispatcher("/View/Admin/index.jsp").forward(req, resp);
             }else {
                 req.getRequestDispatcher("/View/NhanVien/index.jsp").forward(req, resp);

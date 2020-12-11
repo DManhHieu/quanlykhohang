@@ -13,7 +13,7 @@ public class NhanVienDAO {
 
         try (Session session = HibernaterUtil.getSessionFactory().openSession()){
 
-            Query query=session.createQuery("from NhanVien nv where nv.tenDangNhap = :tendangnhap");
+            Query query=session.createQuery("from NhanVien nv where nv.TenDangNhap = :tendangnhap");
             query.setParameter("tendangnhap",tendangnhap);
             List queryList=query.list();
             if(queryList!=null&& queryList.isEmpty()){
