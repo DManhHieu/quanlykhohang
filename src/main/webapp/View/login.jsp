@@ -15,8 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Login</title>
-    <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
+    <title>Page Title - SB Admin</title>
+    <link href="View/Static/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-primary">
@@ -32,7 +32,7 @@
                                 <h3 class="text-center font-weight-light my-lg-2">${alert}</h3>
                             </div>
                             <div class="card-body">
-                                <form action="${pageContext.request.contextPath}/Login" method="post">
+                                <form action="Login" method="post">
                                     <div class="form-group">
                                         <label class="small mb-1" >User name</label>
                                         <input class="form-control py-4" name="username" type="text" placeholder="Enter user name" />
@@ -63,6 +63,6 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="${pageContext.request.contextPath}/View/Static/js/scripts.js"></script>
+<script src="View/Static/js/scripts.js"></script>
 </body>
 </html>
