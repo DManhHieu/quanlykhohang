@@ -1,4 +1,4 @@
-package QLKH.controllers;
+package QLKH.controllers.Admin;
 
 import QLKH.DAO.HangHoaDAO;
 import QLKH.models.HangHoa;
@@ -12,15 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/HangTonKho")
-public class HangTonKhoController extends HttpServlet {
+@WebServlet("/HangTonKho/ChiTiet")
+public class HangTonKhoChiTietController extends HttpServlet {
     HangHoaDAO hangHoaDAO=new HangHoaDAO();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<HangHoa> hangHoas=hangHoaDAO.getHangHoas();
-        req.setAttribute("hanghoas",hangHoas);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/HangTonKho.jsp");
+        String mahanghoa=req.getParameter("MaHangHoa");
+        HangHoa hangHoa=hangHoaDAO.getHangHoa(mahanghoa);
+        req.setAttribute("hanghoa",hangHoa);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/HangTonKhoChiTiet.jsp");
         dispatcher.forward(req, resp);
     }
 }

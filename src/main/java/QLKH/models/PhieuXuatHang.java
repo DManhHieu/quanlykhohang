@@ -17,8 +17,8 @@ public class PhieuXuatHang {
     private NhanVien NguoiXuat;
 
     @ManyToMany
-    @JoinColumn(name = "MaPhieu", referencedColumnName = "MP_Nhap")
-    private List<HangNhap> hangNhaps;
+    @JoinColumn(name = "MaPhieu", referencedColumnName = "MP_XuatHang")
+    private List<HangHoa> hangHoas;
 
     public String getMaPhieu(){
         return  MaPhieu;
@@ -62,10 +62,10 @@ public class PhieuXuatHang {
         this.NguoiXuat=nguoiXuat;
     }
 
-    public List<HangNhap> getHangNhaps(){
-        return  hangNhaps;
+    public List<HangHoa> getHangHoas(){
+        return  hangHoas;
     }
-    public void setHangNhaps(List<HangNhap> hangNhaps){
-        this.hangNhaps=hangNhaps;
+    public void setHangHoas(List<HangHoa> hangHoas){
+        this.hangHoas=hangHoas;
     }
 }

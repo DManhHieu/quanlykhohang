@@ -1,7 +1,9 @@
-package QLKH.controllers;
+package QLKH.controllers.Admin;
 
 import QLKH.DAO.HangHoaDAO;
+import QLKH.DAO.PhieuXuatHangDAO;
 import QLKH.models.HangHoa;
+import QLKH.models.PhieuXuatHang;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,16 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/HangTonKho/ChiTiet")
-public class HangTonKhoChiTietController extends HttpServlet {
-    HangHoaDAO hangHoaDAO=new HangHoaDAO();
+@WebServlet("/PhieuXuatHang")
+public class XuatHangController extends HttpServlet {
+    PhieuXuatHangDAO phieuXuatHangDAO=new PhieuXuatHangDAO();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        String mahanghoa=req.getParameter("MaHangHoa");
-        HangHoa hangHoa=hangHoaDAO.getHangHoa(mahanghoa);
-        req.setAttribute("hanghoa",hangHoa);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/HangTonKhoChiTiet.jsp");
+      List<PhieuXuatHang> phieuXuatHangs=phieuXuatHangDAO.getPhieuXuatHangs();
+        req.setAttribute("PhieuHangs",phieuXuatHangs);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang.jsp");
         dispatcher.forward(req, resp);
     }
 }

@@ -37,7 +37,7 @@
                 Nhập hàng
             </a>
 
-            <a class="nav-link" href="">
+            <a class="nav-link" href="${pageContext.request.contextPath}/PhieuXuatHang">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Xuất hàng
             </a>
