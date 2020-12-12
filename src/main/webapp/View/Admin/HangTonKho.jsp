@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Doan Hieu
@@ -47,6 +48,7 @@
                                         <th>Ngày kiểm kê</th>
                                         <th>Ngày sản xuất</th>
                                         <th>Hạn sử dụng</th>
+                                        <th>Tình trạng</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -56,10 +58,14 @@
                                             <td>${hanghoa.getMaHangHoa()}</td>
                                             <td>${hanghoa.getMatHang().getTenMatHang()}</td>
                                             <td>${hanghoa.getViTri()}</td>
-                                            <td>${hanghoa.getNgay_KiemKe()}</td>
-                                            <td>${hanghoa.getNgaySanXuat()}</td>
-                                            <td>${hanghoa.getHanSuDung()}</td>
-                                            <td></td>
+                                            <td> <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgay_KiemKe()}"/></td>
+                                            <td> <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgaySanXuat()}"/></td>
+                                            <td> <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getHanSuDung()}"/></td>
+                                            <td>${hanghoa.getTinhTrang().getTenTinhTrang()}</td>
+                                            <td>
+                                                <a href="<c:url value='/HangTonKho/ChiTiet?MaHangHoa=${hanghoa.getMaHangHoa() }'/>"
+                                                        class="center">Chi tiết</a>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
