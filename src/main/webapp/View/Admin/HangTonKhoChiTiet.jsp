@@ -109,25 +109,25 @@
                                                         <div class="col-2">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Ngày kiểm kê</label> <input
-                                                                    type="text" class="form-control"  value="${hanghoa.getNgay_KiemKe()}" readonly>
+                                                                    type="text" class="form-control"  value="<fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgay_KiemKe()}"/>" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="col-2">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Ngày nhập kho</label> <input
-                                                                    type="text" class="form-control"  value="${hanghoa.getNgayNhapKho()}" readonly>
+                                                                    type="text" class="form-control"  value=" <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgayNhapKho()}"/>" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="col-2">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Ngày sản xuất</label> <input
-                                                                    type="text" class="form-control"  value="${hanghoa.getNgaySanXuat()}" readonly>
+                                                                    type="text" class="form-control"  value=" <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgaySanXuat()}"/>" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="col-2">
                                                             <div class="form-group" >
                                                                 <label class="bmd-label-floating">Hạn sử dụng</label> <input
-                                                                    type="text" class="form-control"  value="${hanghoa.getHanSuDung()}" readonly>
+                                                                    type="text" class="form-control"  value=" <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getHanSuDung()}"/>" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
