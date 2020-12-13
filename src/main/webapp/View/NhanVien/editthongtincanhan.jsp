@@ -10,7 +10,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Dashboard - SB Admin</title>
-<link href="../Static/css/styles.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
 <link
 	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
 	rel="stylesheet" crossorigin="anonymous" />
@@ -29,8 +29,8 @@
 				<div class="container-fluid">
 					<h1 class="mt-4">Thông tin cá nhân</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
-						<li class="breadcrumb-item"><a href="thongtincanhan.jsp">Thông
+						<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
+						<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/thongtincanhan.jsp">Thông
 								tin cá nhân</a></li>
 						<li class="breadcrumb-item active">Chỉnh sửa thông tin cá
 							nhân</li>
@@ -46,7 +46,7 @@
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="container">
-											<form action="index.jsp">
+											<form action="${pageContext.request.contextPath}/View/NhanVien/index.jsp">
 												<div class="row">
 													<div class="col-25">
 														<label for="maNhanVien">Mã nhân viên</label>
@@ -143,8 +143,8 @@
 													</div>
 												</div>
 												<div class="row">
-													<a href="index.jsp"><input type="submit" value="Save"></a>
-													<a href="index.jsp"><input type="reset" value="Cancel"></a>
+													<a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp"><input type="submit" value="Save"></a>
+													<a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp"><input type="reset" value="Cancel"></a>
 												</div>
 											</form>
 										</div>

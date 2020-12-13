@@ -9,7 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link href="../Static/css/styles.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -27,19 +27,19 @@
                             </a>
                             <div class="sb-sidenav-menu-heading">Nhân viên</div>
 
-                            <a class="nav-link" href="phieunhaphang.jsp">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/View/NhanVien/phieunhaphang.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Phiếu nhập hàng
                             </a>
-                            <a class="nav-link" href="phieuxuathang.jsp">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/View/NhanVien/phieuxuathang.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Phiếu xuất hàng 
                             </a>
-                            <a class="nav-link" href="kiemke.jsp">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/View/NhanVien/kiemke.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Kiểm kê hàng hóa
                             </a> <a class="nav-link"
-							href="thongtincanhan.jsp">
+							href="${pageContext.request.contextPath}/View/NhanVien/thongtincanhan.jsp">
 							<div class="sb-nav-link-icon">
 								<i class="fa fa-user" aria-hidden="true"></i>
 							</div> Thông tin cá nhân

@@ -10,7 +10,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Tables - SB Admin</title>
-<link href="../Static/css/styles.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
 <link
 	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
 	rel="stylesheet" crossorigin="anonymous" />
@@ -27,7 +27,8 @@
 				<div class="container-fluid">
 					<h1 class="mt-4">Phiếu xuất hàng</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+						<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/
+						index.jsp">Trang chủ</a></li>
 						<li class="breadcrumb-item active">Phiếu xuất hàng</li>
 					</ol>
 					<div class="row">
@@ -154,11 +155,11 @@
 				</div>
 				<button type="button" class="btn btn-primary pull-right"
 					style="margin-left: 80%; margin-bottom: 10px;">
-					<a href="./phieunhaphang.jsp"></a>Xác nhận
+					<a href="${pageContext.request.contextPath}/View/NhanVien/phieunhaphang.jsp"></a>Xác nhận
 				</button>
 				<button type="button" class="btn btn-primary pull-right"
 					style="margin-left: 20px; margin-bottom: 10px;">
-					<a href="./phieunhaphang.jsp"></a>Hủy bỏ
+					<a href="${pageContext.request.contextPath}/View/NhanVien/phieunhaphang.jsp"></a>Hủy bỏ
 				</button>
 			</main>
 		</div>

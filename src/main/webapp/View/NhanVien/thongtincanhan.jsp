@@ -9,10 +9,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard - SB Admin</title>
-    <link href="../Static/css/styles.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-    <link href="../Static/css/thongtincanhan.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/View/Static/css/thongtincanhan.css" rel="stylesheet">
 </head>
 <body class="sb-nav-fixed">
     	<jsp:include page="header.jsp"></jsp:include>
@@ -23,7 +23,7 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Thông tin cá nhân</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.html">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Thông tin cá nhân</li>
                 </ol>
                 <div class="card mb-4">
@@ -125,7 +125,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <a href="editthongtincanhan.jsp"><input type="button" value="Edit"></a>
+                                                <a href="${pageContext.request.contextPath}/View/NhanVien/editthongtincanhan.jsp"><input type="button" value="Edit"></a>
                                             </div>
                                         </form>
                                     </div>

@@ -14,7 +14,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <!-- CSS Files -->
-<link href="../Static/css/material-dashboard.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
 </head>
 <body class="">
 	<div class="wrapper ">

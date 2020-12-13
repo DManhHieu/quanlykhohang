@@ -9,7 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Tables - SB Admin</title>
-        <link href="../Static/css/styles.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -23,7 +23,7 @@
                         <h1 class="mt-4">Phiếu kiểm kê hàng hóa</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a
-							href="index.jsp">Trang chủ</a></li>
+							href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
                             <li class="breadcrumb-item active">Kiểm kê hàng hóa</li>
                         </ol>
                         <div class="card mb-4">

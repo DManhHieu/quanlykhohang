@@ -9,7 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Tables - SB Admin</title>
-        <link href="../Static/css/styles.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -22,7 +22,7 @@
                     <div class="container-fluid">
                         <h1 class="mt-4">Phiếu nhập hàng</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
                             <li class="breadcrumb-item active">Phiếu nhập hàng</li>
                         </ol>
                         <div class="card mb-4">
@@ -68,7 +68,7 @@
                                             <td>20/20/2020</td>
                                             <td>100000$</td>
                                                 <td>
-                                                    <a href="chitietnhaphang.jsp">Chi tiết</a>
+                                                    <a href="${pageContext.request.contextPath}/View/NhanVien/chitietnhaphang.jsp">Chi tiết</a>
                                                 </td>
         
                                             </tr>
@@ -80,7 +80,7 @@
                                             <td>100000</td>
                                              <td>
                                                  <a
-												href="chitietnhaphang.jsp">Chi tiết</a>
+												href="${pageContext.request.contextPath}/View/NhanVien/chitietnhaphang.jsp">Chi tiết</a>
 											</td>
                                         </tr>
                                         </tbody>
