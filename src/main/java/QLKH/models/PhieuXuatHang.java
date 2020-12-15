@@ -1,5 +1,7 @@
 package QLKH.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -8,16 +10,21 @@ import java.util.List;
 @Table(name = "PhieuXuatHang")
 public class PhieuXuatHang {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String MaPhieu;
-    private String MoTa;
-    private Date NgayTao, NgayXuat_DuKien,NgayXuat_ThucTe;
+
+    private String MoTa, BenNhan;
+    private Date NgayTao;
+    private Date NgayXuat_DuKien;
+   @Column(nullable = true)
+    private Date NgayXuat_ThucTe;
     @ManyToOne
     @JoinColumn(name = "Ma_NhanVien_Xuat", referencedColumnName = "MaNhanVien")
     private NhanVien NguoiXuat;
 
     @ManyToMany
-    @JoinColumn(name = "MaPhieu", referencedColumnName = "MP_XuatHang")
+    @JoinColumn(name = "MP_XuatHang")
     private List<HangHoa> hangHoas;
 
     public String getMaPhieu(){
@@ -32,6 +39,13 @@ public class PhieuXuatHang {
     }
     public void setMoTa(String moTa){
         this.MoTa=moTa;
+    }
+
+    public String getBenNhan(){
+        return  BenNhan;
+    }
+    public void setBenNhan(String benNhan){
+        this.BenNhan=benNhan;
     }
 
     public Date getNgayTao(){

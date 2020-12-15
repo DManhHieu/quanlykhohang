@@ -36,7 +36,7 @@
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
                             Danh sách đơn xuất hàng
-                            <form method="get" action="${pageContext.request.contextPath}/View/Admin/XuatHangMoi.jsp">
+                            <form method="get" action="${pageContext.request.contextPath}/PhieuXuatHang/PhieuMoi">
                                 <button type="submit" class="float-right btn-success" >Tạo mới</button>
                             </form>
                         </div>

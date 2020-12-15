@@ -28,10 +28,10 @@ public class HangHoa {
     @JoinColumn(name = "MaTinhTrang", referencedColumnName = "MaTinhTrang")
     private TinhTrang tinhTrang;
     @ManyToOne
-    @JoinColumn(name = "MP_NhapHang",referencedColumnName = "MaPhieu")
+    @JoinColumn(name = "MP_NhapHang")
     private PhieuNhapHang PhieuNhap;
     @ManyToOne
-    @JoinColumn(name = "MP_XuatHang",referencedColumnName = "MaPhieu")
+    @JoinColumn(name = "MP_XuatHang")
     private PhieuXuatHang PhieuXuat;
 
     public void setMaHangHoa(String maHangHoa){
@@ -120,5 +120,19 @@ public class HangHoa {
 
     public void setPhieuXuat(PhieuXuatHang phieuXuatHang){
         this.PhieuXuat=phieuXuatHang;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if(o==this){
+            return true;
+        }
+        if(!(o instanceof HangHoa)){
+            return false;
+        }
+        HangHoa h=(HangHoa) o;
+        if(((HangHoa) o).MaHangHoa.equals(this.MaHangHoa)){
+            return true;
+        }
+        return false;
     }
 }

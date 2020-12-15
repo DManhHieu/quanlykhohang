@@ -12,7 +12,7 @@ public class NhomNhanVien {
 
     private String TenNhom;
     @OneToMany
-    @JoinColumn(name = "ID_Nhom", referencedColumnName = "ID")
+    @JoinColumn(name = "ID_Nhom")
     private List<NhanVien> NhanViens;
 
     public int getID(){

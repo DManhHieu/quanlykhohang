@@ -20,7 +20,7 @@ public class NhanVien {
     private String SDT;
     private String Phai;
     @ManyToOne
-    @JoinColumn(name = "ID_Nhom", referencedColumnName = "ID")
+    @JoinColumn(name = "ID_Nhom")
     private NhomNhanVien nhomNhanVien;
 
     @OneToMany
@@ -168,6 +168,19 @@ public class NhanVien {
     public void setPhieuXuatHangs(List<PhieuXuatHang> phieuXuatHangs){
         this.PhieuXuatHangs=phieuXuatHangs;
     }
-
+    @Override
+    public boolean equals(Object o) {
+        if(o==this){
+            return true;
+        }
+        if(!(o instanceof HangHoa)){
+            return false;
+        }
+        NhanVien h=(NhanVien) o;
+        if(h.MaNhanVien==this.MaNhanVien){
+            return true;
+        }
+        return false;
+    }
 
 }

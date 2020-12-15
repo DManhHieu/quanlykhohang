@@ -5,6 +5,8 @@
   Time: 1:28 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -47,13 +49,13 @@
                                    <div class="col-6">
                                        <div class="form-group">
                                            <label class="bmd-label-floating">Mã phiếu</label>
-                                           <input type="text" class="form-control" name="MaPhieu" placeholder="Nhập mã phiếu" value="${MaPhieu}" >
+                                           <input type="text" class="form-control" name="MaPhieu" placeholder="Nhập mã phiếu" value="${sessionScope.phieuxuathang.getMaPhieu()}" >
                                        </div>
                                    </div>
                                    <div class="col-6">
                                        <div class="form-group">
                                            <label class="bmd-label-floating">Ngày xuất hàng dự kiến : </label>
-                                           <input type="date" class="form-control" name="NgayXuat_DuKien"  value="${NgayXuat_DuKien}">
+                                           <input type="date" class="form-control" name="NgayXuat_DuKien"  value="${sessionScope.phieuxuathang.getNgayXuat_DuKien()}">
                                        </div>
                                    </div>
                                </div>
@@ -61,14 +63,14 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Bên nhận</label>
-                                            <input type="text" class="form-control" name="BenNhan" placeholder="Bên nhận hàng" value="${BenNhan}" >
+                                            <input type="text" class="form-control" name="BenNhan" placeholder="Bên nhận hàng" value="${sessionScope.phieuxuathang.getBenNhan()}" >
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Mô tả</label>
                                             <textarea rows="3" name="MoTa"  >
-                                                ${MoTa}
+                                                ${sessionScope.phieuxuathang.getMoTa()}
                                             </textarea>
                                         </div>
                                     </div>
@@ -76,15 +78,15 @@
                             </div>
                         </div>
                         <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Mã hàng hóa</label>
-                                            <input type="text" class="form-control" name="MaHangHoa" placeholder="Nhập mã hàng hóa" >
-                                        </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Mã hàng hóa</label>
+                                    <div class="row">
+                                    <input type="text" class="form-control col-6" name="MaHangHoa" placeholder="Nhập mã hàng hóa" >
+                                    <button type="submit" class="btn-dark" value="AddHangHoa" name="submit" >Thêm hàng hóa</button>
                                     </div>
-                                    <div class="col-6 align-items-center">
-                                        <button type="submit" class="btn-dark align-items-center" value="AddHangHoa" name="submit" >Thêm hàng hóa</button>
-                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -103,7 +105,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${hanghoas}" var="hanghoa">
+                                        <c:forEach items="${sessionScope.phieuxuathang.getHangHoas()}" var="hanghoa">
                                             <tr>
                                                 <td>${hanghoa.getMaHangHoa()}</td>
                                                 <td>${hanghoa.getMatHang().getTenMatHang()}</td>
@@ -113,8 +115,9 @@
                                                 <td> <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getHanSuDung()}"/></td>
                                                 <td>${hanghoa.getTinhTrang().getTenTinhTrang()}</td>
                                                 <td>
-                                                    <a href="<c:url value='/HangTonKho/ChiTiet?MaHangHoa=${hanghoa.getMaHangHoa() }'/>"
-                                                       class="center">Chi tiết</a>
+                                                    <input type="hidden" name="deleteID" value="${hanghoa.getMaHangHoa()}">
+                                                    <button type="submit" value="Delete" name="submit" methods="post"
+                                                       class="center btn-link">Xóa</button>
                                                 </td>
                                             </tr>
                                         </c:forEach>
