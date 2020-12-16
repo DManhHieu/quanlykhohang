@@ -5,11 +5,13 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Table(name="PhieuNhapHang")
+@Table(name= "PhieuNhapHang")
 public class PhieuNhapHang {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String MaPhieu;
+
+
     private String MoTa, NhapTu;
     private Date NgayNhap;
 

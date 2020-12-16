@@ -10,6 +10,7 @@ public class HangNhap {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private HangNhapId hangNhapId;
     private  int SoLuong;
+
     @ManyToMany
     @JoinColumn(name = "MaHangNhap", referencedColumnName = "MaMatHang")
     private List<MatHang> matHangs;

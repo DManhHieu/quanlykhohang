@@ -14,7 +14,6 @@ public class PhieuXuatHangDAO {
         Transaction transaction=null;
         List<PhieuXuatHang> phieuXuatHangs=null;
         try(Session session= HibernaterUtil.getSessionFactory().openSession()){
-
             transaction=session.beginTransaction();
             phieuXuatHangs=session.createQuery("from PhieuXuatHang").getResultList();
             transaction.commit();
