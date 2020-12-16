@@ -7,7 +7,6 @@ import QLKH.until.HibernaterUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PhieuXuatHangDAO {
@@ -48,5 +47,21 @@ public class PhieuXuatHangDAO {
             }
             e.printStackTrace();
         }
+    }
+    public PhieuXuatHang getPhieuXuatHang(String maphieu){
+        Transaction transaction=null;
+        PhieuXuatHang phieuXuatHang=null;
+        try(Session session=HibernaterUtil.getSessionFactory().openSession()){
+            transaction=session.beginTransaction();
+            phieuXuatHang=session.get(PhieuXuatHang.class,maphieu);
+            transaction.commit();
+        }
+        catch (Exception e){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return phieuXuatHang;
     }
 }

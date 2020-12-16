@@ -18,15 +18,15 @@ public class WaitingController extends HttpServlet {
         if(session != null && session.getAttribute("account") != null) {
             NhanVien u=(NhanVien) session.getAttribute("account");
             req.setAttribute("username", u.getTenDangNhap());
-
-            if(u.getNhomNhanVien().getID()==0) {
+            int nhom= (int) session.getAttribute("NhomNhanVien");
+            if(nhom ==0) {
                 req.getRequestDispatcher("/View/Admin/index.jsp").forward(req, resp);
             }else {
                 req.getRequestDispatcher("/View/NhanVien/index.jsp").forward(req, resp);
             }
 
         }else {
-            resp.sendRedirect(req.getContextPath()+"/login");
+            resp.sendRedirect(req.getContextPath()+"/Login");
         }
     }
 

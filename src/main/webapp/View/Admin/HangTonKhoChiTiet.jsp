@@ -46,93 +46,88 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Mã hàng hóa</label> <input
-                                                                    type="text" class="form-control" value="${hanghoa.getMaHangHoa()}"  readonly >
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Mã mặt hàng</label> <input
-                                                                    type="text" class="form-control" value="${hanghoa.getMatHang().getMaMatHang()}"  readonly >
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Tên mặt hàng</label> <input
-                                                                    type="text" class="form-control" value="${hanghoa.getMatHang().getTenMatHang()}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Vị trí</label> <input
-                                                                    type="text" class="form-control" value="${hanghoa.getViTri()}" readonly>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Mã phiếu nhập</label> <input
-                                                                    type="text" class="form-control"  value="${hanghoa.getPhieuNhap().getMaPhieu()}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Nhập từ</label> <input
-                                                                    type="text" class="form-control"  value="${hanghoa.getPhieuNhap().getNhapTu()}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Mã nhân viên nhập hàng</label> <input
-                                                                    type="text" class="form-control"  value="${hanghoa.getNhanVienNhapKho().getMaNhanVien()}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Tên nhân viên nhập hàng</label> <input
-                                                                    type="text" class="form-control"  value="${hanghoa.getNhanVienNhapKho().getTenNhanVien()}" readonly>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-2">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Tình trạng</label> <input
-                                                                    type="text" class="form-control"  value="${hanghoa.getTinhTrang().getTenTinhTrang()}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Ngày kiểm kê</label> <input
-                                                                    type="text" class="form-control"  value="<fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgay_KiemKe()}"/>" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Ngày nhập kho</label> <input
-                                                                    type="text" class="form-control"  value=" <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgayNhapKho()}"/>" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Ngày sản xuất</label> <input
-                                                                    type="text" class="form-control"  value=" <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgaySanXuat()}"/>" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <div class="form-group" >
-                                                                <label class="bmd-label-floating">Hạn sử dụng</label> <input
-                                                                    type="text" class="form-control"  value=" <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getHanSuDung()}"/>" readonly>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Mã hàng hóa</label> <input
+                                                            type="text" class="form-control" value="${hanghoa.getMaHangHoa()}"  readonly >
                                                     </div>
                                                 </div>
-
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Mã mặt hàng</label> <input
+                                                            type="text" class="form-control" value="${hanghoa.getMatHang().getMaMatHang()}"  readonly >
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Tên mặt hàng</label> <input
+                                                            type="text" class="form-control" value="${hanghoa.getMatHang().getTenMatHang()}" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Vị trí</label> <input
+                                                            type="text" class="form-control" value="${hanghoa.getViTri()}" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Mã phiếu nhập</label> <input
+                                                            type="text" class="form-control"  value="${hanghoa.getPhieuNhap().getMaPhieu()}" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Nhập từ</label> <input
+                                                            type="text" class="form-control"  value="${hanghoa.getPhieuNhap().getNhapTu()}" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Mã nhân viên nhập hàng</label> <input
+                                                            type="text" class="form-control"  value="${hanghoa.getNhanVienNhapKho().getMaNhanVien()}" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Tên nhân viên nhập hàng</label> <input
+                                                            type="text" class="form-control"  value="${hanghoa.getNhanVienNhapKho().getTenNhanVien()}" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Tình trạng</label> <input
+                                                            type="text" class="form-control"  value="${hanghoa.getTinhTrang().getTenTinhTrang()}" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Ngày kiểm kê</label> <input
+                                                            type="text" class="form-control"  value="<fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgay_KiemKe()}"/>" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Ngày nhập kho</label> <input
+                                                            type="text" class="form-control"  value=" <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgayNhapKho()}"/>" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Ngày sản xuất</label> <input
+                                                            type="text" class="form-control"  value=" <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgaySanXuat()}"/>" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-group" >
+                                                        <label class="bmd-label-floating">Hạn sử dụng</label> <input
+                                                            type="text" class="form-control"  value=" <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getHanSuDung()}"/>" readonly>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

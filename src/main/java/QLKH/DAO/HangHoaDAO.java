@@ -42,4 +42,27 @@ public class HangHoaDAO {
         }
         return hangHoa;
     }
+    public HangHoa getHangHoaTonKho(String MaHangHoa){
+        Transaction transaction=null;
+        HangHoa hangHoa=null;
+        try(Session session=HibernaterUtil.getSessionFactory().openSession()){
+            transaction=session.beginTransaction();
+
+            Query query=session.createQuery("from HangHoa where MaHangHoa= :MaHangHoa AND( tinhTrang.MaTinhTrang=1 or tinhTrang.MaTinhTrang=2 or tinhTrang.MaTinhTrang=3)" +
+                    "AND PhieuXuat=null");
+            query.setParameter("MaHangHoa",MaHangHoa);
+            List queryList=query.list();
+            if( queryList!=null && !queryList.isEmpty()) {
+                hangHoa = (HangHoa) queryList.get(0);
+            }
+            transaction.commit();
+        }
+        catch (Exception e){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return hangHoa;
+    }
 }

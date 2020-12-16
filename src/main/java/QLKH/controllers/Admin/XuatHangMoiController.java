@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -32,9 +30,11 @@ public class XuatHangMoiController extends HttpServlet {
 
     @Override
     protected  void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session= req.getSession();
+        int nhom= (int) session.getAttribute("NhomNhanVien");
+        if(session != null && session.getAttribute("account") != null && nhom==0) {
 
         String action=req.getParameter("submit");
-        HttpSession session=req.getSession(true);
         PhieuXuatHang phieuXuatHang= (PhieuXuatHang) session.getAttribute("phieuxuathang");
         if(phieuXuatHang==null){
             phieuXuatHang=new PhieuXuatHang();
@@ -43,7 +43,7 @@ public class XuatHangMoiController extends HttpServlet {
         phieuXuatHang.setBenNhan(req.getParameter("BenNhan"));
         if(phieuXuatHang.getHangHoas()==null)
             phieuXuatHang.setHangHoas(new ArrayList<HangHoa>());
-        HangHoa hangHoa=hangHoaDAO.getHangHoa(req.getParameter("MaHangHoa"));
+        HangHoa hangHoa=hangHoaDAO.getHangHoaTonKho(req.getParameter("MaHangHoa"));
         if(hangHoa!=null && !phieuXuatHang.getHangHoas().contains(hangHoa))
             phieuXuatHang.getHangHoas().add(hangHoa);
         try{
@@ -75,8 +75,12 @@ public class XuatHangMoiController extends HttpServlet {
         java.sql.Date date = new java.sql.Date(currentDate.getTime());
         phieuXuatHang.setNgayTao(date);
         phieuXuatHangDAO.AddPhieuXuatHang(phieuXuatHang);
+        session.removeAttribute("phieuxuathang");
         RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHangChiTiet.jsp");
         dispatcher.forward(req, resp);
 
+        }else {
+            resp.sendRedirect(req.getContextPath()+"/Login");
+        }
     }
 }

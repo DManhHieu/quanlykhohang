@@ -47,22 +47,29 @@
                                     <thead>
                                     <tr>
                                         <th>Mã phiếu</th>
+                                        <th>Bên nhận</th>
                                         <th>Mô tả</th>
                                         <th>Người xuất hàng</th>
                                         <th>Ngày tạo đơn</th>
                                         <th>Ngày xuất hàng dự kiến</th>
                                         <th>Ngày xuất hàng thực tế</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${PhieuHangs}" var="phieu">
                                         <tr>
                                             <td>${phieu.getMaPhieu()}</td>
+                                            <td>${phieu.getBenNhan()}</td>
                                             <td>${phieu.getMoTa()}</td>
                                             <td>${phieu.getNguoiXuat().getTenNhanVien()}</td>
                                             <td><fmt:formatDate pattern="dd/MM/yyyy"  value = "${phieu.getNgayTao()}"/></td>
                                             <td><fmt:formatDate pattern="dd/MM/yyyy"  value = "${phieu.getNgayXuat_DuKien()}"/></td>
                                             <td><fmt:formatDate pattern="dd/MM/yyyy"  value = "${phieu.getNgayXuat_ThucTe()}"/></td>
+                                            <td>
+                                                <a href="<c:url value='/PhieuXuatHang/ChiTiet?MaPhieu=${phieu.getMaPhieu() }'/>"
+                                                   class="center">Chi tiết</a>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

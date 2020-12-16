@@ -15,6 +15,11 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession(false);
+        if(req.getParameter("Logout")!=null){
+            session.removeAttribute("account");
+            req.getRequestDispatcher("View/login.jsp").forward(req, resp);
+            return;
+        }
         if (session != null && session.getAttribute("account") != null) {
             resp.sendRedirect(req.getContextPath()+ "/waiting");
             return;
@@ -60,7 +65,7 @@ public class LoginController extends HttpServlet {
         if(user!=null){
             HttpSession session = req.getSession(true);
             session.setAttribute("account", user);
-
+            session.setAttribute("NhomNhanVien",user.getNhomNhanVien().getID());
             if(isRememberMe){
                 saveRemeberMe(resp, username);
             }
