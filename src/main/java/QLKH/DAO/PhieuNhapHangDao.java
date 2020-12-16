@@ -23,7 +23,21 @@ public class PhieuNhapHangDao {
             }
             e.printStackTrace();
         }
-//        System.out.println(phieuNhapHangs);
         return phieuNhapHangs;
+    }
+    public PhieuNhapHang getPhieuHangNhap(String MaPhieuNhap){
+        Transaction transaction=null;
+        PhieuNhapHang phieuNhapHang=null;
+        try(Session session=HibernaterUtil.getSessionFactory().openSession()){
+            transaction=session.getTransaction();
+            phieuNhapHang=session.get(PhieuNhapHang.class,MaPhieuNhap);
+            transaction.commit();
+        } catch (Exception e){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return phieuNhapHang;
     }
 }

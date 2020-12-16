@@ -1,22 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Tables - SB Admin</title>
-<link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
-<link
-	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
-	rel="stylesheet" crossorigin="anonymous" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
-	crossorigin="anonymous"></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Chi tiết phiếu nhập hàng</title>
+	<link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
+	<link
+			href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
+			rel="stylesheet" crossorigin="anonymous" />
+	<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
+			crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="header.jsp"></jsp:include>
@@ -25,10 +26,10 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid">
-					<h1 class="mt-4">Phiếu xuất hàng</h1>
+					<h1 class="mt-4">Chi tiết phiếu nhập hàng</h1>
 					<ol class="breadcrumb mb-4">
 						<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
-						<li class="breadcrumb-item active">Phiếu xuất hàng</li>
+						<li class="breadcrumb-item active">Chi tiết phiếu nhập hàng</li>
 					</ol>
 					<div class="row">
 						<div class="col-md-12">
@@ -43,13 +44,13 @@
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label class="bmd-label-floating">Mã đơn hàng</label> <input
-																		type="text" class="form-control">
+																		type="text" value="<c:out value="${phieunhaphang.getMaPhieu()}" />" class="form-control">
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label class="bmd-label-floating">Người tạo</label> <input
-																		type="text" class="form-control">
+																		type="text" value="<c:out value="${phieunhaphang.getNguoiNhap().getTenNhanVien()}" />" class="form-control">
 																</div>
 															</div>
 														</div>
@@ -57,22 +58,23 @@
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label class="bmd-label-floating">Nhập từ</label> <input
-																		type="text" class="form-control">
+																		type="text" value="<c:out value="${phieunhaphang.getNhapTu()}" />"  class="form-control">
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label class="bmd-label-floating">Ngày tạo</label> <input
-																		type="text" class="form-control">
+																		type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value = "${phieunhaphang.getNgayNhap()}" />" class="form-control">
 																</div>
 															</div>
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="bmd-label-floating">Mô tả sản phẩm</label>
+															<label class="bmd-label-floating">Mô tả </label>
 														</div>
-														<textarea rows="6">  
+														<textarea rows="6">
+															${phieunhaphang.getNhapTu()}
                                                           </textarea>
 													</div>
 												</div>
@@ -98,24 +100,10 @@
 											<th>Số lượng</th>
 										</tr>
 									</thead>
-									<tfoot>
-										<tr>
-											<th>Mã mặt hàng</th>
-											<th>Tên mặt hàng</th>
-											<th>Số lượng</th>
-										</tr>
-									</tfoot>
 									<tbody>
-										<tr>
-											<td>A1</td>
-											<td>Hàng china</td>
-											<td>Sang</td>
-										</tr>
-										<tr>
-											<td>A2</td>
-											<td>Hàng china</td>
-											<td>Hùng</td>
-										</tr>
+									<c:forEach items="${phieunhaphang.getHangNhaps()}" var="hangnhap">
+
+									</c:forEach>
 									</tbody>
 								</table>
 							</div>

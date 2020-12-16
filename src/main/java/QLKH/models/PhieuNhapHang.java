@@ -10,6 +10,8 @@ public class PhieuNhapHang {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String MaPhieu;
+
+
     private String MoTa, NhapTu;
     private Date NgayNhap;
 
