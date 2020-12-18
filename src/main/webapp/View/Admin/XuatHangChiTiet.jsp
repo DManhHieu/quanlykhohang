@@ -94,7 +94,16 @@
                                             <label>Ngày xuất hàng thực:</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <label><fmt:formatDate pattern="dd/MM/yyyy"  value = "${phieuxuat.getNgayXuat_ThucTe()}"/></label>
+                                            <c:if test="${phieuxuat.getNgayXuat_ThucTe()!=null}">
+                                                <label><fmt:formatDate pattern="dd/MM/yyyy"  value = "${phieuxuat.getNgayXuat_ThucTe()}"/></label>
+                                            </c:if>
+                                            <c:if test="${phieuxuat.getNgayXuat_ThucTe()==null}">
+                                                <form action="${pageContext.request.contextPath}/PhieuXuatHang/ChiTiet" method="post">
+                                                    <input type="date" value="${phieuxuat.getNgayXuat_ThucTe()}" name="ngayxuat">
+                                                    <input type="hidden" value="${phieuxuat.getMaPhieu()}" name="MaPhieu">
+                                                    <button type="submit" class="btn-dark">Lưu</button>
+                                                </form>
+                                            </c:if>
                                         </div>
                                     </div>
                                     <div class="row">

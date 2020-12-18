@@ -4,9 +4,11 @@ import QLKH.models.HangHoa;
 import QLKH.models.NhanVien;
 import QLKH.models.PhieuXuatHang;
 import QLKH.until.HibernaterUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.sql.Date;
 import java.util.List;
 
 public class PhieuXuatHangDAO {
@@ -53,7 +55,11 @@ public class PhieuXuatHangDAO {
         try(Session session=HibernaterUtil.getSessionFactory().openSession()){
             transaction=session.beginTransaction();
             phieuXuatHang=session.get(PhieuXuatHang.class,maphieu);
+            Query query=session.createQuery("from HangHoa where PhieuXuat.MaPhieu= :MaPhieu");
+            query.setParameter("MaPhieu",maphieu);
+            List<HangHoa> hangHoas=query.getResultList();
             transaction.commit();
+            phieuXuatHang.setHangHoas(hangHoas);
         }
         catch (Exception e){
             if(transaction!=null){
@@ -62,5 +68,22 @@ public class PhieuXuatHangDAO {
             e.printStackTrace();
         }
         return phieuXuatHang;
+    }
+    public void UpdateNgayXuatHang(String MaPhieu, String NgayXuat){
+        Transaction transaction=null;
+        PhieuXuatHang phieuXuatHang=null;
+        try(Session session=HibernaterUtil.getSessionFactory().openSession()){
+            transaction=session.beginTransaction();
+            phieuXuatHang=session.get(PhieuXuatHang.class,MaPhieu);
+            Date ngayxuat= Date.valueOf(NgayXuat);
+            phieuXuatHang.setNgayXuat_ThucTe(ngayxuat);
+            transaction.commit();
+        }
+        catch (Exception e){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 }
