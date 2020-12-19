@@ -114,8 +114,6 @@
                                                         <tr>
                                                             <th>Mã hàng hóa</th>
                                                             <th>Tên mặt hàng</th>
-                                                            <th>Vị trí</th>
-                                                            <th>Ngày kiểm kê</th>
                                                             <th>Ngày sản xuất</th>
                                                             <th>Hạn sử dụng</th>
                                                             <th>Tình trạng</th>
@@ -126,8 +124,6 @@
                                                         <tr>
                                                             <td>${hanghoa.getMaHangHoa()}</td>
                                                             <td>${hanghoa.getMatHang().getTenMatHang()}</td>
-                                                            <td>${hanghoa.getViTri()}</td>
-                                                            <td> <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgay_KiemKe()}"/></td>
                                                             <td> <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getNgaySanXuat()}"/></td>
                                                             <td> <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getHanSuDung()}"/></td>
                                                             <td>${hanghoa.getTinhTrang().getTenTinhTrang()}</td>

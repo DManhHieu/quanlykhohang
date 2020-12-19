@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Tables - SB Admin</title>
-    <link href="../Static/css/styles.css" rel="stylesheet" />
+    <title>Nhập hàng</title>
+    <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-    <link href="../Static/css/thongtincanhan.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/View/Static/css/thongtincanhan.css" rel="stylesheet">
 </head>
 <body class="sb-nav-fixed">
 <jsp:include page="header.jsp"></jsp:include>
@@ -35,10 +37,14 @@
                 <div class="card mb-4">
                 </div>
                 <div class="card mb-4">
-                    <div class="card-header">
+                    <div class="card-header row">
                         <i class="fas fa-table mr-1"></i>
                         Bảng phiếu nhập hàng
+                        <div class="row col-md-6">
+                            <a href="chitietnhaphang.jsp" style="margin-left: 85%"><input type="button" value="Tạo đơn mới"></a>
+                        </div>
                     </div>
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -53,47 +59,25 @@
                                     <th></th>
                                 </tr>
                                 </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Mô tả</th>
-                                    <th>Nhập từ</th>
-                                    <th>Người tạo đơn</th>
-                                    <th>Ngày tạo đơn</th>
-                                    <th>Giá trị đơn hàng</th>
-                                    <th></th>
-                                </tr>
-                                </tfoot>
                                 <tbody>
-                                <tr>
-                                    <td>A1</td>
-                                    <td>Hàng china</td>
-                                    <td>Trung Quốc</td>
-                                    <td>Hùng</td>
-                                    <td>10/10/2020</td>
-                                    <td>10000 $</td>
-                                    <td>
-                                        <a href="chitietdonhang.jsp">Chi tiết</a>
-                                    </td>
-
-                                </tr>
-                                <td>A2</td>
-                                <td>Hàng Việt Nam</td>
-                                <td>Việt Nam</td>
-                                <td>Thắng</td>
-                                <td>15/10/2020</td>
-                                <td>10000 $</td>
-                                <td>
-                                    <a href="chitietdonhang.jsp">Chi tiết</a>
-                                </td>
+                                <c:forEach items="${PhieuHangs}" var="phieu">
+                                    <tr>
+                                        <td>${phieu.getMaPhieu()}</td>
+                                        <td>${phieu.getMoTa()}</td>
+                                        <td>${phieu.getNhapTu()}</td>
+                                        <td>${phieu.getNguoiNhap().getTenNhanVien()}</td>
+                                        <td><fmt:formatDate pattern="dd/MM/yyyy"  value = "${phieu.getNgayNhap()}"/></td>
+                                        <td>${phieu.getMaPhieu()}</td>
+                                        <td>
+                                            <a href="<c:url value='/APhieuNhapHang/ChiTiet?MaPhieu=${phieu.getMaPhieu() }'/>"
+                                               class="center">Chi tiết</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <a href="chitietnhaphang.jsp" style="margin-left: 85%"><input type="button" value="Tạo đơn mới"></a>
                 </div>
             </div>
         </main>
@@ -101,9 +85,9 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="../Static/js/scripts.js"></script>
+<script src="${pageContext.request.contextPath}/View/Static/js/scripts.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-<script src="../Static/assets/demo/datatables-demo.js"></script>
+<script src="${pageContext.request.contextPath}/View/Static/assets/demo/datatables-demo.js"></script>
 </body>
 </html>

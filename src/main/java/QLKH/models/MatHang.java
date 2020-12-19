@@ -17,6 +17,10 @@ public class MatHang {
     @OneToMany
     @JoinColumn(name="MaMatHang",referencedColumnName = "MaMatHang")
     private List<HangHoa> HangHoas;
+
+    @OneToMany
+    @JoinColumn(name = "MaHangNhap")
+    private List<HangNhap> hangNhaps;
     public String getMaMatHang(){
         return MaMatHang;
     }
@@ -58,5 +62,13 @@ public class MatHang {
     }
     public void setHangHoas(List<HangHoa> hangHoas){
         this.HangHoas=hangHoas;
+    }
+
+    public List<HangNhap> getHangNhaps() {
+        return hangNhaps;
+    }
+
+    public void setHangNhaps(List<HangNhap> hangNhaps) {
+        this.hangNhaps = hangNhaps;
     }
 }

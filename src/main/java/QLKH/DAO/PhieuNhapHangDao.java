@@ -1,10 +1,11 @@
 package QLKH.DAO;
 
+import QLKH.models.HangNhap;
 import QLKH.models.PhieuNhapHang;
 import QLKH.until.HibernaterUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 
 import java.util.List;
 
@@ -31,11 +32,11 @@ public class PhieuNhapHangDao {
         try(Session session=HibernaterUtil.getSessionFactory().openSession()){
             transaction=session.getTransaction();
             phieuNhapHang=session.get(PhieuNhapHang.class,MaPhieuNhap);
-            transaction.commit();
+            Query query=session.createQuery("from HangNhap where hangNhapId.MP_Nhap = :MaPhieu");
+            query.setParameter("MaPhieu",MaPhieuNhap);
+            List<HangNhap> hangNhaps=query.getResultList();
+            phieuNhapHang.setHangNhaps(hangNhaps);
         } catch (Exception e){
-            if(transaction!=null){
-                transaction.rollback();
-            }
             e.printStackTrace();
         }
         return phieuNhapHang;

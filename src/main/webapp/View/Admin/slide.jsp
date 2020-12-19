@@ -32,7 +32,7 @@
 
             <div class="sb-sidenav-menu-heading">Quản lý</div>
 
-            <a class="nav-link" href="">
+            <a class="nav-link" href="${pageContext.request.contextPath}/APhieuNhapHang">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Nhập hàng
             </a>

@@ -19,8 +19,8 @@ public class PhieuNhapHang {
     @JoinColumn(name = "Ma_NhanVien_Nhap", referencedColumnName = "MaNhanVien")
     private NhanVien NguoiNhap;
 
-    @ManyToMany
-    @JoinColumn(name = "MaPhieu", referencedColumnName = "MP_Nhap")
+    @OneToMany
+    @JoinColumn(name = "MP_Nhap")
     private List<HangNhap> hangNhaps;
 
     public String getMaPhieu(){
