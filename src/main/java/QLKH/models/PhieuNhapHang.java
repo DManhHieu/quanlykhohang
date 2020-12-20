@@ -8,7 +8,6 @@ import java.util.List;
 @Table(name= "PhieuNhapHang")
 public class PhieuNhapHang {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String MaPhieu;
 
 

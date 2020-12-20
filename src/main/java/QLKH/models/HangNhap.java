@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "HangNhap")
 public class HangNhap {
     @EmbeddedId
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private HangNhapId hangNhapId;
     private  int SoLuong;
 

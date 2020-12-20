@@ -7,7 +7,6 @@ import java.util.List;
 @Table(name = "TinhTrang")
 public class TinhTrang {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int MaTinhTrang;
     private String TenTinhTrang;
     @OneToMany

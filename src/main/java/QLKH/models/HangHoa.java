@@ -7,7 +7,6 @@ import java.sql.Date;
 @Table (name = "HangHoa")
 public class HangHoa {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String MaHangHoa;
     private String ViTri;
     private Date Ngay_KiemKe, HanSuDung, NgaySanXuat, NgayNhapKho;

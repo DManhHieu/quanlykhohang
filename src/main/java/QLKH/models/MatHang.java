@@ -7,7 +7,6 @@ import java.util.List;
 @Table(name="MatHang")
 public class MatHang {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String MaMatHang;
     private String NhaSanXuat, TenMatHang, MoTa;
     private double GiaTri;
