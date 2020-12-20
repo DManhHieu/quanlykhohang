@@ -102,7 +102,11 @@
 									</thead>
 									<tbody>
 									<c:forEach items="${phieunhaphang.getHangNhaps()}" var="hangnhap">
-
+										<tr>
+											<td>${hangnhap.getHangNhapId().getMaHangNhap()}</td>
+											<td>${hangnhap.getMatHang().getTenMatHang()}</td>
+											<td>${hangnhap.getSoLuong()}</td>
+										</tr>
 									</c:forEach>
 									</tbody>
 								</table>

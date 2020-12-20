@@ -18,8 +18,7 @@ public class PhieuNhapHang {
     @JoinColumn(name = "Ma_NhanVien_Nhap", referencedColumnName = "MaNhanVien")
     private NhanVien NguoiNhap;
 
-    @OneToMany
-    @JoinColumn(name = "MP_Nhap")
+    @OneToMany(mappedBy = "phieuNhapHang",fetch = FetchType.LAZY)
     private List<HangNhap> hangNhaps;
 
     public String getMaPhieu(){
@@ -57,10 +56,11 @@ public class PhieuNhapHang {
         this.NguoiNhap=nguoiNhap;
     }
 
-    public List<HangNhap> getHangNhaps(){
-        return  hangNhaps;
+    public List<HangNhap> getHangNhaps() {
+        return hangNhaps;
     }
-    public void setHangNhaps(List<HangNhap> hangNhaps){
-        this.hangNhaps=hangNhaps;
+
+    public void setHangNhaps(List<HangNhap> hangNhaps) {
+        this.hangNhaps = hangNhaps;
     }
 }
