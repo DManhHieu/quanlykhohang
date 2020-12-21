@@ -10,16 +10,18 @@ public class MatHang {
     private String MaMatHang;
     private String NhaSanXuat, TenMatHang, MoTa;
     private double GiaTri;
+
     @ManyToOne
     @JoinColumn(name = "NV_Tao",referencedColumnName = "MaNhanVien")
     private NhanVien NguoiNhap;
+
     @OneToMany
     @JoinColumn(name="MaMatHang",referencedColumnName = "MaMatHang")
     private List<HangHoa> HangHoas;
 
-    @OneToMany
-    @JoinColumn(name = "MaHangNhap")
+    @OneToMany(mappedBy = "matHang", fetch = FetchType.LAZY)
     private List<HangNhap> hangNhaps;
+
     public String getMaMatHang(){
         return MaMatHang;
     }
@@ -62,7 +64,6 @@ public class MatHang {
     public void setHangHoas(List<HangHoa> hangHoas){
         this.HangHoas=hangHoas;
     }
-
     public List<HangNhap> getHangNhaps() {
         return hangNhaps;
     }
@@ -70,4 +71,5 @@ public class MatHang {
     public void setHangNhaps(List<HangNhap> hangNhaps) {
         this.hangNhaps = hangNhaps;
     }
+
 }

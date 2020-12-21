@@ -9,6 +9,16 @@ public class HangNhap {
     private HangNhapId hangNhapId;
     private  int SoLuong;
 
+    @ManyToOne
+    @MapsId("MaHangNhap")
+    @JoinColumn(name="MaHangNhap")
+    private MatHang matHang;
+
+    @ManyToOne
+    @MapsId("MP_Nhap")
+    @JoinColumn(name="MP_Nhap")
+    private PhieuNhapHang phieuNhapHang;
+
     public void setHangNhapId(HangNhapId hangNhapId){
         this.hangNhapId=hangNhapId;
     }
@@ -26,6 +36,22 @@ public class HangNhap {
     }
     public void setMaHangNhap(String maHangNhap){
         hangNhapId.setMaHangNhap(maHangNhap);
+    }
+
+    public MatHang getMatHang() {
+        return matHang;
+    }
+
+    public void setMatHang(MatHang matHang) {
+        this.matHang = matHang;
+    }
+
+    public PhieuNhapHang getPhieuNhapHang() {
+        return phieuNhapHang;
+    }
+
+    public void setPhieuNhapHang(PhieuNhapHang phieuNhapHang) {
+        this.phieuNhapHang = phieuNhapHang;
     }
 
 }

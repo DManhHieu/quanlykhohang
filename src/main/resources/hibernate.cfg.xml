@@ -20,5 +20,4 @@
         <mapping class="QLKH.models.HangNhap"/>
         <mapping class="QLKH.models.HangHoa"/>
     </session-factory>
-
 </hibernate-configuration>
