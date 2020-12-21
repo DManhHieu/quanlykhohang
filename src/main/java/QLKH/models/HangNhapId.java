@@ -24,4 +24,10 @@ public class HangNhapId implements Serializable {
     public String getMaHangNhap(){
         return MaHangNhap;
     }
+    public void setMP_Nhap(String mp_nhap){
+        this.MP_Nhap=mp_nhap;
+    }
+    public void setMaHangNhap(String maHangNhap){
+        this.MaHangNhap=maHangNhap;
+    }
 }

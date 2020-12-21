@@ -21,6 +21,11 @@ public class HangNhap {
     public int getSoLuong(){
         return SoLuong;
     }
-
+    public void setMaPhieuNhap(String maPhieuNhap){
+        hangNhapId.setMP_Nhap(maPhieuNhap);
+    }
+    public void setMaHangNhap(String maHangNhap){
+        hangNhapId.setMaHangNhap(maHangNhap);
+    }
 
 }

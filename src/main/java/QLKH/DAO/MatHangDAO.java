@@ -24,4 +24,15 @@ public class MatHangDAO {
         }
         return matHangs;
     }
+    public MatHang getMatHang(String MaMatHang){
+        Transaction transaction=null;
+        MatHang matHang=null;
+        try(Session session=HibernaterUtil.getSessionFactory().openSession()){
+            transaction=session.getTransaction();
+            matHang=session.get(MatHang.class,MaMatHang);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return matHang;
+    }
 }

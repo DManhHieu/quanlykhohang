@@ -41,7 +41,9 @@
                         <i class="fas fa-table mr-1"></i>
                         Bảng phiếu nhập hàng
                         <div class="row col-md-6">
-                            <a href="chitietnhaphang.jsp" style="margin-left: 85%"><input type="button" value="Tạo đơn mới"></a>
+                            <form action="${pageContext.request.contextPath}/APhieuNhapHang/Moi" method="post">
+                                <button type="submit" style="margin-left: 85%" >Tạo đơn mới</button>
+                            </form>
                         </div>
                     </div>
 

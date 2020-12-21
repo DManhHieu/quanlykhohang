@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,11 +34,11 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Tạo đơn nhập hàng</h1>
+                <h1 class="mt-4">Chi tiết phiếu nhập hàng</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/APhieuNhapHang">Phiếu nhập hàng</a></li>
-                    <li class="breadcrumb-item active">Tạo đơn nhập hàng</li>
+                    <li class="breadcrumb-item active">Chi tiết</li>
                 </ol>
                 <div class="row">
                     <div class="col-md-12">
@@ -52,7 +53,7 @@
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Mã đơn hàng</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getMaPhieu()}">
+                                                                    type="text" class="form-control" value="${phieunhap.getMaPhieu()} " readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -60,7 +61,23 @@
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Nhập từ</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getNhapTu()}" >
+                                                                    type="text" class="form-control" value="${phieunhap.getNhapTu()}" readonly>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Người nhập</label> <input
+                                                                    type="text" class="form-control" value="${phieunhap.getNguoiNhap().getTenNhanVien()}" readonly>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="bmd-label-floating">Ngày nhập</label> <input
+                                                                    type="text" class="form-control" value=" <fmt:formatDate pattern="dd/MM/yyyy"  value ="${phieunhap.getNgayNhap()}"/> " readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -69,7 +86,7 @@
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Mô tả sản phẩm</label>
                                                     </div>
-                                                    <textarea rows="6" value="${phieunhap.getMoTa()}">
+                                                    <textarea rows="6"  readonly>${phieunhap.getMoTa()}
                                                           </textarea>
                                                 </div>
                                             </div>
@@ -94,25 +111,20 @@
                                     <th>Tên mặt hàng</th>
                                     <th>Số lượng</th>
                                     <th>Đơn giá</th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td><input type="text" class="form-control" id="mamathang"></td>
-                                    <td><input type="text" class="form-control" ></td>
-                                    <td><input type="text" class="form-control" id="soluong"></td>
-                                    <td><input type="text" class="form-control"></td>
-                                    <td><button type="button" onclick="AddRow()">+</button></td>
-                                </tr>
+                                <c:forEach items="${hangnhaps}" var="hangnhap">
+                                    <tr>
+                                        <td>${hangnhap.getMaMatHang()}</td>
+                                        <td>${hangnhap.getTenMatHang()}</td>
+                                        <td>${hangnhap.getSoluong()}</td>
+                                        <td>${hangnhap.getGiaTri()}</td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary pull-right">Tạo</button>
                     </div>
                 </div>
             </div>
@@ -120,73 +132,6 @@
     </div>
 </div>
 </div>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-    function AddRow() {
-        var mamathang=document.getElementById("mamathang").value;
-        var soluong=parseInt(document.getElementById("soluong").value);
-        var table = document.getElementById("dataTable");
-        var index= table.rows.length-1;
-        var mode=0;
-        for (var r=0, n=table.rows.length;r<n;r++){
-            console.log(table.rows[r].cells[0].innerHTML);
-            console.log(mamathang);
-            if(table.rows[r].cells[0].innerHTML.toString().trim() === mamathang.toString().trim()){
-                    index=r;
-                    mode=1;
-                    break;
-                }
-            }
-        console.log(r);
-        var xml=new XMLHttpRequest();
-        xml.onreadystatechange=function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var mathang = JSON.parse(this.responseText);
-                if (mathang != null) {
-                    var row=null;
-                    var cell1= null;
-                    var cell2=null;
-                    var cell3=null;
-                    var cell4=null;
-                    var cell5=null;
-                    if(mode==1){
-                        row=table[index];
-                        cell1=table.rows[index].cells[0];
-                        cell2=table.rows[index].cells[1];
-                        cell3=table.rows[index].cells[2];
-                        cell4=table.rows[index].cells[3];
-                        cell5=table.rows[index].cells[4];
-                    }
-                    else {
-                        row = table.insertRow(index);
-                        cell1 = row.insertCell(0);
-                        cell2 = row.insertCell(1);
-                        cell3 = row.insertCell(2);
-                        cell4 = row.insertCell(3);
-                        cell5 = row.insertCell(4);
-                    }
-
-                    cell1.innerHTML = mathang.MaMatHang;
-                    cell2.innerHTML = mathang.TenMatHang;
-                    cell3.innerHTML = mathang.SoLuong;
-                    cell4.innerHTML = mathang.GiaTri;
-                    cell5.innerHTML = '<button type="button" onclick="DeleteRow()">-</button>';
-                    table.rows[table.rows.length - 1].cells[0].innerHTML = '<input type="text" class="form-control" id="mamathang">';
-                    table.rows[table.rows.length - 1].cells[1].innerHTML = '<input type="text" class="form-control" >';
-                    table.rows[table.rows.length - 1].cells[2].innerHTML = '<input type="text" class="form-control" id="soluong">';
-                    table.rows[table.rows.length - 1].cells[3].innerHTML = '<input type="text" class="form-control">';
-                }
-            }
-        }
-        xml.open("GET","${pageContext.request.contextPath}/APhieuNhapHang/ChiTiet?MaMatHang="+mamathang+"&soluong="+soluong+"&mode="+mode,true);
-        xml.send();
-    }
-    function DeleteRow(x){
-        var td = event.target.parentNode;
-        var tr = td.parentNode; // the row to be removed
-        tr.parentNode.removeChild(tr);
-    }
-</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/View/Static/js/scripts.js"></script>

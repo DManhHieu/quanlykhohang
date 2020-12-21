@@ -1,7 +1,6 @@
 package QLKH.DAO;
 
-import QLKH.models.HangNhap;
-import QLKH.models.PhieuNhapHang;
+import QLKH.models.*;
 import QLKH.until.HibernaterUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -40,5 +39,24 @@ public class PhieuNhapHangDao {
             e.printStackTrace();
         }
         return phieuNhapHang;
+    }
+    public void AddPhieuNhapHang(PhieuNhapHang phieuNhapHang){
+        Transaction transaction=null;
+        try(Session session= HibernaterUtil.getSessionFactory().openSession()){
+            transaction=session.beginTransaction();
+            phieuNhapHang.setNguoiNhap(session.get(NhanVien.class,phieuNhapHang.getNguoiNhap().getMaNhanVien()));
+            session.save(phieuNhapHang);
+            for (HangNhap hang: phieuNhapHang.getHangNhaps()
+            ) {
+               hang.setMaPhieuNhap(phieuNhapHang.getMaPhieu());
+               session.save(hang);
+            }
+            transaction.commit();
+        }catch (Exception e){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 }

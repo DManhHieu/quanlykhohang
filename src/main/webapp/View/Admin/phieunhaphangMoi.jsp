@@ -39,11 +39,11 @@
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/APhieuNhapHang">Phiếu nhập hàng</a></li>
                     <li class="breadcrumb-item active">Tạo đơn nhập hàng</li>
                 </ol>
+                <form method="post" action="${pageContext.request.contextPath}/APhieuNhapHang/Moi">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
@@ -51,16 +51,16 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating">Mã đơn hàng</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getMaPhieu()}">
+                                                                <label class="bmd-label-floating">Mã đơn hàng</label> <input name="MaPhieu"
+                                                                    type="text" class="form-control" value="${sessionScope.phieunhap.getMaPhieu()}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating">Nhập từ</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getNhapTu()}" >
+                                                                <label class="bmd-label-floating">Nhập từ</label> <input name="NhapTu"
+                                                                    type="text" class="form-control" value="${sessionScope.phieunhap.getNhapTu()}" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -69,13 +69,12 @@
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Mô tả sản phẩm</label>
                                                     </div>
-                                                    <textarea rows="6" value="${phieunhap.getMoTa()}">
+                                                    <textarea rows="6" value="${sessionScope.phieunhap.getMoTa()}" name="MoTa">
                                                           </textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -98,6 +97,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach items="${sessionScope.hangnhaps}" var="hangnhap">
+                                    <tr>
+                                        <td>${hangnhap.getMaMatHang()}</td>
+                                        <td>${hangnhap.getTenMatHang()}</td>
+                                        <td>${hangnhap.getSoluong()}</td>
+                                        <td>${hangnhap.getGiaTri()}</td>
+                                    </tr>
+                                </c:forEach>
                                 <tr>
                                     <td><input type="text" class="form-control" id="mamathang"></td>
                                     <td><input type="text" class="form-control" ></td>
@@ -112,9 +119,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-primary pull-right">Tạo</button>
+                        <button type="submit" class="btn btn-primary pull-right" name="Submit" value="Create">Tạo</button>
                     </div>
                 </div>
+                </form>
             </div>
         </main>
     </div>
@@ -129,15 +137,12 @@
         var index= table.rows.length-1;
         var mode=0;
         for (var r=0, n=table.rows.length;r<n;r++){
-            console.log(table.rows[r].cells[0].innerHTML);
-            console.log(mamathang);
             if(table.rows[r].cells[0].innerHTML.toString().trim() === mamathang.toString().trim()){
-                    index=r;
-                    mode=1;
-                    break;
-                }
+                index=r;
+                mode=1;
+                break;
             }
-        console.log(r);
+        }
         var xml=new XMLHttpRequest();
         xml.onreadystatechange=function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -168,7 +173,7 @@
 
                     cell1.innerHTML = mathang.MaMatHang;
                     cell2.innerHTML = mathang.TenMatHang;
-                    cell3.innerHTML = mathang.SoLuong;
+                    cell3.innerHTML = mathang.Soluong;
                     cell4.innerHTML = mathang.GiaTri;
                     cell5.innerHTML = '<button type="button" onclick="DeleteRow()">-</button>';
                     table.rows[table.rows.length - 1].cells[0].innerHTML = '<input type="text" class="form-control" id="mamathang">';
@@ -178,13 +183,22 @@
                 }
             }
         }
-        xml.open("GET","${pageContext.request.contextPath}/APhieuNhapHang/ChiTiet?MaMatHang="+mamathang+"&soluong="+soluong+"&mode="+mode,true);
+        xml.open("GET","${pageContext.request.contextPath}/APhieuNhapHang/Moi?MaMatHang="+mamathang+"&soluong="+soluong+"&mode="+mode,true);
         xml.send();
     }
     function DeleteRow(x){
+
         var td = event.target.parentNode;
         var tr = td.parentNode; // the row to be removed
+        var test=tr.firstChild;
+        var mamathang=test.innerHTML;
         tr.parentNode.removeChild(tr);
+        var xml=new XMLHttpRequest();
+        xml.onreadystatechange=function () {
+            console.log(this.responseText);
+            }
+        xml.open("GET","${pageContext.request.contextPath}/APhieuNhapHang/Moi?MaMatHang="+mamathang+"&soluong="+0+"&mode="+2,true);
+        xml.send();
     }
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
