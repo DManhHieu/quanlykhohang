@@ -18,7 +18,7 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Chi tiết mặt hàng</title>
+    <title>Mặt hàng mới</title>
     <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
     <link
             href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
@@ -34,17 +34,17 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Chi tiết mặt hàng</h1>
+                <h1 class="mt-4">Mặt hàng mới</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/MatHang">Mặt hàng</a></li>
-                    <li class="breadcrumb-item active">Chi tiết</li>
+                    <li class="breadcrumb-item active">Mới</li>
                 </ol>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form method="post" action="${pageContext.request.contextPath}/MatHang/ChiTiet">
+                                <form method="post" action="${pageContext.request.contextPath}/MatHang/Moi">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
@@ -53,7 +53,7 @@
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Mã mặt hàng</label> <input
-                                                                    type="text" class="form-control" value="${mathang.getMaMatHang()} " name="MaMatHang" readonly>
+                                                                    type="text" class="form-control" value="${mathang.getMaMatHang()} " name="MaMatHang">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -89,18 +89,10 @@
                                                     <textarea rows="6"  name="MoTa">
                                                         ${matHang.getMoTa()}
                                                     </textarea>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label class="bmd-label-floating">Người nhập</label> <input
-                                                                    type="text" class="form-control" value="${mathang.getNguoiNhap().getTenNhanVien()}" readonly>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <button type="submit" class="float-right btn-success">Chỉnh sửa</button>
+                                                <button type="submit" class="float-right btn-success">Tạo mới</button>
                                             </div>
                                         </div>
                                     </div>
