@@ -23,7 +23,7 @@ public class HangTonKhoChiTietController extends HttpServlet {
             String mahanghoa = req.getParameter("MaHangHoa");
             HangHoa hangHoa = hangHoaDAO.getHangHoa(mahanghoa);
             req.setAttribute("hanghoa", hangHoa);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/HangTonKhoChiTiet.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/HangTonKho/HangTonKhoChiTiet.jsp");
             dispatcher.forward(req, resp);
         }
         else {

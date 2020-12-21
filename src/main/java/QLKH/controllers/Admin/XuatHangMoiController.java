@@ -5,6 +5,8 @@ import QLKH.DAO.PhieuXuatHangDAO;
 import QLKH.models.HangHoa;
 import QLKH.models.NhanVien;
 import QLKH.models.PhieuXuatHang;
+import QLKH.models.View.HangHoaView;
+import com.google.gson.Gson;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +27,38 @@ public class XuatHangMoiController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.getRequestDispatcher("/View/Admin/XuatHangMoi.jsp").forward(req,resp);
+        HttpSession session = req.getSession();
+        if (session != null && session.getAttribute("account") != null
+                && session.getAttribute("NhomNhanVien") != null
+                && (int) session.getAttribute("NhomNhanVien") == 0)
+        {
+            int mode=Integer.parseInt(req.getParameter("mode"));
+            String MaHangHoa=req.getParameter("MaHangHoa");
+            PhieuXuatHang phieuXuatHang= (PhieuXuatHang) session.getAttribute("phieuxuathang");
+            HangHoa hangHoa=hangHoaDAO.getHangHoaTonKho(MaHangHoa);
+            if(mode==0) {
+                if (hangHoa != null && !phieuXuatHang.getHangHoas().contains(hangHoa))
+                    phieuXuatHang.getHangHoas().add(hangHoa);
+
+            }
+            else if(mode==1){
+                phieuXuatHang.getHangHoas().remove(hangHoa);
+            }
+            session.setAttribute("phieuxuathang",phieuXuatHang);
+
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            if(mode==0) {
+                HangHoaView hangHoaView=new HangHoaView(hangHoa);
+                String hanghoaJson=new Gson().toJson(hangHoaView);
+                resp.getWriter().write(hanghoaJson);
+            }
+            else{
+                resp.getWriter().write("Hoan thanh");
+            }
+        }else {
+            resp.sendRedirect(req.getContextPath()+"/Login");
+        }
     }
 
     @Override
@@ -34,50 +67,55 @@ public class XuatHangMoiController extends HttpServlet {
         int nhom= (int) session.getAttribute("NhomNhanVien");
         if(session != null && session.getAttribute("account") != null && nhom==0) {
 
-            String action=req.getParameter("submit");
             PhieuXuatHang phieuXuatHang= (PhieuXuatHang) session.getAttribute("phieuxuathang");
+
             if(phieuXuatHang==null){
+
                 phieuXuatHang=new PhieuXuatHang();
+                phieuXuatHang.setHangHoas(new ArrayList<HangHoa>());
+                session.setAttribute("phieuxuathang",phieuXuatHang);
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang/XuatHangMoi.jsp");
+                dispatcher.forward(req, resp);
+                return;
             }
+
+            String submit=req.getParameter("submit");
+            if(submit==null) {
+
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang/XuatHangMoi.jsp");
+                dispatcher.forward(req, resp);
+                return;
+            }
+
             phieuXuatHang.setMaPhieu(req.getParameter("MaPhieu"));
             phieuXuatHang.setBenNhan(req.getParameter("BenNhan"));
-            if(phieuXuatHang.getHangHoas()==null)
+            if (phieuXuatHang.getHangHoas() == null)
                 phieuXuatHang.setHangHoas(new ArrayList<HangHoa>());
-            HangHoa hangHoa=hangHoaDAO.getHangHoaTonKho(req.getParameter("MaHangHoa"));
-            if(hangHoa!=null && !phieuXuatHang.getHangHoas().contains(hangHoa))
-                phieuXuatHang.getHangHoas().add(hangHoa);
-            try{
-                String ngaydukienstr=req.getParameter("NgayXuat_DuKien");
-                Date ngaydukien= Date.valueOf(ngaydukienstr);
-                phieuXuatHang.setNgayXuat_DuKien(ngaydukien);
-            }
-            catch (Exception e){
+            try {
+                String ngaydukienstr = req.getParameter("NgayXuat_DuKien");
+                if (ngaydukienstr != null) {
+                    Date ngaydukien = Date.valueOf(ngaydukienstr);
+                    phieuXuatHang.setNgayXuat_DuKien(ngaydukien);
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             phieuXuatHang.setMoTa(req.getParameter("MoTa"));
-            if(action.equals("AddHangHoa")){
-               session.setAttribute("phieuxuathang",phieuXuatHang);
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHangMoi.jsp");
-                dispatcher.forward(req, resp);
-                return;
-            }
-            else if(action.equals("Delete")){
-                phieuXuatHang.getHangHoas().remove(hangHoaDAO.getHangHoa( req.getParameter("deleteID")));
-                session.setAttribute("phieuxuathang",phieuXuatHang);
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHangMoi.jsp");
-                dispatcher.forward(req, resp);
-                return;
-            }
-            NhanVien nhanVien= (NhanVien) session.getAttribute("account");
+            NhanVien nhanVien = (NhanVien) session.getAttribute("account");
+
             phieuXuatHang.setNguoiXuat(nhanVien);
             Calendar calendar = Calendar.getInstance();
             java.util.Date currentDate = calendar.getTime();
             java.sql.Date date = new java.sql.Date(currentDate.getTime());
             phieuXuatHang.setNgayTao(date);
+
+
             phieuXuatHangDAO.AddPhieuXuatHang(phieuXuatHang);
+
             session.removeAttribute("phieuxuathang");
-            resp.sendRedirect(req.getContextPath()+ "/PhieuXuatHang/ChiTiet?MaPhieu="+phieuXuatHang.getMaPhieu());
+            resp.sendRedirect(req.getContextPath() + "/PhieuXuatHang/ChiTiet?MaPhieu=" + phieuXuatHang.getMaPhieu());
             return;
+
         }else {
             resp.sendRedirect(req.getContextPath()+"/Login");
         }

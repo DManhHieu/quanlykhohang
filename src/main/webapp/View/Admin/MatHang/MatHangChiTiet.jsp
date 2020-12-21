@@ -18,7 +18,7 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Chi tiết phiếu nhập hàng</title>
+    <title>Chi tiết mặt hàng</title>
     <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
     <link
             href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
@@ -28,8 +28,8 @@
             crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
-<jsp:include page="header.jsp"></jsp:include>
-<jsp:include page="slide.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../slide.jsp"></jsp:include>
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
@@ -37,14 +37,14 @@
                 <h1 class="mt-4">Chi tiết phiếu nhập hàng</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/APhieuNhapHang">Phiếu nhập hàng</a></li>
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/MatHang">Mặt hàng</a></li>
                     <li class="breadcrumb-item active">Chi tiết</li>
                 </ol>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form>
+                                <form method="post" action="${pageContext.request.contextPath}/MatHang/ChiTiet">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
@@ -52,78 +52,51 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating">Mã đơn hàng</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getMaPhieu()} " readonly>
+                                                                <label class="bmd-label-floating">Mã mặt hàng</label> <input
+                                                                    type="text" class="form-control" value="${mathang.getMaMatHang()} " readonly>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating">Nhập từ</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getNhapTu()}" readonly>
+                                                                <label class="bmd-label-floating">Tên mặt hàng</label> <input
+                                                                    type="text" class="form-control" value="${mathang.getTenMatHang()}" name="TenMatHang" >
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating">Người nhập</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getNguoiNhap().getTenNhanVien()}" readonly>
+                                                                <label class="bmd-label-floating">Giá trị</label> <input
+                                                                    type="text" class="form-control" value="${mathang.getGiaTri()}"  name="GiaTri">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating">Ngày nhập</label> <input
-                                                                    type="text" class="form-control" value=" <fmt:formatDate pattern="dd/MM/yyyy"  value ="${phieunhap.getNgayNhap()}"/> " readonly>
+                                                                <label class="bmd-label-floating">Nhà sản xuất</label> <input
+                                                                    type="text" class="form-control" value="${mathang.getNhaSanXuat()}" name="NhaSanXuat">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="bmd-label-floating">Mô tả sản phẩm</label>
+                                                        <label class="bmd-label-floating">Mô tả</label>
                                                     </div>
-                                                    <textarea rows="6"  readonly>${phieunhap.getMoTa()}
-                                                          </textarea>
+                                                    <textarea rows="6"  name="MoTa">${matHang.getMoTa()}
+                                                    </textarea>
                                                 </div>
+                                            </div>
+                                            <div class="row">
+                                                <button type="submit" class="float-right btn-success">Chỉnh sửa</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4">
-                    <!-- <div class="card-header">
-                        <i class="fas fa-table mr-1"></i> Bảng phiếu nhập hàng
-                    </div> -->
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%"
-                                   cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>Mã mặt hàng</th>
-                                    <th>Tên mặt hàng</th>
-                                    <th>Số lượng</th>
-                                    <th>Đơn giá</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${hangnhaps}" var="hangnhap">
-                                    <tr>
-                                        <td>${hangnhap.getMaMatHang()}</td>
-                                        <td>${hangnhap.getTenMatHang()}</td>
-                                        <td>${hangnhap.getSoluong()}</td>
-                                        <td>${hangnhap.getGiaTri()}</td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>

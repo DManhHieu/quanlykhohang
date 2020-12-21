@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Tables - SB Admin</title>
-    <link href="../Static/css/styles.css" rel="stylesheet" />
+    <link href="../../Static/css/styles.css" rel="stylesheet" />
     <style>
         .modal{
             backdrop-filter: brightness(60%);
@@ -124,11 +124,11 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Charts
                     </a> -->
-                    <a class="nav-link" href="danhsachhanghoa.jsp">
+                    <a class="nav-link" href="../danhsachhanghoa.jsp">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Danh sách hàng hóa
                     </a>
-                    <a class="nav-link" href="phieunhaphang.jsp">
+                    <a class="nav-link" href="../NhapHang/phieunhaphang.jsp">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Phiếu nhập hàng
                     </a>

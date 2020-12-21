@@ -26,8 +26,8 @@
             crossorigin="anonymous"></script>
 </head>
 <body  class="sb-nav-fixed">
-    <jsp:include page="header.jsp"></jsp:include>
-    <jsp:include page="slide.jsp"></jsp:include>
+    <jsp:include page="../header.jsp"></jsp:include>
+    <jsp:include page="../slide.jsp"></jsp:include>
     <div id="layoutSidenav">
         <div id="layoutSidenav_content">
             <main>
@@ -36,7 +36,7 @@
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
                             Danh sách đơn xuất hàng
-                            <form method="get" action="${pageContext.request.contextPath}/PhieuXuatHang/PhieuMoi">
+                            <form method="post" action="${pageContext.request.contextPath}/PhieuXuatHang/PhieuMoi">
                                 <button type="submit" class="float-right btn-success" >Tạo mới</button>
                             </form>
                         </div>

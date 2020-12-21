@@ -51,11 +51,12 @@ public class PhieuNhapHangMoiController extends HttpServlet {
                         phieuNhapHang.getHangNhaps().add(hangNhap);
                     }
                     else if (mode==1){ // da co mat hang nay
-                        phieuNhapHang.getHangNhaps().forEach((e->{
-                            if(e.getHangNhapId().getMaHangNhap().equals(mamathang)){
-                                e.setSoLuong(e.getSoLuong()+soluong);
+                        for(HangNhap hang : phieuNhapHang.getHangNhaps()){
+                            if(hang.getHangNhapId().getMaHangNhap().equals(mamathang)){
+                                hang.setSoLuong(hang.getSoLuong()+soluong);
+                                soluong=hang.getSoLuong();
                             }
-                        }));
+                        }
                     }
                     else if(mode==2){
                        for(HangNhap hang: phieuNhapHang.getHangNhaps()){
@@ -125,7 +126,7 @@ public class PhieuNhapHangMoiController extends HttpServlet {
                 matHangViewList.add(new MatHangView(matHangDAO.getMatHang(element.getHangNhapId().getMaHangNhap()),element.getSoLuong()));
             });
             req.setAttribute("hangnhaps",matHangViewList);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/phieunhaphangMoi.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/NhapHang/phieunhaphangMoi.jsp");
             dispatcher.forward(req, resp);
 
         }

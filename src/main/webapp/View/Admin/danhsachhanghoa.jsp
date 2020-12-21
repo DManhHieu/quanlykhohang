@@ -128,7 +128,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Danh sách hàng hóa
                     </a>
-                    <a class="nav-link" href="phieunhaphang.jsp">
+                    <a class="nav-link" href="NhapHang/phieunhaphang.jsp">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Phiếu nhập hàng
                     </a>

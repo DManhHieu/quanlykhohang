@@ -42,7 +42,7 @@
                 Xuất hàng
             </a>
 
-            <a class="nav-link" href="">
+            <a class="nav-link" href="${pageContext.request.contextPath}/MatHang">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Mặt hàng
             </a>

@@ -23,15 +23,15 @@
     <link href="${pageContext.request.contextPath}/View/Static/css/thongtincanhan.css" rel="stylesheet">
 </head>
 <body class="sb-nav-fixed">
-<jsp:include page="header.jsp"></jsp:include>
-<jsp:include page="slide.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../slide.jsp"></jsp:include>
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
                 <h1 class="mt-4">Phiếu nhập hàng</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="../index.jsp">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Phiếu nhập hàng</li>
                 </ol>
                 <div class="card mb-4">

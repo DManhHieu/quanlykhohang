@@ -23,7 +23,7 @@ public class PhieuNhapHangController extends HttpServlet {
         if(session != null && session.getAttribute("account") != null && nhom==0) {
             List<PhieuNhapHang> phieuNhapHangs = phieuNhapHangDao.getPhieuNhapHangs();
             req.setAttribute("PhieuHangs", phieuNhapHangs);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/phieunhaphang.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/NhapHang/phieunhaphang.jsp");
             dispatcher.forward(req, resp);
         }else {
             resp.sendRedirect(req.getContextPath()+"/Login");

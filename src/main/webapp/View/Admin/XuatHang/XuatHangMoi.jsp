@@ -27,8 +27,8 @@
 
 </head>
 <body class="sb-nav-fixed">
-<jsp:include page="header.jsp"></jsp:include>
-<jsp:include page="slide.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../slide.jsp"></jsp:include>
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
@@ -82,8 +82,8 @@
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Mã hàng hóa</label>
                                     <div class="row">
-                                    <input type="text" class="form-control col-6" name="MaHangHoa" placeholder="Nhập mã hàng hóa" >
-                                    <button type="submit" class="btn-dark" value="AddHangHoa" name="submit" >Thêm hàng hóa</button>
+                                    <input type="text" class="form-control col-6" id="MaHangHoa" placeholder="Nhập mã hàng hóa" >
+                                    <button type="button" class="btn-dark" onclick="ThemHangHoa()" >Thêm hàng hóa</button>
                                     </div>
                                 </div>
                             </div>
@@ -115,9 +115,7 @@
                                                 <td> <fmt:formatDate pattern="dd/MM/yyyy"  value = "${hanghoa.getHanSuDung()}"/></td>
                                                 <td>${hanghoa.getTinhTrang().getTenTinhTrang()}</td>
                                                 <td>
-                                                    <input type="hidden" name="deleteID" value="${hanghoa.getMaHangHoa()}">
-                                                    <button type="submit" value="Delete" name="submit" methods="post"
-                                                       class="center btn-link">Xóa</button>
+                                                    <button type="button" onclick="DeleteRow()"  class="center btn-link">Xóa</button>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -137,6 +135,58 @@
         </main>
     </div>
 </div>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    function ThemHangHoa() {
+        var mahanghoa=document.getElementById("MaHangHoa").value;
+        console.log(mahanghoa);
+        var table = document.getElementById("dataTable");
+        var index= table.rows.length-1;
+        var mode=0;
+        var xml=new XMLHttpRequest();
+        xml.onreadystatechange=function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var hanghoa = JSON.parse(this.responseText);
+                console.log(hanghoa);
+                if (hanghoa != null) {
+                    var row = table.insertRow(index);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    var cell6 = row.insertCell(5);
+                    var cell7 = row.insertCell(6);
+                    var cell8 = row.insertCell(7);
+                    cell1.innerHTML = mathang.MaHangHoa;
+                    cell2.innerHTML = mathang.TenMatHang;
+                    cell3.innerHTML = mathang.ViTri;
+                    cell4.innerHTML = mathang.Ngay_KiemKe;
+                    cell5.innerHTML = mathang.NgaySanXuat;
+                    cell6.innerHTML = mathang.HanSuDung;
+                    cell7.innerHTML = mathang.TinhTrang;
+                    cell8.innerHTML = '  <button type="button" onclick="DeleteRow()"  class="center btn-link">Xóa</button>';
+            }
+        }
+        xml.open("GET","${pageContext.request.contextPath}/PhieuXuatHang/PhieuMoi?MaHangHoa="+mahanghoa+"&mode="+mode,true);
+        xml.send();
+        }
+    }
+    function DeleteRow(x){
+
+        var td = event.target.parentNode;
+        var tr = td.parentNode; // the row to be removed
+        var test=tr.firstChild;
+        var mahanghoa=test.innerHTML;
+        tr.parentNode.removeChild(tr);
+        var xml=new XMLHttpRequest();
+        xml.onreadystatechange=function () {
+            console.log(this.responseText);
+        }
+        xml.open("GET","${pageContext.request.contextPath}/PhieuXuatHang/PhieuMoi?MaHangHoa="+mahanghoa+"&mode="+1,true);
+        xml.send();
+    }
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/View/Static/js/scripts.js"></script>

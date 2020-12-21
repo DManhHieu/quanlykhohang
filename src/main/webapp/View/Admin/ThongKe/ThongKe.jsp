@@ -26,8 +26,8 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-<jsp:include page="slide.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../slide.jsp"></jsp:include>
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>

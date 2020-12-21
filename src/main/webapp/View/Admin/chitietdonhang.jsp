@@ -34,7 +34,7 @@
                 <h1 class="mt-4">Chi tiết đơn hàng</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="phieunhaphang.jsp">Phiếu nhập hàng</a></li>
+                    <li class="breadcrumb-item"><a href="NhapHang/phieunhaphang.jsp">Phiếu nhập hàng</a></li>
                     <li class="breadcrumb-item active">Chi tiết đơn hàng</li>
                 </ol>
                 <div class="row">

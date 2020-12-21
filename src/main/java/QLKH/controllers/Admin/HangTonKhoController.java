@@ -23,7 +23,7 @@ public class HangTonKhoController extends HttpServlet {
         if(session != null && session.getAttribute("account") != null && nhom==0)  {
         List<HangHoa> hangHoas=hangHoaDAO.getHangHoas();
         req.setAttribute("hanghoas",hangHoas);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/HangTonKho.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/HangTonKho/HangTonKho.jsp");
         dispatcher.forward(req, resp);
         }
         else {
