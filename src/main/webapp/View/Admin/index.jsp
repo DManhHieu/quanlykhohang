@@ -14,6 +14,9 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="slide.jsp"></jsp:include>
+<main>
+
+</main>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/View/Static/js/scripts.js"></script>

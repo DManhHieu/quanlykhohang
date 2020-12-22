@@ -28,18 +28,17 @@
                     <div class="col-lg-5">
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                            <div>
-                                <h3 class="text-center font-weight-light my-lg-2">${alert}</h3>
-                            </div>
                             <div class="card-body">
                                 <form action="${pageContext.request.contextPath}/Login" method="post">
                                     <div class="form-group">
                                         <label class="small mb-1" >User name</label>
                                         <input class="form-control py-4" name="username" type="text" placeholder="Enter user name" />
+                                        <div style="color: red" class="font-weight-light my-lg-2">${alert1}</div>
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" >Password</label>
                                         <input class="form-control py-4" name="password" type="password" placeholder="Enter password" />
+                                        <div style="color: red" class="font-weight-light my-lg-2">${alert2}</div>
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
@@ -48,7 +47,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                        <button type="submit" class="btn btn-primary">Login</button>
+                                        <button type="submit" class="btn btn-primary w-100">Login</button>
                                     </div>
                                 </form>
                             </div>
