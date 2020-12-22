@@ -41,8 +41,7 @@
                     logarithmic: false, //change it to false
                     title: "Số lượng hàng hóa",
                     titleFontColor: "#6D78AD",
-                    lineColor: "#6D78AD",
-                    valueFormatString: "#"
+                    lineColor: "#6D78AD"
                 },
                 toolTip: {
                     shared: true

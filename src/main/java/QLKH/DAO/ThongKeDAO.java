@@ -22,19 +22,25 @@ public class ThongKeDAO {
             for(int i=1;i<12;i++){
                 Date date= Date.valueOf(year+"-"+i+"-1");
                 Date date1=Date.valueOf(year+"-"+(i+1)+"-1");
-                Query query =session.createQuery("from HangHoa where NgayNhapKho>=:date and (PhieuXuat=null or PhieuXuat.NgayXuat_ThucTe<=:date1)");
+                Query query =session.createQuery("from HangHoa where NgayNhapKho<=:date and PhieuXuat is null");
                 query.setParameter("date",date);
-                query.setParameter("date1",date1);
+                Query query1 =session.createQuery("from HangHoa where NgayNhapKho<=:date and PhieuXuat.NgayXuat_ThucTe >=:date1 ");
+                query1.setParameter("date1",date1);
+                query1.setParameter("date",date);
                 List<HangHoa> hangHoas=query.getResultList();
-                map = new HashMap<Object,Object>(); map.put("x", i); map.put("y", hangHoas.size()); list.add(map);
+                List<HangHoa> hangHoas1=query1.getResultList();
+                map = new HashMap<Object,Object>(); map.put("x", i); map.put("y", hangHoas.size()+hangHoas1.size()); list.add(map);
             }
             Date date= Date.valueOf(year+"-"+12+"-1");
             Date date1=Date.valueOf((year+1)+"-"+1+"-1");
-            Query query =session.createQuery("from HangHoa where NgayNhapKho>=:date and (PhieuXuat=null or PhieuXuat.NgayXuat_ThucTe<=:date1)");
+            Query query =session.createQuery("from HangHoa where NgayNhapKho<=:date and PhieuXuat is null");
             query.setParameter("date",date);
-            query.setParameter("date1",date1);
+            Query query1 =session.createQuery("from HangHoa where NgayNhapKho<=:date and PhieuXuat.NgayXuat_ThucTe >=:date1 ");
+            query1.setParameter("date1",date1);
+            query1.setParameter("date",date);
             List<HangHoa> hangHoas=query.getResultList();
-            map = new HashMap<Object,Object>(); map.put("x", 12); map.put("y", hangHoas.size()); list.add(map);
+            List<HangHoa> hangHoas1=query1.getResultList();
+            map = new HashMap<Object,Object>(); map.put("x", 12); map.put("y", hangHoas.size()+hangHoas1.size()); list.add(map);
 
         }
         catch (Exception e){
@@ -67,8 +73,8 @@ public class ThongKeDAO {
         int soluong=0;
         try(Session session= HibernaterUtil.getSessionFactory().openSession()){
             transaction=session.beginTransaction();
-            List<MatHang> matHangs= session.createQuery("from MatHang ").getResultList();
-            soluong=matHangs.size();
+            List<HangHoa> hangHoas= session.createQuery("from HangHoa ").getResultList();
+            soluong=hangHoas.size();
         }
         catch (Exception e){
             if(transaction!=null){
@@ -82,8 +88,8 @@ public class ThongKeDAO {
         Transaction transaction=null;
         int soluong=0;
         try(Session session= HibernaterUtil.getSessionFactory().openSession()){
-            List<MatHang> matHangs= session.createQuery("from MatHang where (TinhTrang .MaTinhTrang=1 or TinhTrang .MaTinhTrang=3)").getResultList();
-            soluong=matHangs.size();
+            List<HangHoa> hangHoas= session.createQuery("from HangHoa where (tinhTrang.MaTinhTrang=1 or tinhTrang.MaTinhTrang=3)").getResultList();
+            soluong=hangHoas.size();
         }
         catch (Exception e){
 
