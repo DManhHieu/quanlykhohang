@@ -24,6 +24,47 @@
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
             crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                zoomEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "Thống kê hàng hóa tồn kho"
+                },
+                axisX: {
+                    valueFormatString: "Tháng # "
+                },
+                axisY: {
+                    logarithmic: false, //change it to false
+                    title: "Số lượng hàng hóa",
+                    titleFontColor: "#6D78AD",
+                    lineColor: "#6D78AD",
+                    valueFormatString: "#"
+                },
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    verticalAlign: "top",
+                    dockInsidePlotArea: true
+                },
+                data: [{
+                    type: "line",
+                    yValueFormatString: "#",
+                    xValueFormatString: "Tháng #",
+                    showInLegend: true,
+                    name: "Hàng tồn kho",
+                    legendText: "{name}",
+                    dataPoints: ${ThongKeHangTonKho}
+                }]
+            });
+            chart.render();
+        }
+    </script>
+
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
@@ -40,22 +81,52 @@
                 </div>
                 <div class="col-md-12">
                     <div class="row">
-                        <a href="" class="nav-link">Thống kê tháng</a>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <label class="bmd-label-floating">Tổng số mặt hàng: </label>
+                                <input type="text" readonly value="${TongSoMatHang}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <label class="bmd-label-floating">Số hàng hóa : </label>
+                                <input type="text" readonly value="${SoHangHoa}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <label class="bmd-label-floating">Số hàng hóa tồn kho: </label>
+                                <input type="text" readonly value="${SoHangHoaTonKho}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <label class="bmd-label-floating">Số phiếu nhập hàng: </label>
+                                <input type="text" readonly value="${SoPhieuNhapHang}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <label class="bmd-label-floating">Số phiếu xuất hàng: </label>
+                                <input type="text" readonly value="${SoPhieuXuatHang}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <label class="bmd-label-floating">Tổng số nhân viên: </label>
+                                <input type="text" readonly value="${SoNhanVien}">
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
-                        <a href="" class="nav-link">Thống kê tháng</a>
-                    </div>
-                    <div class="row">
-                        <a href="" class="nav-link">Thống kê tháng</a>
-                    </div>
-                    <div class="row">
-                        <a href="" class="nav-link">Thống kê tháng</a>
+                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 </div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/View/Static/js/scripts.js"></script>
