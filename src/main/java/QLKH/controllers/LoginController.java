@@ -54,10 +54,18 @@ public class LoginController extends HttpServlet {
         String alertMsg="";
 
         if(username.isEmpty() || password.isEmpty()){
-            alertMsg = "Username and password can't be empty!";
-            req.setAttribute("alert", alertMsg);
-            req.getRequestDispatcher("/View/login.jsp").forward(req, resp);
-            return;
+            if (username.isEmpty()) {
+                alertMsg = "Username can't be empty!";
+                req.setAttribute("alert1", alertMsg);
+                req.getRequestDispatcher("/View/login.jsp").forward(req, resp);
+                return;
+            }
+            if (password.isEmpty()) {
+                alertMsg = "Password can't be empty!";
+                req.setAttribute("alert2", alertMsg);
+                req.getRequestDispatcher("/View/login.jsp").forward(req, resp);
+                return;
+            }
         }
 
 
@@ -73,7 +81,7 @@ public class LoginController extends HttpServlet {
             resp.sendRedirect(req.getContextPath()+"/waiting");
         }else{
             alertMsg = "Username or password isn't correct";
-            req.setAttribute("alert", alertMsg);
+            req.setAttribute("alert1", alertMsg);
             req.getRequestDispatcher("/View/login.jsp").forward(req, resp);
         }
     }
