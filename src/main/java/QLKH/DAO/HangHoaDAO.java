@@ -65,4 +65,21 @@ public class HangHoaDAO {
         }
         return hangHoa;
     }
+    public void AddHangHoa(HangHoa hangHoa){
+        Transaction transaction=null;
+        try(Session session= HibernaterUtil.getSessionFactory().openSession()){
+            transaction=session.beginTransaction();
+            hangHoa.setNhanVienKiemKe(null);
+            hangHoa.setNhanVienXuatKho(null);
+            hangHoa.setPhieuXuat(null);
+            hangHoa.setNgay_KiemKe(null);
+            session.save(hangHoa);
+            transaction.commit();
+        } catch (Exception e){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }
