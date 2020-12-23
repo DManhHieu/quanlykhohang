@@ -58,7 +58,7 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Thống kê
             </a>
-            <a class="nav-link" href="">
+            <a class="nav-link" href="${pageContext.request.contextPath}/QuanLyNhanVien">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Quản lý nhân viên
             </a>
