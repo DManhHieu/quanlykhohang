@@ -57,7 +57,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${PhieuHangs}" var="phieu">
+                                    <c:forEach items="${PhieuXuatHangs}" var="phieu">
                                         <tr>
                                             <td>${phieu.getMaPhieu()}</td>
                                             <td>${phieu.getBenNhan()}</td>

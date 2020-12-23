@@ -22,7 +22,7 @@ public class XuatHangController extends HttpServlet {
         int nhom= (int) session.getAttribute("NhomNhanVien");
         if(session != null && session.getAttribute("account") != null && nhom==0) {
             List<PhieuXuatHang> phieuXuatHangs = phieuXuatHangDAO.getPhieuXuatHangs();
-            req.setAttribute("MatHangs", phieuXuatHangs);
+            req.setAttribute("PhieuXuatHangs", phieuXuatHangs);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang/XuatHang.jsp");
             dispatcher.forward(req, resp);
         }else {
