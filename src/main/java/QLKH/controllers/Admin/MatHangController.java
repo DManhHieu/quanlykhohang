@@ -19,8 +19,9 @@ public class MatHangController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session= req.getSession();
-        int nhom= (int) session.getAttribute("NhomNhanVien");
-        if(session != null && session.getAttribute("account") != null && nhom==0) {
+        if(session != null && session.getAttribute("account") != null
+                && session.getAttribute("NhomNhanVien")!=null
+                && (int)session.getAttribute("NhomNhanVien")==0) {
             List<MatHang> matHangs = matHangDAO.getMatHangs();
             req.setAttribute("MatHangs", matHangs);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/MatHang/MatHang.jsp");
