@@ -62,7 +62,7 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Quản lý nhân viên
             </a>
-            <a class="nav-link" href="">
+            <a class="nav-link" href="${pageContext.request.contextPath}/ThongTinCaNhan">
                 <div class="sb-nav-link-icon">
                     <i class="fa fa-user" aria-hidden="true"></i></div>
                 Thông tin cá nhân
