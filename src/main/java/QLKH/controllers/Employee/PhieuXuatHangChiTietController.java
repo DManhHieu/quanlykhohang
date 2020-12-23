@@ -1,7 +1,7 @@
 package QLKH.controllers.Employee;
 
-import QLKH.DAO.PhieuNhapHangDao;
-import QLKH.models.PhieuNhapHang;
+import QLKH.DAO.PhieuXuatHangDAO;
+import QLKH.models.PhieuXuatHang;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/View/NhanVien/ChiTiet")
-public class PhieuNhapHangChiTietController extends HttpServlet {
-    PhieuNhapHangDao phieuNhapHangDao=new PhieuNhapHangDao();
+@WebServlet("/View/NhanVien/PhieuXuatChiTiet")
+public class PhieuXuatHangChiTietController extends HttpServlet {
+    PhieuXuatHangDAO phieuXuatHangDAO=new PhieuXuatHangDAO();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String maphieunhap=request.getParameter("maphieu");
-        PhieuNhapHang existingPhieuNhapHang=phieuNhapHangDao.getPhieuHangNhap(maphieunhap);
-        request.setAttribute("phieunhaphang", existingPhieuNhapHang);
-        String url="/View/NhanVien/chitietnhaphang.jsp";
+        String maphieuxuat=request.getParameter("maphieu");
+        PhieuXuatHang phieuXuatHang=phieuXuatHangDAO.getPhieuXuatHang(maphieuxuat);
+        request.setAttribute("phieuxuathang", phieuXuatHang);
+        String url="/View/NhanVien/chitietxuathang.jsp";
         RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request,response);
     }

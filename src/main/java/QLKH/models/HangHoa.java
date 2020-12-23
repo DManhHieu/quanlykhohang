@@ -33,6 +33,9 @@ public class HangHoa {
     @JoinColumn(name = "MP_XuatHang")
     private PhieuXuatHang PhieuXuat;
 
+    public HangHoa() {
+    }
+
     public void setMaHangHoa(String maHangHoa){
         this.MaHangHoa=maHangHoa;
     }
