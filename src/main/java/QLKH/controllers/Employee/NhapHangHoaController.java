@@ -6,6 +6,7 @@ import QLKH.DAO.PhieuNhapHangDao;
 import QLKH.DAO.TinhTrangDAO;
 import QLKH.models.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -59,6 +60,11 @@ public class NhapHangHoaController extends HttpServlet {
                 e.printStackTrace();
             }
             hangHoaDAO.AddHangHoa(hangHoa);
+            PhieuNhapHang existingPhieuNhapHang=phieuNhapHangDao.getPhieuHangNhap(MP_NhapHang);
+            request.setAttribute("phieunhaphang", existingPhieuNhapHang);
+            String url="/View/NhanVien/chitietnhaphang.jsp";
+            RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request,response);
         }
     }
 }

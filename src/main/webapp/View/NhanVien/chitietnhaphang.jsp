@@ -28,6 +28,7 @@
 				<h1 class="mt-4">Chi tiết phiếu nhập hàng</h1>
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
+					<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/PhieuNhapHang">Phiếu nhập hàng</a></li>
 					<li class="breadcrumb-item active">Chi tiết phiếu nhập hàng</li>
 				</ol>
 				<div class="row">
@@ -86,7 +87,7 @@
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table mr-1"></i> Bảng phiếu nhập hàng
+						<i class="fas fa-table mr-1"></i> Chi tiết phiếu nhập hàng
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">

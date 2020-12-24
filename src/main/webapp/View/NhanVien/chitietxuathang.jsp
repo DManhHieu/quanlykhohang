@@ -28,7 +28,8 @@
 				<h1 class="mt-4">Phiếu xuất hàng</h1>
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
-					<li class="breadcrumb-item active">Phiếu xuất hàng</li>
+					<li class="breadcrumb-item"> <a href="${pageContext.request.contextPath}/View/NhanVien/PhieuXuatHang">Phiếu xuất hàng</a></li>
+					<li class="breadcrumb-item active">Chi tiết phiếu xuất hàng</li>
 				</ol>
 				<div class="row">
 					<div class="col-md-12">
