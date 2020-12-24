@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -74,7 +73,7 @@
 														<label class="bmd-label-floating">Mô tả </label>
 													</div>
 													<textarea rows="6">
-														${phieunhaphang.getNhapTu()}
+														${phieunhaphang.getMoTa()}
 													</textarea>
 												</div>
 											</div>
@@ -143,14 +142,7 @@
 													type="date" class="form-control" name="NgayNhapKho">
 											</div>
 										</div>
-										<%--<div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Nhân viên nhập
-                                                    kho</label> <input type="text" class="form-control" name="NhanVienNhapKho">
-                                            </div>
-                                        </div>--%>
 									</div>
-
 									<div class="row">
 										<div class="col-md-2">
 											<div class="form-group">
@@ -159,10 +151,10 @@
 											</div>
 										</div>
 										<div class="col-md-3">
-											<label class="bmd-label-floating">Tình trạng</label> <select
-												class="form-control" id="exampleFormControlSelect1" name="TinhTrang">
-											<option>Test</option>
-										</select>
+											<label class="bmd-label-floating">Tình trạng</label>
+											<select class="form-control" id="exampleFormControlSelect1" name="TinhTrang">
+												<option>Test</option>
+											</select>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">

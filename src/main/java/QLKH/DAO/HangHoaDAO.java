@@ -82,4 +82,17 @@ public class HangHoaDAO {
             e.printStackTrace();
         }
     }
+    public void updateHangHoa(HangHoa hangHoa){
+        Transaction transaction=null;
+        try(Session session=HibernaterUtil.getSessionFactory().openSession()){
+            transaction=session.beginTransaction();
+            session.update(hangHoa);
+            transaction.commit();
+        } catch (Exception e){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }

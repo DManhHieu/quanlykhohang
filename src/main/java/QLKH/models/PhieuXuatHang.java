@@ -15,11 +15,12 @@ public class PhieuXuatHang {
     private Date NgayXuat_DuKien;
    @Column(nullable = true)
     private Date NgayXuat_ThucTe;
+
     @ManyToOne
     @JoinColumn(name = "Ma_NhanVien_Xuat", referencedColumnName = "MaNhanVien")
     private NhanVien NguoiXuat;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "MP_XuatHang")
     private List<HangHoa> hangHoas;
 

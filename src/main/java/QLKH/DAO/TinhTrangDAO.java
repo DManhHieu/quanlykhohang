@@ -1,10 +1,7 @@
 package QLKH.DAO;
 
-import QLKH.models.HangHoa;
-import QLKH.models.PhieuNhapHang;
 import QLKH.models.TinhTrang;
 import QLKH.until.HibernaterUtil;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -23,6 +20,18 @@ public class TinhTrangDAO {
                     tinhTrang=tt;
                 }
             }
+            transaction.commit();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return tinhTrang;
+    }
+    public TinhTrang getTinhTrang(int MaTinhTrang){
+        Transaction transaction=null;
+        TinhTrang tinhTrang=new TinhTrang();
+        try(Session session= HibernaterUtil.getSessionFactory().openSession()){
+            transaction=session.beginTransaction();
+            tinhTrang=session.get(TinhTrang.class, MaTinhTrang);
             transaction.commit();
         } catch (Exception e){
             e.printStackTrace();
