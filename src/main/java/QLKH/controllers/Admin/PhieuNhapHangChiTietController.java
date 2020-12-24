@@ -34,7 +34,7 @@ public class PhieuNhapHangChiTietController extends HttpServlet {
                 matHangViewList.add(new MatHangView(matHangDAO.getMatHang(element.getHangNhapId().getMaHangNhap()),element.getSoLuong()));
             });
             req.setAttribute("hangnhaps",matHangViewList);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/Nhaphang/phieunhaphangChiTiet.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/NhapHang/phieunhaphangChiTiet.jsp");
             dispatcher.forward(req, resp);
         }else {
             resp.sendRedirect(req.getContextPath()+"/Login");
