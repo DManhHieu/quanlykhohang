@@ -20,7 +20,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="quanlykhohang" />
+          <factory-entry name="quanlykhohang" value="89959129-a851-462e-b597-c6fcbb9f9275" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
