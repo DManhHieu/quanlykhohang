@@ -7,57 +7,165 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.google.gson.Gson"%>
-<%@ page import="com.google.gson.JsonObject"%>
+<%@ page import="com.google.gson.Gson" %>
+<%@ page import="com.google.gson.JsonObject" %>
 <%
     Gson gsonObj = new Gson();
-    Map<Object,Object> map = null;
-    List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
+    Map<Object, Object> map = null;
+    List<Map<Object, Object>> list = new ArrayList<Map<Object, Object>>();
 
-    map = new HashMap<Object,Object>(); map.put("x", 1); map.put("y", 10); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 2); map.put("y", 8); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 3); map.put("y", 1); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 4); map.put("y", 3); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 5); map.put("y", 8); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 6); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 7); map.put("y", 5); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 8); map.put("y", 1); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 9); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 10); map.put("y", 4); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 11); map.put("y", 6); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 12); map.put("y", 1); list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 1);
+    map.put("y", 10);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 2);
+    map.put("y", 8);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 3);
+    map.put("y", 1);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 4);
+    map.put("y", 3);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 5);
+    map.put("y", 8);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 6);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 7);
+    map.put("y", 5);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 8);
+    map.put("y", 1);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 9);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 10);
+    map.put("y", 4);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 11);
+    map.put("y", 6);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 12);
+    map.put("y", 1);
+    list.add(map);
 
     String dataPoints1 = gsonObj.toJson(list);
 
-    list = new ArrayList<Map<Object,Object>>();
-    map = new HashMap<Object,Object>(); map.put("x", 1); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 2); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 3); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 4); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 5); map.put("y", 8); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 6); map.put("y", 0); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 7); map.put("y", 1); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 8); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 9); map.put("y", 8); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 10); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 11); map.put("y", 5); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 12); map.put("y", 4); list.add(map);
+    list = new ArrayList<Map<Object, Object>>();
+    map = new HashMap<Object, Object>();
+    map.put("x", 1);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 2);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 3);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 4);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 5);
+    map.put("y", 8);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 6);
+    map.put("y", 0);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 7);
+    map.put("y", 1);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 8);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 9);
+    map.put("y", 8);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 10);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 11);
+    map.put("y", 5);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 12);
+    map.put("y", 4);
+    list.add(map);
 
     String dataPoints2 = gsonObj.toJson(list);
 
-    list = new ArrayList<Map<Object,Object>>();
-    map = new HashMap<Object,Object>(); map.put("x", 1); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 2); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 3); map.put("y", 10); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 4); map.put("y", 2); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 5); map.put("y", 3); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 6); map.put("y", 8); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 7); map.put("y", 4); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 8); map.put("y", 5); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 9); map.put("y", 8); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 10); map.put("y", 4); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 11); map.put("y", 5); list.add(map);
-    map = new HashMap<Object,Object>(); map.put("x", 12); map.put("y", 4); list.add(map);
+    list = new ArrayList<Map<Object, Object>>();
+    map = new HashMap<Object, Object>();
+    map.put("x", 1);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 2);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 3);
+    map.put("y", 10);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 4);
+    map.put("y", 2);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 5);
+    map.put("y", 3);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 6);
+    map.put("y", 8);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 7);
+    map.put("y", 4);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 8);
+    map.put("y", 5);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 9);
+    map.put("y", 8);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 10);
+    map.put("y", 4);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 11);
+    map.put("y", 5);
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("x", 12);
+    map.put("y", 4);
+    list.add(map);
 
     String dataPoints3 = gsonObj.toJson(list);
 %>
@@ -65,7 +173,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script type="text/javascript">
-        window.onload = function() {
+        window.onload = function () {
 
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
@@ -109,7 +217,7 @@
                         name: "Hàng xuất",
                         legendText: "{name}",
                         dataPoints: <%out.print(dataPoints2);%>
-                },
+                    },
                     {
                         type: "line",
                         yValueFormatString: "# hàng tồn kho",

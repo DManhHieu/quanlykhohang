@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: PC
@@ -7,22 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
     <title>Chi tiết phiếu nhập hàng</title>
-    <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/View/Static/css/styles.css" rel="stylesheet"/>
     <link
             href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
-            rel="stylesheet" crossorigin="anonymous" />
+            rel="stylesheet" crossorigin="anonymous"/>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
             crossorigin="anonymous"></script>
@@ -36,8 +35,10 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Chi tiết phiếu nhập hàng</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/APhieuNhapHang">Phiếu nhập hàng</a></li>
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang
+                        chủ</a></li>
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/APhieuNhapHang">Phiếu nhập
+                        hàng</a></li>
                     <li class="breadcrumb-item active">Chi tiết</li>
                 </ol>
                 <div class="row">
@@ -52,8 +53,10 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating">Mã đơn hàng</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getMaPhieu()} " readonly>
+                                                                <label class="bmd-label-floating">Mã đơn hàng</label>
+                                                                <input
+                                                                        type="text" class="form-control"
+                                                                        value="${phieunhap.getMaPhieu()} " readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -61,23 +64,30 @@
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Nhập từ</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getNhapTu()}" readonly>
+                                                                    type="text" class="form-control"
+                                                                    value="${phieunhap.getNhapTu()}" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating">Người nhập</label> <input
-                                                                    type="text" class="form-control" value="${phieunhap.getNguoiNhap().getTenNhanVien()}" readonly>
+                                                                <label class="bmd-label-floating">Người nhập</label>
+                                                                <input
+                                                                        type="text" class="form-control"
+                                                                        value="${phieunhap.getNguoiNhap().getTenNhanVien()}"
+                                                                        readonly>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="bmd-label-floating">Ngày nhập</label> <input
-                                                                    type="text" class="form-control" value=" <fmt:formatDate pattern="dd/MM/yyyy"  value ="${phieunhap.getNgayNhap()}"/> " readonly>
+                                                                <label class="bmd-label-floating">Ngày nhập</label>
+                                                                <input
+                                                                        type="text" class="form-control"
+                                                                        value=" <fmt:formatDate pattern="dd/MM/yyyy"  value ="${phieunhap.getNgayNhap()}"/> "
+                                                                        readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -86,8 +96,8 @@
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Mô tả sản phẩm</label>
                                                     </div>
-                                                    <textarea rows="6"  readonly>${phieunhap.getMoTa()}
-                                                          </textarea>
+                                                    <textarea rows="6" readonly>${phieunhap.getMoTa()}
+                                                    </textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -133,7 +143,8 @@
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/View/Static/js/scripts.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>

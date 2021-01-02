@@ -7,34 +7,39 @@ import javax.persistence.*;
 public class HangNhap {
     @EmbeddedId
     private HangNhapId hangNhapId;
-    private  int SoLuong;
+    private int SoLuong;
 
     @ManyToOne
     @MapsId("MaHangNhap")
-    @JoinColumn(name="MaHangNhap")
+    @JoinColumn(name = "MaHangNhap")
     private MatHang matHang;
 
     @ManyToOne
     @MapsId("MP_Nhap")
-    @JoinColumn(name="MP_Nhap")
+    @JoinColumn(name = "MP_Nhap")
     private PhieuNhapHang phieuNhapHang;
 
-    public void setHangNhapId(HangNhapId hangNhapId){
-        this.hangNhapId=hangNhapId;
+    public void setHangNhapId(HangNhapId hangNhapId) {
+        this.hangNhapId = hangNhapId;
     }
-    public HangNhapId getHangNhapId(){
+
+    public HangNhapId getHangNhapId() {
         return hangNhapId;
     }
-    public void setSoLuong(int soLuong){
-        this.SoLuong=soLuong;
+
+    public void setSoLuong(int soLuong) {
+        this.SoLuong = soLuong;
     }
-    public int getSoLuong(){
+
+    public int getSoLuong() {
         return SoLuong;
     }
-    public void setMaPhieuNhap(String maPhieuNhap){
+
+    public void setMaPhieuNhap(String maPhieuNhap) {
         hangNhapId.setMP_Nhap(maPhieuNhap);
     }
-    public void setMaHangNhap(String maHangNhap){
+
+    public void setMaHangNhap(String maHangNhap) {
         hangNhapId.setMaHangNhap(maHangNhap);
     }
 

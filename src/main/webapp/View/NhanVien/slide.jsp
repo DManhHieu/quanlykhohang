@@ -36,8 +36,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/KiemKeNV">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Kiểm kê hàng hóa
-                    </a> <a class="nav-link"
-                            href="${pageContext.request.contextPath}/View/NhanVien/thongtincanhan.jsp">
+                    </a><a class="nav-link" href="${pageContext.request.contextPath}/nvthongtincanhan">
                     <div class="sb-nav-link-icon">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </div> Thông tin cá nhân

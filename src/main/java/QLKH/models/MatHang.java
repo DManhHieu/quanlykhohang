@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="MatHang")
+@Table(name = "MatHang")
 public class MatHang {
     @Id
     private String MaMatHang;
@@ -12,58 +12,72 @@ public class MatHang {
     private double GiaTri;
 
     @ManyToOne
-    @JoinColumn(name = "NV_Tao",referencedColumnName = "MaNhanVien")
+    @JoinColumn(name = "NV_Tao", referencedColumnName = "MaNhanVien")
     private NhanVien NguoiNhap;
 
     @OneToMany
-    @JoinColumn(name="MaMatHang",referencedColumnName = "MaMatHang")
+    @JoinColumn(name = "MaMatHang", referencedColumnName = "MaMatHang")
     private List<HangHoa> HangHoas;
 
     @OneToMany(mappedBy = "matHang", fetch = FetchType.LAZY)
     private List<HangNhap> hangNhaps;
 
-    public String getMaMatHang(){
+    public String getMaMatHang() {
         return MaMatHang;
     }
-    public String getNhaSanXuat(){
+
+    public String getNhaSanXuat() {
         return NhaSanXuat;
     }
-    public String getTenMatHang(){
+
+    public String getTenMatHang() {
         return TenMatHang;
     }
-    public String getMoTa(){
+
+    public String getMoTa() {
         return MoTa;
     }
-    public double getGiaTri(){
+
+    public double getGiaTri() {
         return GiaTri;
     }
-    public NhanVien getNguoiNhap(){
-        return  NguoiNhap;
+
+    public NhanVien getNguoiNhap() {
+        return NguoiNhap;
     }
-    public void setMaMatHang(String maMatHang){
-        this.MaMatHang=maMatHang;
+
+    public void setMaMatHang(String maMatHang) {
+        this.MaMatHang = maMatHang;
     }
-    public void setNhaSanXuat(String nhaSanXuat){
-        this.NhaSanXuat=nhaSanXuat;
+
+    public void setNhaSanXuat(String nhaSanXuat) {
+        this.NhaSanXuat = nhaSanXuat;
     }
-    public void setTenMatHang(String tenMatHang){
-        this.TenMatHang=tenMatHang;
+
+    public void setTenMatHang(String tenMatHang) {
+        this.TenMatHang = tenMatHang;
     }
-    public void setMoTa(String moTa){
-        this.MoTa=moTa;
+
+    public void setMoTa(String moTa) {
+        this.MoTa = moTa;
     }
-    public void setGiaTri(double giaTri){
-        this.GiaTri=giaTri;
+
+    public void setGiaTri(double giaTri) {
+        this.GiaTri = giaTri;
     }
-    public void setNguoiNhap(NhanVien NguoiNhap){
-        this.NguoiNhap=NguoiNhap;
+
+    public void setNguoiNhap(NhanVien NguoiNhap) {
+        this.NguoiNhap = NguoiNhap;
     }
-    public List<HangHoa> getHangHoas(){
+
+    public List<HangHoa> getHangHoas() {
         return HangHoas;
     }
-    public void setHangHoas(List<HangHoa> hangHoas){
-        this.HangHoas=hangHoas;
+
+    public void setHangHoas(List<HangHoa> hangHoas) {
+        this.HangHoas = hangHoas;
     }
+
     public List<HangNhap> getHangNhaps() {
         return hangNhaps;
     }

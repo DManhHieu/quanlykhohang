@@ -5,11 +5,10 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Table(name= "PhieuNhapHang")
+@Table(name = "PhieuNhapHang")
 public class PhieuNhapHang {
     @Id
     private String MaPhieu;
-
 
     private String MoTa, NhapTu;
     private Date NgayNhap;
@@ -18,42 +17,47 @@ public class PhieuNhapHang {
     @JoinColumn(name = "Ma_NhanVien_Nhap", referencedColumnName = "MaNhanVien")
     private NhanVien NguoiNhap;
 
-    @OneToMany(mappedBy = "phieuNhapHang",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "phieuNhapHang", fetch = FetchType.LAZY)
     private List<HangNhap> hangNhaps;
 
-    public String getMaPhieu(){
+    public String getMaPhieu() {
         return MaPhieu;
     }
-    public void setMaPhieu(String MaPhieu){
-        this.MaPhieu=MaPhieu;
+
+    public void setMaPhieu(String MaPhieu) {
+        this.MaPhieu = MaPhieu;
     }
 
-    public String getMoTa(){
-        return  MoTa;
-    }
-    public void setMoTa(String MoTa){
-        this.MoTa=MoTa;
+    public String getMoTa() {
+        return MoTa;
     }
 
-    public String getNhapTu(){
-        return  NhapTu;
-    }
-    public void setNhapTu(String NhapTu){
-        this.NhapTu=NhapTu;
+    public void setMoTa(String MoTa) {
+        this.MoTa = MoTa;
     }
 
-    public Date getNgayNhap(){
-        return  NgayNhap;
-    }
-    public void setNgayNhap(Date NgayNhap){
-        this.NgayNhap=NgayNhap;
+    public String getNhapTu() {
+        return NhapTu;
     }
 
-    public NhanVien getNguoiNhap(){
-        return  NguoiNhap;
+    public void setNhapTu(String NhapTu) {
+        this.NhapTu = NhapTu;
     }
-    public void setNguoiNhap(NhanVien nguoiNhap){
-        this.NguoiNhap=nguoiNhap;
+
+    public Date getNgayNhap() {
+        return NgayNhap;
+    }
+
+    public void setNgayNhap(Date NgayNhap) {
+        this.NgayNhap = NgayNhap;
+    }
+
+    public NhanVien getNguoiNhap() {
+        return NguoiNhap;
+    }
+
+    public void setNguoiNhap(NhanVien nguoiNhap) {
+        this.NguoiNhap = nguoiNhap;
     }
 
     public List<HangNhap> getHangNhaps() {

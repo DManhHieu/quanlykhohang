@@ -54,7 +54,7 @@
                                         <td>${phieu.getNguoiNhap().getTenNhanVien()}</td>
                                         <td>${phieu.getNhapTu()}</td>
                                         <td>
-                                            <a href="View/NhanVien/ChiTiet?maphieu=<c:out value='${phieu.getMaPhieu()}' />">Chi tiết</a>
+                                            <a href="View/NhanVien/ChiTiet?maphieu=<c:out value='${phieu.getMaPhieu()}'/>">Chi tiết</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

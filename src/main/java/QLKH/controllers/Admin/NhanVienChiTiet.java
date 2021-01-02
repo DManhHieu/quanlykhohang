@@ -15,16 +15,17 @@ import java.sql.Date;
 
 @WebServlet("/QuanLyNhanVien/ChiTiet")
 public class NhanVienChiTiet extends HttpServlet {
-    NhanVienDAO nhanVienDAO=new NhanVienDAO();
+    NhanVienDAO nhanVienDAO = new NhanVienDAO();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session= req.getSession();
-        if(session != null && session.getAttribute("account") != null
-                && session.getAttribute("NhomNhanVien")!=null
-                && (int)session.getAttribute("NhomNhanVien")==0) {
-            int manhanvien=Integer.parseInt(req.getParameter("MaNhanVien"));
+        HttpSession session = req.getSession();
+        if (session != null && session.getAttribute("account") != null
+                && session.getAttribute("NhomNhanVien") != null
+                && (int) session.getAttribute("NhomNhanVien") == 0) {
+            int manhanvien = Integer.parseInt(req.getParameter("MaNhanVien"));
             NhanVien nhanVien = nhanVienDAO.get(manhanvien);
-            if(req.getParameter("method")!=null && req.getParameter("method").equals("reset")){
+            if (req.getParameter("method") != null && req.getParameter("method").equals("reset")) {
                 nhanVien.setMatKhau("0000");
                 nhanVienDAO.Update(nhanVien);
                 resp.setContentType("application/json");
@@ -35,17 +36,18 @@ public class NhanVienChiTiet extends HttpServlet {
             req.setAttribute("NhanVien", nhanVien);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/NhanVien/NhanVienChiTiet.jsp");
             dispatcher.forward(req, resp);
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session= req.getSession();
-        if(session != null && session.getAttribute("account") != null
-                && session.getAttribute("NhomNhanVien")!=null
-                && (int)session.getAttribute("NhomNhanVien")==0) {
-            NhanVien nhanVien=nhanVienDAO.get(Integer.parseInt(req.getParameter("MaNhanVien")));
+        HttpSession session = req.getSession();
+        if (session != null && session.getAttribute("account") != null
+                && session.getAttribute("NhomNhanVien") != null
+                && (int) session.getAttribute("NhomNhanVien") == 0) {
+            NhanVien nhanVien = nhanVienDAO.get(Integer.parseInt(req.getParameter("MaNhanVien")));
             nhanVien.setTenNhanVien(req.getParameter("TenNhanVien"));
             nhanVien.setTenDangNhap(req.getParameter("TenDangNhap"));
             nhanVien.setQueQuan(req.getParameter("QueQuan"));

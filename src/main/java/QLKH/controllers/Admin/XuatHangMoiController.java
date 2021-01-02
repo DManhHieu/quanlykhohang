@@ -22,65 +22,63 @@ import java.util.Calendar;
 
 @WebServlet("/PhieuXuatHang/PhieuMoi")
 public class XuatHangMoiController extends HttpServlet {
-    PhieuXuatHangDAO phieuXuatHangDAO=new PhieuXuatHangDAO();
-    HangHoaDAO hangHoaDAO=new HangHoaDAO();
+    PhieuXuatHangDAO phieuXuatHangDAO = new PhieuXuatHangDAO();
+    HangHoaDAO hangHoaDAO = new HangHoaDAO();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
         if (session != null && session.getAttribute("account") != null
                 && session.getAttribute("NhomNhanVien") != null
-                && (int) session.getAttribute("NhomNhanVien") == 0)
-        {
-            int mode=Integer.parseInt(req.getParameter("mode"));
-            String MaHangHoa=req.getParameter("MaHangHoa");
-            PhieuXuatHang phieuXuatHang= (PhieuXuatHang) session.getAttribute("phieuxuathang");
-            HangHoa hangHoa=hangHoaDAO.getHangHoaTonKho(MaHangHoa);
-            if(mode==0) {
+                && (int) session.getAttribute("NhomNhanVien") == 0) {
+            int mode = Integer.parseInt(req.getParameter("mode"));
+            String MaHangHoa = req.getParameter("MaHangHoa");
+            PhieuXuatHang phieuXuatHang = (PhieuXuatHang) session.getAttribute("phieuxuathang");
+            HangHoa hangHoa = hangHoaDAO.getHangHoaTonKho(MaHangHoa);
+            if (mode == 0) {
                 if (hangHoa != null && !phieuXuatHang.getHangHoas().contains(hangHoa))
                     phieuXuatHang.getHangHoas().add(hangHoa);
 
-            }
-            else if(mode==1){
+            } else if (mode == 1) {
                 phieuXuatHang.getHangHoas().remove(hangHoa);
             }
-            session.setAttribute("phieuxuathang",phieuXuatHang);
+            session.setAttribute("phieuxuathang", phieuXuatHang);
 
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
-            if(mode==0) {
-                HangHoaView hangHoaView=new HangHoaView(hangHoa);
-                String hanghoaJson=new Gson().toJson(hangHoaView);
+            if (mode == 0) {
+                HangHoaView hangHoaView = new HangHoaView(hangHoa);
+                String hanghoaJson = new Gson().toJson(hangHoaView);
                 resp.getWriter().write(hanghoaJson);
-            }
-            else{
+            } else {
                 resp.getWriter().write("Hoan thanh");
             }
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
 
     @Override
-    protected  void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session= req.getSession();
-        int nhom= (int) session.getAttribute("NhomNhanVien");
-        if(session != null && session.getAttribute("account") != null && nhom==0) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        int nhom = (int) session.getAttribute("NhomNhanVien");
+        if (session != null && session.getAttribute("account") != null && nhom == 0) {
 
-            PhieuXuatHang phieuXuatHang= (PhieuXuatHang) session.getAttribute("phieuxuathang");
+            PhieuXuatHang phieuXuatHang = (PhieuXuatHang) session.getAttribute("phieuxuathang");
 
-            if(phieuXuatHang==null){
+            if (phieuXuatHang == null) {
 
-                phieuXuatHang=new PhieuXuatHang();
+                phieuXuatHang = new PhieuXuatHang();
                 phieuXuatHang.setHangHoas(new ArrayList<HangHoa>());
-                session.setAttribute("phieuxuathang",phieuXuatHang);
+                session.setAttribute("phieuxuathang", phieuXuatHang);
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang/XuatHangMoi.jsp");
                 dispatcher.forward(req, resp);
                 return;
             }
 
-            String submit=req.getParameter("submit");
-            if(submit==null) {
+            String submit = req.getParameter("submit");
+            if (submit == null) {
 
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang/XuatHangMoi.jsp");
                 dispatcher.forward(req, resp);
@@ -116,8 +114,8 @@ public class XuatHangMoiController extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/PhieuXuatHang/ChiTiet?MaPhieu=" + phieuXuatHang.getMaPhieu());
             return;
 
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
 }

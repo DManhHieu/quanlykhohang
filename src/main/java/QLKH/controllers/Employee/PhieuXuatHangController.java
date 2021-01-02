@@ -14,14 +14,15 @@ import java.util.List;
 
 @WebServlet("/View/NhanVien/PhieuXuatHang")
 public class PhieuXuatHangController extends HttpServlet {
-    PhieuXuatHangDAO phieuXuatHangDAO=new PhieuXuatHangDAO();
+    PhieuXuatHangDAO phieuXuatHangDAO = new PhieuXuatHangDAO();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<PhieuXuatHang> phieuXuatHangs=phieuXuatHangDAO.getPhieuXuatHangs();
-        request.setAttribute("PhieuXuatHangs",phieuXuatHangs);
-        String url="/View/NhanVien/phieuxuathang.jsp";
-        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request,response);
+        List<PhieuXuatHang> phieuXuatHangs = phieuXuatHangDAO.getPhieuXuatHangs();
+        request.setAttribute("PhieuXuatHangs", phieuXuatHangs);
+        String url = "/View/NhanVien/phieuxuathang.jsp";
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 }

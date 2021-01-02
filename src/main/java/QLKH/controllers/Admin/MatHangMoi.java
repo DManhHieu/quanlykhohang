@@ -14,8 +14,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/MatHang/Moi")
-public class MatHangMoi  extends HttpServlet {
-    MatHangDAO matHangDAO=new MatHangDAO();
+public class MatHangMoi extends HttpServlet {
+    MatHangDAO matHangDAO = new MatHangDAO();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -23,8 +24,8 @@ public class MatHangMoi  extends HttpServlet {
                 && session.getAttribute("NhomNhanVien") != null
                 && (int) session.getAttribute("NhomNhanVien") == 0) {
 
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
 
@@ -34,12 +35,12 @@ public class MatHangMoi  extends HttpServlet {
         if (session != null && session.getAttribute("account") != null
                 && session.getAttribute("NhomNhanVien") != null
                 && (int) session.getAttribute("NhomNhanVien") == 0) {
-            MatHang matHang= (MatHang) session.getAttribute("mathang");
+            MatHang matHang = (MatHang) session.getAttribute("mathang");
 
-            if(matHang==null){
+            if (matHang == null) {
 
-                matHang=new MatHang();
-                session.setAttribute("mathang",matHang);
+                matHang = new MatHang();
+                session.setAttribute("mathang", matHang);
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/MatHang/MatHangMoi.jsp");
                 dispatcher.forward(req, resp);
                 return;
@@ -52,12 +53,12 @@ public class MatHangMoi  extends HttpServlet {
             NhanVien nhanVien = (NhanVien) session.getAttribute("account");
             matHang.setNguoiNhap(nhanVien);
             matHangDAO.AddMatHang(matHang);
-            req.setAttribute("mathang",matHang);
+            req.setAttribute("mathang", matHang);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/MatHang/MatHangChiTiet.jsp");
             dispatcher.forward(req, resp);
 
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
 }

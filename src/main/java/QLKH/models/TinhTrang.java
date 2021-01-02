@@ -13,23 +13,28 @@ public class TinhTrang {
     @JoinColumn(name = "MaTinhTrang", referencedColumnName = "MaTinhTrang")
     private List<HangHoa> HangHoas;
 
-    public int getMaTinhTrang(){
+    public int getMaTinhTrang() {
         return MaTinhTrang;
     }
-    public void setMaTinhTrang(int maTinhTrang){
-        this.MaTinhTrang=maTinhTrang;
+
+    public void setMaTinhTrang(int maTinhTrang) {
+        this.MaTinhTrang = maTinhTrang;
     }
-    public String getTenTinhTrang(){
+
+    public String getTenTinhTrang() {
         return TenTinhTrang;
     }
-    public void setTenTinhTrang(String tenTinhTrang){
-        this.TenTinhTrang=tenTinhTrang;
+
+    public void setTenTinhTrang(String tenTinhTrang) {
+        this.TenTinhTrang = tenTinhTrang;
     }
-    public List<HangHoa> getHangHoas(){
+
+    public List<HangHoa> getHangHoas() {
         return HangHoas;
     }
-    public void setHangHoas(List<HangHoa> hangHoas){
-        this.HangHoas=hangHoas;
+
+    public void setHangHoas(List<HangHoa> hangHoas) {
+        this.HangHoas = hangHoas;
     }
 
 }

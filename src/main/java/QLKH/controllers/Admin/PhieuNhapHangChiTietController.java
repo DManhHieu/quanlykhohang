@@ -18,26 +18,27 @@ import java.util.List;
 
 @WebServlet("/APhieuNhapHang/ChiTiet")
 public class PhieuNhapHangChiTietController extends HttpServlet {
-    PhieuNhapHangDao phieuNhapHangDao=new PhieuNhapHangDao();
-    MatHangDAO matHangDAO=new MatHangDAO();
+    PhieuNhapHangDao phieuNhapHangDao = new PhieuNhapHangDao();
+    MatHangDAO matHangDAO = new MatHangDAO();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       HttpSession session= req.getSession();
-        if(session != null && session.getAttribute("account") != null
-                && session.getAttribute("NhomNhanVien")!=null
-                && (int)session.getAttribute("NhomNhanVien")==0) {
-            String maphieu=req.getParameter("MaPhieu");
-            PhieuNhapHang phieuNhapHang=phieuNhapHangDao.getPhieuHangNhap(maphieu);
-            req.setAttribute("phieunhap",phieuNhapHang);
-            List<MatHangView> matHangViewList =new ArrayList<MatHangView>();
-            phieuNhapHang.getHangNhaps().forEach((element)->{
-                matHangViewList.add(new MatHangView(matHangDAO.getMatHang(element.getHangNhapId().getMaHangNhap()),element.getSoLuong()));
+        HttpSession session = req.getSession();
+        if (session != null && session.getAttribute("account") != null
+                && session.getAttribute("NhomNhanVien") != null
+                && (int) session.getAttribute("NhomNhanVien") == 0) {
+            String maphieu = req.getParameter("MaPhieu");
+            PhieuNhapHang phieuNhapHang = phieuNhapHangDao.getPhieuHangNhap(maphieu);
+            req.setAttribute("phieunhap", phieuNhapHang);
+            List<MatHangView> matHangViewList = new ArrayList<MatHangView>();
+            phieuNhapHang.getHangNhaps().forEach((element) -> {
+                matHangViewList.add(new MatHangView(matHangDAO.getMatHang(element.getHangNhapId().getMaHangNhap()), element.getSoLuong()));
             });
-            req.setAttribute("hangnhaps",matHangViewList);
+            req.setAttribute("hangnhaps", matHangViewList);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/NhapHang/phieunhaphangChiTiet.jsp");
             dispatcher.forward(req, resp);
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
 }

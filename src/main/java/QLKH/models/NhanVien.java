@@ -10,8 +10,8 @@ public class NhanVien {
     @Id
     private int MaNhanVien;
     private String TenNhanVien;
-    private  String TenDangNhap;
-    private  String MatKhau;
+    private String TenDangNhap;
+    private String MatKhau;
     private String QueQuan;
     private Date NgaySinh;
     private String So_CMND;
@@ -27,156 +27,174 @@ public class NhanVien {
     private List<MatHang> MatHangs;
 
     @OneToMany
-    @JoinColumn(name="MaNV_NhapKho")
+    @JoinColumn(name = "MaNV_NhapKho")
     private List<HangHoa> HangNhapKho;
 
     @OneToMany
-    @JoinColumn(name="MaNV_XuatKho")
+    @JoinColumn(name = "MaNV_XuatKho")
     private List<HangHoa> HangXuatKho;
 
 
     @OneToMany
-    @JoinColumn(name="MaNV_KiemKe")
+    @JoinColumn(name = "MaNV_KiemKe")
     private List<HangHoa> HangKiemKe;
 
 
-   @OneToMany
+    @OneToMany
     @JoinColumn(name = "Ma_NhanVien_Nhap")
     private List<PhieuNhapHang> PhieuNhapHangs;
 
     @OneToMany
-    @JoinColumn(name="Ma_NhanVien_Xuat")
+    @JoinColumn(name = "Ma_NhanVien_Xuat")
     private List<PhieuXuatHang> PhieuXuatHangs;
 
 
-    public int getMaNhanVien(){
+    public int getMaNhanVien() {
         return MaNhanVien;
     }
-    public void setMaNhanVien(int maNhanVien){
-        this.MaNhanVien=maNhanVien;
+
+    public void setMaNhanVien(int maNhanVien) {
+        this.MaNhanVien = maNhanVien;
     }
 
-    public String getTenNhanVien(){
+    public String getTenNhanVien() {
         return TenNhanVien;
     }
-    public void setTenNhanVien(String tenNhanVien){
-        this.TenNhanVien=tenNhanVien;
+
+    public void setTenNhanVien(String tenNhanVien) {
+        this.TenNhanVien = tenNhanVien;
     }
 
-    public String getTenDangNhap(){
-        return  TenDangNhap;
-    }
-    public void setTenDangNhap(String tenDangNhap){
-        this.TenDangNhap=tenDangNhap;
+    public String getTenDangNhap() {
+        return TenDangNhap;
     }
 
-    public String getMatKhau(){
+    public void setTenDangNhap(String tenDangNhap) {
+        this.TenDangNhap = tenDangNhap;
+    }
+
+    public String getMatKhau() {
         return MatKhau;
     }
-    public void setMatKhau(String matKhau){
-        this.MatKhau=matKhau;
+
+    public void setMatKhau(String matKhau) {
+        this.MatKhau = matKhau;
     }
 
-    public String getQueQuan(){
-        return  QueQuan;
-    }
-    public void setQueQuan(String queQuan){
-        this.QueQuan=queQuan;
+    public String getQueQuan() {
+        return QueQuan;
     }
 
-    public String getSo_CMND(){
+    public void setQueQuan(String queQuan) {
+        this.QueQuan = queQuan;
+    }
+
+    public String getSo_CMND() {
         return So_CMND;
     }
-    public void setSo_CMND(String so_CMND){
-        this.So_CMND=so_CMND;
+
+    public void setSo_CMND(String so_CMND) {
+        this.So_CMND = so_CMND;
     }
 
-    public String getEmail(){
-        return  Email;
-    }
-    public void setEmail(String email){
-        this.Email=email;
+    public String getEmail() {
+        return Email;
     }
 
-    public String getSDT(){
+    public void setEmail(String email) {
+        this.Email = email;
+    }
+
+    public String getSDT() {
         return SDT;
     }
-    public void setSDT(String SDT){
-        this.SDT=SDT;
+
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
     }
 
-    public String getPhai(){
+    public String getPhai() {
         return Phai;
     }
-    public void setPhai(String phai){
-        this.Phai=phai;
+
+    public void setPhai(String phai) {
+        this.Phai = phai;
     }
 
-    public Date getNgaySinh(){
+    public Date getNgaySinh() {
         return NgaySinh;
     }
-    public void setNgaySinh(Date ngaySinh){
-        this.NgaySinh=ngaySinh;
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.NgaySinh = ngaySinh;
     }
 
-    public List<MatHang> getMatHangs(){
+    public List<MatHang> getMatHangs() {
         return MatHangs;
     }
-    public void setMatHangs(List<MatHang> matHangs){
-        this.MatHangs=matHangs;
+
+    public void setMatHangs(List<MatHang> matHangs) {
+        this.MatHangs = matHangs;
     }
 
-    public NhomNhanVien getNhomNhanVien(){
+    public NhomNhanVien getNhomNhanVien() {
         return nhomNhanVien;
     }
-    public void setNhomNhanVien(NhomNhanVien nhomNhanVien){
-        this.nhomNhanVien=nhomNhanVien;
+
+    public void setNhomNhanVien(NhomNhanVien nhomNhanVien) {
+        this.nhomNhanVien = nhomNhanVien;
     }
 
-   public List<PhieuNhapHang> getPhieuNhapHangs(){
-        return  PhieuNhapHangs;
-    }
-    public void setPhieuNhapHangs(List<PhieuNhapHang> phieuNhapHangs){
-       this.PhieuNhapHangs=phieuNhapHangs;
+    public List<PhieuNhapHang> getPhieuNhapHangs() {
+        return PhieuNhapHangs;
     }
 
-    public List<HangHoa> getHangKiemKe(){
-        return  HangKiemKe;
-    }
-    public void setHangKiemKe(List<HangHoa> hangKiemKe){
-        this.HangKiemKe=hangKiemKe;
+    public void setPhieuNhapHangs(List<PhieuNhapHang> phieuNhapHangs) {
+        this.PhieuNhapHangs = phieuNhapHangs;
     }
 
-    public List<HangHoa> getHangNhapKho(){
-        return  HangNhapKho;
-    }
-    public void setHangNhapKho(List<HangHoa> hangNhapKho){
-        this.HangNhapKho=hangNhapKho;
+    public List<HangHoa> getHangKiemKe() {
+        return HangKiemKe;
     }
 
-    public List<HangHoa> getHangXuatKho(){
-        return  HangXuatKho;
-    }
-    public void setHangXuatKho(List<HangHoa> hangXuatKho){
-        this.HangXuatKho=hangXuatKho;
+    public void setHangKiemKe(List<HangHoa> hangKiemKe) {
+        this.HangKiemKe = hangKiemKe;
     }
 
-    public List<PhieuXuatHang> getPhieuXuatHangs(){
-        return  PhieuXuatHangs;
+    public List<HangHoa> getHangNhapKho() {
+        return HangNhapKho;
     }
-    public void setPhieuXuatHangs(List<PhieuXuatHang> phieuXuatHangs){
-        this.PhieuXuatHangs=phieuXuatHangs;
+
+    public void setHangNhapKho(List<HangHoa> hangNhapKho) {
+        this.HangNhapKho = hangNhapKho;
     }
+
+    public List<HangHoa> getHangXuatKho() {
+        return HangXuatKho;
+    }
+
+    public void setHangXuatKho(List<HangHoa> hangXuatKho) {
+        this.HangXuatKho = hangXuatKho;
+    }
+
+    public List<PhieuXuatHang> getPhieuXuatHangs() {
+        return PhieuXuatHangs;
+    }
+
+    public void setPhieuXuatHangs(List<PhieuXuatHang> phieuXuatHangs) {
+        this.PhieuXuatHangs = phieuXuatHangs;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if(o==this){
+        if (o == this) {
             return true;
         }
-        if(!(o instanceof HangHoa)){
+        if (!(o instanceof HangHoa)) {
             return false;
         }
-        NhanVien h=(NhanVien) o;
-        if(h.MaNhanVien==this.MaNhanVien){
+        NhanVien h = (NhanVien) o;
+        if (h.MaNhanVien == this.MaNhanVien) {
             return true;
         }
         return false;

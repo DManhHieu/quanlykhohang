@@ -14,23 +14,25 @@ import java.util.List;
 
 @WebServlet(name = "KiemKeHangHoaController", urlPatterns = {"/KiemKeNV"})
 public class KiemKeHangHoaController extends HttpServlet {
-    HangHoaDAO hangHoaDAO=new HangHoaDAO();
+    HangHoaDAO hangHoaDAO = new HangHoaDAO();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String mahanghoa=request.getParameter("mahanghoa");
-        HangHoa hangHoa= hangHoaDAO.getHangHoa(mahanghoa);
-        request.setAttribute("hanghoa",hangHoa);
-        String url="/View/NhanVien/kiemkechinhsua.jsp";
-        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request,response);
+        String mahanghoa = request.getParameter("mahanghoa");
+        HangHoa hangHoa = hangHoaDAO.getHangHoa(mahanghoa);
+        request.setAttribute("hanghoa", hangHoa);
+        String url = "/View/NhanVien/kiemkechinhsua.jsp";
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<HangHoa> hangHoas=hangHoaDAO.getHangHoas();
+        List<HangHoa> hangHoas = hangHoaDAO.getHangHoas();
         request.setAttribute("listhanghoa", hangHoas);
-        String url="/View/NhanVien/kiemke.jsp";
-        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request,response);
+        String url = "/View/NhanVien/kiemke.jsp";
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 }

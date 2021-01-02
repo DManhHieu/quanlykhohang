@@ -22,6 +22,7 @@ import java.util.List;
 public class PhieuNhapHangMoiController extends HttpServlet {
     PhieuNhapHangDao phieuNhapHangDao = new PhieuNhapHangDao();
     MatHangDAO matHangDAO = new MatHangDAO();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -29,109 +30,107 @@ public class PhieuNhapHangMoiController extends HttpServlet {
                 && session.getAttribute("NhomNhanVien") != null
                 && (int) session.getAttribute("NhomNhanVien") == 0) {
 
-                String mamathang = req.getParameter("MaMatHang");
-                int soluong = Integer.parseInt(req.getParameter("soluong"));
-                int mode = Integer.parseInt(req.getParameter("mode"));
+            String mamathang = req.getParameter("MaMatHang");
+            int soluong = Integer.parseInt(req.getParameter("soluong"));
+            int mode = Integer.parseInt(req.getParameter("mode"));
 
-                PhieuNhapHang phieuNhapHang = null;
-                HangNhap hangNhap = null;
+            PhieuNhapHang phieuNhapHang = null;
+            HangNhap hangNhap = null;
 
-                MatHang matHang = matHangDAO.getMatHang(mamathang);
+            MatHang matHang = matHangDAO.getMatHang(mamathang);
 
-                phieuNhapHang = (PhieuNhapHang) session.getAttribute("phieunhap");
+            phieuNhapHang = (PhieuNhapHang) session.getAttribute("phieunhap");
 
 
-                if (matHang != null && phieuNhapHang != null) {
+            if (matHang != null && phieuNhapHang != null) {
 
-                    if(mode==0) { // chua co mat hang nay
-                        hangNhap = new HangNhap();
-                        hangNhap.setSoLuong(soluong);
-                        HangNhapId id = new HangNhapId(phieuNhapHang.getMaPhieu(), mamathang);
-                        hangNhap.setHangNhapId(id);
-                        phieuNhapHang.getHangNhaps().add(hangNhap);
-                    }
-                    else if (mode==1){ // da co mat hang nay
-                        for(HangNhap hang : phieuNhapHang.getHangNhaps()){
-                            if(hang.getHangNhapId().getMaHangNhap().equals(mamathang)){
-                                hang.setSoLuong(hang.getSoLuong()+soluong);
-                                soluong=hang.getSoLuong();
-                            }
+                if (mode == 0) { // chua co mat hang nay
+                    hangNhap = new HangNhap();
+                    hangNhap.setSoLuong(soluong);
+                    HangNhapId id = new HangNhapId(phieuNhapHang.getMaPhieu(), mamathang);
+                    hangNhap.setHangNhapId(id);
+                    hangNhap.setMatHang(matHang);
+                    phieuNhapHang.getHangNhaps().add(hangNhap);
+                } else if (mode == 1) { // da co mat hang nay
+                    for (HangNhap hang : phieuNhapHang.getHangNhaps()) {
+                        if (hang.getHangNhapId().getMaHangNhap().equals(mamathang)) {
+                            hang.setSoLuong(hang.getSoLuong() + soluong);
+                            soluong = hang.getSoLuong();
                         }
                     }
-                    else if(mode==2){
-                       for(HangNhap hang: phieuNhapHang.getHangNhaps()){
+                } else if (mode == 2) {
+                    for (HangNhap hang : phieuNhapHang.getHangNhaps()) {
 
-                           if(hang.getHangNhapId().getMaHangNhap().equals(mamathang)){
+                        if (hang.getHangNhapId().getMaHangNhap().equals(mamathang)) {
 
-                               phieuNhapHang.getHangNhaps().remove(hang);
-                               resp.setContentType("text/html");
-                               resp.setCharacterEncoding("UTF-8");
-                               resp.getWriter().write("Hoan thanh");
-                               return;
-                           }
-                       }
-                        resp.setContentType("text/html");
-                        resp.setCharacterEncoding("UTF-8");
-                        resp.getWriter().write("Error");
-                        return;
+                            phieuNhapHang.getHangNhaps().remove(hang);
+                            resp.setContentType("text/html");
+                            resp.setCharacterEncoding("UTF-8");
+                            resp.getWriter().write("Hoan thanh");
+                            return;
+                        }
                     }
-
+                    resp.setContentType("text/html");
+                    resp.setCharacterEncoding("UTF-8");
+                    resp.getWriter().write("Error");
+                    return;
                 }
-                session.setAttribute("phieunhap",phieuNhapHang);
-                MatHangView matHangView = new MatHangView(matHang, soluong);
-                String mathangJson = new Gson().toJson(matHangView);
-                resp.setContentType("application/json");
-                resp.setCharacterEncoding("UTF-8");
-                resp.getWriter().write(mathangJson);
 
-        }
-        else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+            }
+            session.setAttribute("phieunhap", phieuNhapHang);
+            MatHangView matHangView = new MatHangView(matHang, soluong);
+            String mathangJson = new Gson().toJson(matHangView);
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write(mathangJson);
+
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         if (session != null && session.getAttribute("account") != null
                 && session.getAttribute("NhomNhanVien") != null
                 && (int) session.getAttribute("NhomNhanVien") == 0) {
-            PhieuNhapHang phieuNhapHang=(PhieuNhapHang) session.getAttribute("phieunhap");
-            if(phieuNhapHang==null){
-                phieuNhapHang=new PhieuNhapHang();
+            PhieuNhapHang phieuNhapHang = (PhieuNhapHang) session.getAttribute("phieunhap");
+            if (phieuNhapHang == null) {
+                phieuNhapHang = new PhieuNhapHang();
             }
 
             phieuNhapHang.setMaPhieu(req.getParameter("MaPhieu"));
             phieuNhapHang.setMoTa(req.getParameter("MoTa"));
             phieuNhapHang.setNhapTu(req.getParameter("NhapTu"));
-            if(phieuNhapHang.getHangNhaps()==null){
+            if (phieuNhapHang.getHangNhaps() == null) {
                 phieuNhapHang.setHangNhaps(new ArrayList<HangNhap>());
             }
 
-            String action=req.getParameter("Submit");
-            if(action!=null && action.equals("Create")){
+            String action = req.getParameter("Submit");
+            if (action != null && action.equals("Create")) {
                 session.removeAttribute("phieunhap");
                 Calendar calendar = Calendar.getInstance();
                 java.util.Date currentDate = calendar.getTime();
                 java.sql.Date date = new java.sql.Date(currentDate.getTime());
                 phieuNhapHang.setNgayNhap(date);
-                NhanVien nhanVien= (NhanVien) session.getAttribute("account");
+                NhanVien nhanVien = (NhanVien) session.getAttribute("account");
                 phieuNhapHang.setNguoiNhap(nhanVien);
                 phieuNhapHangDao.AddPhieuNhapHang(phieuNhapHang);
-                resp.sendRedirect(req.getContextPath()+ "/APhieuNhapHang/ChiTiet?MaPhieu="+phieuNhapHang.getMaPhieu());
+                resp.sendRedirect(req.getContextPath() + "/APhieuNhapHang/ChiTiet?MaPhieu=" + phieuNhapHang.getMaPhieu());
                 return;
             }
-            session.setAttribute("phieunhap",phieuNhapHang);
-            List<MatHangView> matHangViewList =new ArrayList<MatHangView>();
-            phieuNhapHang.getHangNhaps().forEach((element)->{
-                matHangViewList.add(new MatHangView(matHangDAO.getMatHang(element.getHangNhapId().getMaHangNhap()),element.getSoLuong()));
+            session.setAttribute("phieunhap", phieuNhapHang);
+            List<MatHangView> matHangViewList = new ArrayList<MatHangView>();
+            phieuNhapHang.getHangNhaps().forEach((element) -> {
+                matHangViewList.add(new MatHangView(matHangDAO.getMatHang(element.getHangNhapId().getMaHangNhap()), element.getSoLuong()));
             });
-            req.setAttribute("hangnhaps",matHangViewList);
+            req.setAttribute("hangnhaps", matHangViewList);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/NhapHang/phieunhaphangMoi.jsp");
             dispatcher.forward(req, resp);
 
-        }
-        else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
 }

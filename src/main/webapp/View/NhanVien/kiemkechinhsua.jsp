@@ -14,8 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
-    <jsp:include page="header.jsp"></jsp:include>
-    <jsp:include page="slide.jsp"></jsp:include>
+<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="slide.jsp"></jsp:include>
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
@@ -60,8 +60,13 @@
                                         <div class="form-group">
                                             <label class="bmd-label-floating" style="display: block"><strong>Tình trạng</strong></label>
                                             <select size="1" name="tinhtrang" class="form-control">
-                                                <option value="0" ${hanghoa.getTinhTrang().getMaTinhTrang() == 0 ? "selected" : ""}>Test</option>
-                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 1 ? "selected" : ""}>Đã lấy</option>
+                                                <option value="0" ${hanghoa.getTinhTrang().getMaTinhTrang() == 0 ? "selected" : ""}>Hỏng</option>
+                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 1 ? "selected" : ""}>Tốt</option>
+                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 2 ? "selected" : ""}>Cần kiểm tra</option>
+                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 3 ? "selected" : ""}>Trung bình</option>
+                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 4 ? "selected" : ""}>Hỏng, sau khi kiểm tra</option>
+                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 5 ? "selected" : ""}>Đã lấy</option>
+                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 6 ? "selected" : ""}>Đã xuất hàng</option>
                                             </select>
                                         </div>
                                     </div>

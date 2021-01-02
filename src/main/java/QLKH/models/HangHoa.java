@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table (name = "HangHoa")
+@Table(name = "HangHoa")
 public class HangHoa {
     @Id
     private String MaHangHoa;
@@ -36,103 +36,116 @@ public class HangHoa {
     public HangHoa() {
     }
 
-    public void setMaHangHoa(String maHangHoa){
-        this.MaHangHoa=maHangHoa;
+    public void setMaHangHoa(String maHangHoa) {
+        this.MaHangHoa = maHangHoa;
     }
-    public String getMaHangHoa(){
+
+    public String getMaHangHoa() {
         return MaHangHoa;
     }
 
-    public void setViTri(String viTri){
-        this.ViTri=viTri;
+    public void setViTri(String viTri) {
+        this.ViTri = viTri;
     }
-    public String getViTri(){
+
+    public String getViTri() {
         return ViTri;
     }
 
-    public void setNgay_KiemKe(Date ngay_KiemKe){
-        this.Ngay_KiemKe=ngay_KiemKe;
+    public void setNgay_KiemKe(Date ngay_KiemKe) {
+        this.Ngay_KiemKe = ngay_KiemKe;
     }
-    public Date getNgay_KiemKe(){
+
+    public Date getNgay_KiemKe() {
         return Ngay_KiemKe;
     }
 
-    public void setHanSuDung(Date hanSuDung){
-        this.HanSuDung=hanSuDung;
+    public void setHanSuDung(Date hanSuDung) {
+        this.HanSuDung = hanSuDung;
     }
-    public Date getHanSuDung(){
+
+    public Date getHanSuDung() {
         return HanSuDung;
     }
 
-    public void setNgaySanXuat(Date ngaySanXuat){
-        this.NgaySanXuat=ngaySanXuat;
+    public void setNgaySanXuat(Date ngaySanXuat) {
+        this.NgaySanXuat = ngaySanXuat;
     }
-    public Date getNgaySanXuat(){
+
+    public Date getNgaySanXuat() {
         return NgaySanXuat;
     }
 
-    public void setNgayNhapKho(Date ngayNhapKho){
-        this.NgayNhapKho=ngayNhapKho;
+    public void setNgayNhapKho(Date ngayNhapKho) {
+        this.NgayNhapKho = ngayNhapKho;
     }
-    public Date getNgayNhapKho(){
+
+    public Date getNgayNhapKho() {
         return NgayNhapKho;
     }
 
-    public void setMatHang(MatHang matHang){
-        this.matHang=matHang;
+    public void setMatHang(MatHang matHang) {
+        this.matHang = matHang;
     }
-    public MatHang getMatHang(){
+
+    public MatHang getMatHang() {
         return matHang;
     }
 
-    public void setNhanVienKiemKe(NhanVien nhanVienKiemKe){
-        this.NhanVienKiemKe=nhanVienKiemKe;
+    public void setNhanVienKiemKe(NhanVien nhanVienKiemKe) {
+        this.NhanVienKiemKe = nhanVienKiemKe;
     }
-    public NhanVien getNhanVienKiemKe(){
+
+    public NhanVien getNhanVienKiemKe() {
         return NhanVienKiemKe;
     }
 
-    public void setNhanVienNhapKho(NhanVien nhanVien){
-        this.NhanVienNhapKho=nhanVien;
+    public void setNhanVienNhapKho(NhanVien nhanVien) {
+        this.NhanVienNhapKho = nhanVien;
     }
-    public NhanVien getNhanVienNhapKho(){
+
+    public NhanVien getNhanVienNhapKho() {
         return NhanVienNhapKho;
     }
 
-    public void setNhanVienXuatKho(NhanVien nhanVien){
-        this.NhanVienXuatKho=nhanVien;
+    public void setNhanVienXuatKho(NhanVien nhanVien) {
+        this.NhanVienXuatKho = nhanVien;
     }
-    public NhanVien getNhanVienXuatKho(){
+
+    public NhanVien getNhanVienXuatKho() {
         return NhanVienXuatKho;
     }
 
-    public void setTinhTrang(TinhTrang tinhTrang){
-        this.tinhTrang=tinhTrang;
-    }
-    public TinhTrang getTinhTrang(){
-        return  tinhTrang;
+    public void setTinhTrang(TinhTrang tinhTrang) {
+        this.tinhTrang = tinhTrang;
     }
 
-    public void setPhieuNhap(PhieuNhapHang phieuNhapHang){
-        this.PhieuNhap=phieuNhapHang;
-    }
-    public PhieuNhapHang getPhieuNhap(){
-        return  PhieuNhap;
+    public TinhTrang getTinhTrang() {
+        return tinhTrang;
     }
 
-    public void setPhieuXuat(PhieuXuatHang phieuXuatHang){
-        this.PhieuXuat=phieuXuatHang;
+    public void setPhieuNhap(PhieuNhapHang phieuNhapHang) {
+        this.PhieuNhap = phieuNhapHang;
     }
+
+    public PhieuNhapHang getPhieuNhap() {
+        return PhieuNhap;
+    }
+
+    public void setPhieuXuat(PhieuXuatHang phieuXuatHang) {
+        this.PhieuXuat = phieuXuatHang;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if(o==this){
+        if (o == this) {
             return true;
         }
-        if(!(o instanceof HangHoa)){
+        if (!(o instanceof HangHoa)) {
             return false;
         }
-        HangHoa h=(HangHoa) o;
-        if(((HangHoa) o).MaHangHoa.equals(this.MaHangHoa)){
+        HangHoa h = (HangHoa) o;
+        if (((HangHoa) o).MaHangHoa.equals(this.MaHangHoa)) {
             return true;
         }
         return false;

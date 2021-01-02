@@ -15,18 +15,19 @@ import java.util.List;
 
 @WebServlet("/PhieuXuatHang")
 public class XuatHangController extends HttpServlet {
-    PhieuXuatHangDAO phieuXuatHangDAO=new PhieuXuatHangDAO();
+    PhieuXuatHangDAO phieuXuatHangDAO = new PhieuXuatHangDAO();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session= req.getSession();
-        int nhom= (int) session.getAttribute("NhomNhanVien");
-        if(session != null && session.getAttribute("account") != null && nhom==0) {
+        HttpSession session = req.getSession();
+        int nhom = (int) session.getAttribute("NhomNhanVien");
+        if (session != null && session.getAttribute("account") != null && nhom == 0) {
             List<PhieuXuatHang> phieuXuatHangs = phieuXuatHangDAO.getPhieuXuatHangs();
             req.setAttribute("PhieuXuatHangs", phieuXuatHangs);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang/XuatHang.jsp");
             dispatcher.forward(req, resp);
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
 }

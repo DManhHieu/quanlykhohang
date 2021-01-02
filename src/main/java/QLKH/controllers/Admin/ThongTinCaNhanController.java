@@ -15,45 +15,47 @@ import java.sql.Date;
 
 @WebServlet("/ThongTinCaNhan")
 public class ThongTinCaNhanController extends HttpServlet {
-    NhanVienDAO nhanVienDAO=new NhanVienDAO();
+    NhanVienDAO nhanVienDAO = new NhanVienDAO();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session= req.getSession();
-        if(session != null && session.getAttribute("account") != null){
-            NhanVien nv= (NhanVien) session.getAttribute("account");
+        HttpSession session = req.getSession();
+        if (session != null && session.getAttribute("account") != null
+                && session.getAttribute("NhomNhanVien") != null &&
+                (int) session.getAttribute("NhomNhanVien") == 0) {
+            NhanVien nv = (NhanVien) session.getAttribute("account");
             NhanVien nhanVien = nhanVienDAO.get(nv.getMaNhanVien());
             req.setAttribute("NhanVien", nhanVien);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/ThongTinCaNhan.jsp");
             dispatcher.forward(req, resp);
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session= req.getSession();
-        if(session != null && session.getAttribute("account") != null){
-            NhanVien nv= (NhanVien) session.getAttribute("account");
+        HttpSession session = req.getSession();
+        if (session != null && session.getAttribute("account") != null) {
+            NhanVien nv = (NhanVien) session.getAttribute("account");
             NhanVien nhanVien = nhanVienDAO.get(nv.getMaNhanVien());
-            if(req.getParameter("matkhaucu")!=null){
-                String matkhaucu=req.getParameter("matkhaucu");
-                String matkhaumoi=req.getParameter("MatKhauMoi");
-                String matkhaumoi1=req.getParameter("MatKhauMoi1");
+            if (req.getParameter("matkhaucu") != null) {
+                String matkhaucu = req.getParameter("matkhaucu");
+                String matkhaumoi = req.getParameter("MatKhauMoi");
+                String matkhaumoi1 = req.getParameter("MatKhauMoi1");
                 resp.setContentType("application/json");
                 resp.setCharacterEncoding("UTF-8");
-                if(!matkhaumoi.equals(matkhaumoi1))
-                {
+                if (!matkhaumoi.equals(matkhaumoi1)) {
                     resp.getWriter().write("Mật khẩu mới không khớp");
                     return;
                 }
-                if(!nhanVien.getMatKhau().equals(matkhaucu))
-                {
+                if (!nhanVien.getMatKhau().equals(matkhaucu)) {
                     resp.getWriter().write("Mật khẩu cũ không khớp");
                     return;
                 }
                 nhanVien.setMatKhau(matkhaumoi);
                 nhanVienDAO.Update(nhanVien);
-                session.setAttribute("account",nhanVien);
+                session.setAttribute("account", nhanVien);
                 resp.getWriter().write("Hoàn thành");
                 return;
             }
@@ -66,10 +68,10 @@ public class ThongTinCaNhanController extends HttpServlet {
             nhanVien.setSDT(req.getParameter("SDT"));
             nhanVien.setNgaySinh(Date.valueOf(req.getParameter("NgaySinh")));
             nhanVienDAO.Update(nhanVien);
-            session.setAttribute("account",nhanVien);
-            doGet(req,resp);
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+            session.setAttribute("account", nhanVien);
+            doGet(req, resp);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
 }

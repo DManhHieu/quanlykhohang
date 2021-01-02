@@ -15,19 +15,20 @@ import java.util.List;
 
 @WebServlet("/MatHang")
 public class MatHangController extends HttpServlet {
-    MatHangDAO matHangDAO=new MatHangDAO();
+    MatHangDAO matHangDAO = new MatHangDAO();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session= req.getSession();
-        if(session != null && session.getAttribute("account") != null
-                && session.getAttribute("NhomNhanVien")!=null
-                && (int)session.getAttribute("NhomNhanVien")==0) {
+        HttpSession session = req.getSession();
+        if (session != null && session.getAttribute("account") != null
+                && session.getAttribute("NhomNhanVien") != null
+                && (int) session.getAttribute("NhomNhanVien") == 0) {
             List<MatHang> matHangs = matHangDAO.getMatHangs();
             req.setAttribute("MatHangs", matHangs);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/MatHang/MatHang.jsp");
             dispatcher.forward(req, resp);
-        }else {
-            resp.sendRedirect(req.getContextPath()+"/Login");
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/Login");
         }
     }
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="NhomNhanVien")
+@Table(name = "NhomNhanVien")
 public class NhomNhanVien {
     @Id
     private int ID;
@@ -14,23 +14,27 @@ public class NhomNhanVien {
     @JoinColumn(name = "ID_Nhom")
     private List<NhanVien> NhanViens;
 
-    public int getID(){
+    public int getID() {
         return ID;
     }
-    public void setID(int id){
-        this.ID=id;
+
+    public void setID(int id) {
+        this.ID = id;
     }
-    public void setTenNhom(String tenNhom){
-        this.TenNhom=tenNhom;
+
+    public void setTenNhom(String tenNhom) {
+        this.TenNhom = tenNhom;
     }
-    public String getTenNhom(){
+
+    public String getTenNhom() {
         return TenNhom;
     }
 
-    public List<NhanVien> getNhanViens(){
+    public List<NhanVien> getNhanViens() {
         return NhanViens;
     }
-    public void setNhanViens(List<NhanVien> nhanViens){
-        this.NhanViens=NhanViens;
+
+    public void setNhanViens(List<NhanVien> nhanViens) {
+        this.NhanViens = NhanViens;
     }
 }

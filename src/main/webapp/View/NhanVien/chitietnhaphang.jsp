@@ -154,7 +154,13 @@
 										<div class="col-md-3">
 											<label class="bmd-label-floating">Tình trạng</label>
 											<select class="form-control" id="exampleFormControlSelect1" name="TinhTrang">
-												<option>Test</option>
+												<option value="0">Hỏng</option>
+												<option value="1">Tốt</option>
+												<option value="2">Cần kiểm tra</option>
+												<option value="3">Trung bình</option>
+												<option value="4">Hỏng, sau khi kiểm tra</option>
+												<option value="5">Đã lấy</option>
+												<option value="6">Đã xuất hàng</option>
 											</select>
 										</div>
 										<div class="col-md-3">

@@ -13,15 +13,16 @@ import java.io.IOException;
 
 @WebServlet("/View/NhanVien/PhieuXuatChiTiet")
 public class PhieuXuatHangChiTietController extends HttpServlet {
-    PhieuXuatHangDAO phieuXuatHangDAO=new PhieuXuatHangDAO();
+    PhieuXuatHangDAO phieuXuatHangDAO = new PhieuXuatHangDAO();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String maphieuxuat=request.getParameter("maphieu");
-        PhieuXuatHang phieuXuatHang=phieuXuatHangDAO.getPhieuXuatHang(maphieuxuat);
+        String maphieuxuat = request.getParameter("maphieu");
+        PhieuXuatHang phieuXuatHang = phieuXuatHangDAO.getPhieuXuatHang(maphieuxuat);
         request.setAttribute("phieuxuathang", phieuXuatHang);
-        String url="/View/NhanVien/chitietxuathang.jsp";
-        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request,response);
+        String url = "/View/NhanVien/chitietxuathang.jsp";
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 }

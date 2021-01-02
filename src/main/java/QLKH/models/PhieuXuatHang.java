@@ -13,7 +13,7 @@ public class PhieuXuatHang {
     private String MoTa, BenNhan;
     private Date NgayTao;
     private Date NgayXuat_DuKien;
-   @Column(nullable = true)
+    @Column(nullable = true)
     private Date NgayXuat_ThucTe;
 
     @ManyToOne
@@ -24,59 +24,67 @@ public class PhieuXuatHang {
     @JoinColumn(name = "MP_XuatHang")
     private List<HangHoa> hangHoas;
 
-    public String getMaPhieu(){
-        return  MaPhieu;
-    }
-    public void setMaPhieu(String maPhieu){
-        this.MaPhieu=maPhieu;
+    public String getMaPhieu() {
+        return MaPhieu;
     }
 
-    public String getMoTa(){
-        return  MoTa;
-    }
-    public void setMoTa(String moTa){
-        this.MoTa=moTa;
+    public void setMaPhieu(String maPhieu) {
+        this.MaPhieu = maPhieu;
     }
 
-    public String getBenNhan(){
-        return  BenNhan;
-    }
-    public void setBenNhan(String benNhan){
-        this.BenNhan=benNhan;
+    public String getMoTa() {
+        return MoTa;
     }
 
-    public Date getNgayTao(){
+    public void setMoTa(String moTa) {
+        this.MoTa = moTa;
+    }
+
+    public String getBenNhan() {
+        return BenNhan;
+    }
+
+    public void setBenNhan(String benNhan) {
+        this.BenNhan = benNhan;
+    }
+
+    public Date getNgayTao() {
         return NgayTao;
     }
-    public void setNgayTao(Date ngayTao){
-        this.NgayTao=ngayTao;
+
+    public void setNgayTao(Date ngayTao) {
+        this.NgayTao = ngayTao;
     }
 
-    public Date getNgayXuat_DuKien(){
+    public Date getNgayXuat_DuKien() {
         return NgayXuat_DuKien;
     }
-    public void setNgayXuat_DuKien(Date ngayXuat_DuKien){
-        this.NgayXuat_DuKien=ngayXuat_DuKien;
+
+    public void setNgayXuat_DuKien(Date ngayXuat_DuKien) {
+        this.NgayXuat_DuKien = ngayXuat_DuKien;
     }
 
-    public Date getNgayXuat_ThucTe(){
+    public Date getNgayXuat_ThucTe() {
         return NgayXuat_ThucTe;
     }
-    public void setNgayXuat_ThucTe(Date ngayXuat_ThucTe){
-        this.NgayXuat_ThucTe=ngayXuat_ThucTe;
+
+    public void setNgayXuat_ThucTe(Date ngayXuat_ThucTe) {
+        this.NgayXuat_ThucTe = ngayXuat_ThucTe;
     }
 
-    public NhanVien getNguoiXuat(){
-        return  NguoiXuat;
-    }
-    public void setNguoiXuat(NhanVien nguoiXuat){
-        this.NguoiXuat=nguoiXuat;
+    public NhanVien getNguoiXuat() {
+        return NguoiXuat;
     }
 
-    public List<HangHoa> getHangHoas(){
-        return  hangHoas;
+    public void setNguoiXuat(NhanVien nguoiXuat) {
+        this.NguoiXuat = nguoiXuat;
     }
-    public void setHangHoas(List<HangHoa> hangHoas){
-        this.hangHoas=hangHoas;
+
+    public List<HangHoa> getHangHoas() {
+        return hangHoas;
+    }
+
+    public void setHangHoas(List<HangHoa> hangHoas) {
+        this.hangHoas = hangHoas;
     }
 }
