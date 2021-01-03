@@ -166,7 +166,7 @@
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Mật khẩu</label>
-                                                                <button type="button" onclick="ResetPassword()">Đặt lại
+                                                                <button type="button" style="border-radius: 5px; border-color: black; border-width: 1px" onclick="ResetPassword()">Đặt lại
                                                                     mật khẩu
                                                                 </button>
                                                             </div>
@@ -174,9 +174,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            <div class="w-100">
                                                 <c:if test="${!(NhanVien.getNhomNhanVien().getID()==0)}">
-                                                    <button type="submit" class="float-right btn-success">Lưu</button>
+                                                    <button type="submit" style="border-radius: 5px; border: none; background-color: #007bff" class="float-right btn-success">Lưu</button>
                                                 </c:if>
                                             </div>
                                         </div>

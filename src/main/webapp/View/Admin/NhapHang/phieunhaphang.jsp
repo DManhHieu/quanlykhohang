@@ -39,14 +39,14 @@
                 <div class="card mb-4">
                 </div>
                 <div class="card mb-4">
-                    <div class="card-header row">
-                        <i class="fas fa-table mr-1"></i>
-                        Bảng phiếu nhập hàng
-                        <div class="row col-md-6">
-                            <form action="${pageContext.request.contextPath}/APhieuNhapHang/Moi" method="post">
-                                <button type="submit" style="margin-left: 85%">Tạo đơn mới</button>
-                            </form>
+                    <div class="card-header">
+                        <div class="float-left">
+                            <i class="fas fa-table mr-1"></i>
+                            Phiếu nhập hàng
                         </div>
+                        <form action="${pageContext.request.contextPath}/APhieuNhapHang/Moi" method="post">
+                            <button type="submit" style="border-radius: 5px; border: none; background-color: #007bff" class="float-right btn-success">Tạo đơn mới</button>
+                        </form>
                     </div>
 
                     <div class="card-body">

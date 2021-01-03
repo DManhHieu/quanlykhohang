@@ -112,8 +112,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <button type="submit" class="float-right btn-success">Chỉnh sửa</button>
+                                            <div class="w-100">
+                                                <button type="submit" style="border-radius: 5px; border: none; background-color: #007bff" class="float-right btn-success">Chỉnh sửa</button>
                                             </div>
                                         </div>
                                     </div>

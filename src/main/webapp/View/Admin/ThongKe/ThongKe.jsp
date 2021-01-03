@@ -71,54 +71,59 @@
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid">
+            <div class="container-fluid pb-4">
+                <h1 class="mt-4">Thống kê</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thống kê</li>
+                </ol>
                 <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table mr-1"></i>
-                        Thống kê
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="row">
-                                <label class="bmd-label-floating">Tổng số mặt hàng: </label>
-                                <input type="text" readonly value="${TongSoMatHang}">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <div class="row ml-2">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Tổng số mặt hàng: </label><br/>
+                                            <input type="text" readonly value="${TongSoMatHang}">
+                                        </div>
+                                </div>
+                                <div class="row ml-2">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Số hàng hóa : </label><br/>
+                                            <input type="text" readonly value="${SoHangHoa}">
+                                        </div>
+                                </div>
+                                <div class="row ml-2">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Số hàng hóa tồn kho: </label><br/>
+                                            <input type="text" readonly value="${SoHangHoaTonKho}">
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <div class="row ml-2">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Số phiếu nhập hàng: </label><br/>
+                                            <input type="text" readonly value="${SoPhieuNhapHang}">
+                                        </div>
+                                </div>
+                                <div class="row ml-2">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Số phiếu xuất hàng: </label><br/>
+                                            <input type="text" readonly value="${SoPhieuXuatHang}">
+                                        </div>
+                                </div>
+                                <div class="row ml-2">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Tổng số nhân viên: </label><br/>
+                                            <input type="text" readonly value="${SoNhanVien}">
+                                        </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <label class="bmd-label-floating">Số hàng hóa : </label>
-                                <input type="text" readonly value="${SoHangHoa}">
-                            </div>
+                        <div class="row">
+                            <div id="chartContainer" style="height: 370px; width: 100%;"><jsp:include page="./ThongKeThang.jsp"></jsp:include></div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <label class="bmd-label-floating">Số hàng hóa tồn kho: </label>
-                                <input type="text" readonly value="${SoHangHoaTonKho}">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <label class="bmd-label-floating">Số phiếu nhập hàng: </label>
-                                <input type="text" readonly value="${SoPhieuNhapHang}">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <label class="bmd-label-floating">Số phiếu xuất hàng: </label>
-                                <input type="text" readonly value="${SoPhieuXuatHang}">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <label class="bmd-label-floating">Tổng số nhân viên: </label>
-                                <input type="text" readonly value="${SoNhanVien}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                     </div>
                 </div>
             </div>

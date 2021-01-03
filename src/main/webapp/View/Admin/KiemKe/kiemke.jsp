@@ -45,9 +45,84 @@
             crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
-<jsp:include page="../header.jsp"></jsp:include>
-<jsp:include page="../slide.jsp"></jsp:include>
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.jsp">Quản lý kho hàng</a>
+    <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
+    </button>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search"
+                   aria-describedby="basic-addon2"/>
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+    <!-- Navbar-->
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/Login?Logout=true">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
 <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading"></div>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Trang chủ
+                    </a>
+
+                    <div class="sb-sidenav-menu-heading">Quản lý</div>
+
+                    <a class="nav-link" href="${pageContext.request.contextPath}/APhieuNhapHang">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Nhập hàng
+                    </a>
+
+                    <a class="nav-link" href="${pageContext.request.contextPath}/PhieuXuatHang">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Xuất hàng
+                    </a>
+
+                    <a class="nav-link" href="${pageContext.request.contextPath}/MatHang">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Mặt hàng
+                    </a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/HangTonKho">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Hàng tồn kho
+                    </a>
+                    <a class="nav-link" href="">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Kiểm kê
+                    </a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/ThongKe">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Thống kê
+                    </a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/QuanLyNhanVien">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Quản lý nhân viên
+                    </a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/ThongTinCaNhan">
+                        <div class="sb-nav-link-icon">
+                            <i class="fa fa-user" aria-hidden="true"></i></div>
+                        Thông tin cá nhân
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
@@ -69,14 +144,10 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <tr>
-                                    <th><a href="#kiemke-modal2">Kiểm kê toàn bộ</a></th>
-                                    <th><a href="#kiemke-modal3">Kiểm kê theo mặt hàng</a></th>
-                                </tr>
-                                <tr>
-                                    <th><a href="#kiemke-modal4">Kiểm kê theo đơn nhập</a></th>
-                                </tr>
+                            <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
+                                <th><a href="#kiemke-modal2">Kiểm kê toàn bộ</a></th>
+                                <th><a href="#kiemke-modal3">Kiểm kê theo mặt hàng</a></th>
+                                <th><a href="#kiemke-modal4">Kiểm kê theo đơn nhập</a></th>
                             </table>
                         </div>
                     </div>
@@ -85,9 +156,9 @@
                         <div style="width: 30%; height: 30%; position: relative; padding: 16px; background-color: #fff;">
                             <div style="text-align: center; margin-top: 5%">Bạn muốn kiểm kê toàn bộ?</div>
                             <div style="width: 50%;margin-top: 15%; text-align: center; float: left"><input
-                                    style="margin: auto; border: none" type="submit" value="Có"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" value="Có"></div>
                             <div style="width: 50%;margin-top: 15%; text-align: center; float: right"><input
-                                    style="margin: auto; border: none" type="submit" value="Bỏ qua"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" value="Bỏ qua"></div>
                         </div>
                     </div>
                     <div class="modal" id="kiemke-modal3">
@@ -97,9 +168,9 @@
                                 Mã hàng hóa:<input style="width: 75%" type="text">
                             </div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: left"><input
-                                    style="margin: auto; border: none" type="submit" value="Xác nhận"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" value="Xác nhận"></div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: right"><input
-                                    style="margin: auto; border: none" type="submit" value="Bỏ qua"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" value="Bỏ qua"></div>
                         </div>
                     </div>
                     <div class="modal" id="kiemke-modal4">
@@ -109,9 +180,9 @@
                                 Mã đơn nhập:<input style="width: 75%" type="text">
                             </div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: left"><input
-                                    style="margin: auto; border: none" type="submit" value="Xác nhận"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" value="Xác nhận"></div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: right"><input
-                                    style="margin: auto; border: none" type="submit" value="Bỏ qua"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" value="Bỏ qua"></div>
                         </div>
                     </div>
                 </div>

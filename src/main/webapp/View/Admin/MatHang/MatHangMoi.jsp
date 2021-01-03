@@ -101,8 +101,8 @@
                                                     </textarea>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <button type="submit" class="float-right btn-success">Tạo mới</button>
+                                            <div class="w-100">
+                                                <button type="submit" style="border-radius: 5px; border: none; background-color: #007bff" class="float-right btn-success">Tạo mới</button>
                                             </div>
                                         </div>
                                     </div>

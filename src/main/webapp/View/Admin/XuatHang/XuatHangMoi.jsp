@@ -41,111 +41,109 @@
                         hàng</a></li>
                     <li class="breadcrumb-item active">Tạo mới</li>
                 </ol>
-            </div>
-            <div class="row">
-                <div class="card-body">
-                    <form action="${pageContext.request.contextPath}/PhieuXuatHang/PhieuMoi" method="post">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Mã phiếu</label>
-                                            <input type="text" class="form-control" name="MaPhieu"
-                                                   placeholder="Nhập mã phiếu"
-                                                   value="${sessionScope.phieuxuathang.getMaPhieu()}">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Ngày xuất hàng dự kiến : </label>
-                                            <input type="date" class="form-control" name="NgayXuat_DuKien"
-                                                   value="${sessionScope.phieuxuathang.getNgayXuat_DuKien()}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Bên nhận</label>
-                                            <input type="text" class="form-control" name="BenNhan"
-                                                   placeholder="Bên nhận hàng"
-                                                   value="${sessionScope.phieuxuathang.getBenNhan()}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Mô tả</label>
-                                            <textarea rows="3" name="MoTa">
-                                                ${sessionScope.phieuxuathang.getMoTa()}
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Mã hàng hóa</label>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form action="${pageContext.request.contextPath}/PhieuXuatHang/PhieuMoi" method="post">
+                            <div class="row">
+                                <div class="col-md-12">
                                     <div class="row">
-                                        <input type="text" class="form-control col-6" id="MaHangHoa"
-                                               placeholder="Nhập mã hàng hóa">
-                                        <button type="button" class="btn-dark" onclick="ThemHangHoa()">Thêm hàng hóa
-                                        </button>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Mã phiếu</label>
+                                                <input type="text" class="form-control" name="MaPhieu"
+                                                       placeholder="Nhập mã phiếu"
+                                                       value="${sessionScope.phieuxuathang.getMaPhieu()}">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Ngày xuất hàng dự kiến : </label>
+                                                <input type="date" class="form-control" name="NgayXuat_DuKien"
+                                                       value="${sessionScope.phieuxuathang.getNgayXuat_DuKien()}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Bên nhận</label>
+                                                <input type="text" class="form-control" name="BenNhan"
+                                                       placeholder="Bên nhận hàng"
+                                                       value="${sessionScope.phieuxuathang.getBenNhan()}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Mô tả</label>
+                                                <textarea rows="3" name="MoTa">
+                                                    ${sessionScope.phieuxuathang.getMoTa()}
+                                                </textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                        <tr>
-                                            <th>Mã hàng hóa</th>
-                                            <th>Tên mặt hàng</th>
-                                            <th>Vị trí</th>
-                                            <th>Ngày kiểm kê</th>
-                                            <th>Ngày sản xuất</th>
-                                            <th>Hạn sử dụng</th>
-                                            <th>Tình trạng</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach items="${sessionScope.phieuxuathang.getHangHoas()}" var="hanghoa">
-                                            <tr>
-                                                <td>${hanghoa.getMaHangHoa()}</td>
-                                                <td>${hanghoa.getMatHang().getTenMatHang()}</td>
-                                                <td>${hanghoa.getViTri()}</td>
-                                                <td><fmt:formatDate pattern="dd/MM/yyyy"
-                                                                    value="${hanghoa.getNgay_KiemKe()}"/></td>
-                                                <td><fmt:formatDate pattern="dd/MM/yyyy"
-                                                                    value="${hanghoa.getNgaySanXuat()}"/></td>
-                                                <td><fmt:formatDate pattern="dd/MM/yyyy"
-                                                                    value="${hanghoa.getHanSuDung()}"/></td>
-                                                <td>${hanghoa.getTinhTrang().getTenTinhTrang()}</td>
-                                                <td>
-                                                    <button type="button" onclick="DeleteRow()" class="center btn-link">
-                                                        Xóa
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Mã hàng hóa</label>
+                                        <div class="row">
+                                            <input type="text" class="form-control col-6" id="MaHangHoa"
+                                                   placeholder="Nhập mã hàng hóa">
+                                            <button type="button" style="border-radius: 5px; border: none" class="btn btn-primary ml-2" onclick="ThemHangHoa()">Thêm hàng hóa
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <button type="submit" class="btn-dark" value="AddPhieuXuatHang" name="submit">Tạo
-                                    phiếu
-                                </button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th>Mã hàng hóa</th>
+                                                <th>Tên mặt hàng</th>
+                                                <th>Vị trí</th>
+                                                <th>Ngày kiểm kê</th>
+                                                <th>Ngày sản xuất</th>
+                                                <th>Hạn sử dụng</th>
+                                                <th>Tình trạng</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach items="${sessionScope.phieuxuathang.getHangHoas()}" var="hanghoa">
+                                                <tr>
+                                                    <td>${hanghoa.getMaHangHoa()}</td>
+                                                    <td>${hanghoa.getMatHang().getTenMatHang()}</td>
+                                                    <td>${hanghoa.getViTri()}</td>
+                                                    <td><fmt:formatDate pattern="dd/MM/yyyy"
+                                                                        value="${hanghoa.getNgay_KiemKe()}"/></td>
+                                                    <td><fmt:formatDate pattern="dd/MM/yyyy"
+                                                                        value="${hanghoa.getNgaySanXuat()}"/></td>
+                                                    <td><fmt:formatDate pattern="dd/MM/yyyy"
+                                                                        value="${hanghoa.getHanSuDung()}"/></td>
+                                                    <td>${hanghoa.getTinhTrang().getTenTinhTrang()}</td>
+                                                    <td>
+                                                        <button type="button" onclick="DeleteRow()" class="center btn-link">
+                                                            Xóa
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="w-100 pt-2">
+                                    <button type="submit" style="border-radius: 5px; border: none" class="btn btn-primary float-right" value="AddPhieuXuatHang" name="submit">Tạo
+                                        phiếu
+                                    </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </main>

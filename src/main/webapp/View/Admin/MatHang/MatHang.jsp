@@ -31,13 +31,20 @@
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid">
+            <div class="container-fluid pb-4">
+                <h1 class="mt-4">Danh sách mặt hàng</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Danh sách mặt hàng</li>
+                </ol>
                 <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fas fa-table mr-1"></i>
-                        Danh sách mặt hàng
+                        <div class="float-left">
+                            <i class="fas fa-table mr-1"></i>
+                            Danh sách mặt hàng
+                        </div>
                         <form method="post" action="${pageContext.request.contextPath}/MatHang/Moi">
-                            <button type="submit" class="float-right btn-success">Tạo mới</button>
+                            <button type="submit" style="border-radius: 5px; border: none; background-color: #007bff" class="float-right btn-success">Tạo mới</button>
                         </form>
                     </div>
 

@@ -31,7 +31,12 @@
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid">
+            <div class="container-fluid pd-4">
+                <h1 class="mt-4">Hàng tồn kho</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Hàng tồn kho</li>
+                </ol>
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>

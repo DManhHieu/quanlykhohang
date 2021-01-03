@@ -34,10 +34,8 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Chi tiết hàng tồn kho</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang
-                        chủ</a></li>
-                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/HangTonKho">Hàng tồn kho</a>
-                    </li>
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/HangTonKho">Hàng tồn kho</a></li>
                     <li class="breadcrumb-item active">Chi tiết</li>
                 </ol>
                 <div class="row">
@@ -103,8 +101,7 @@
                                                 </div>
                                                 <div class="col-3">
                                                     <div class="form-group">
-                                                        <label class="bmd-label-floating">Tên nhân viên nhập
-                                                            hàng</label> <input
+                                                        <label class="bmd-label-floating">Tên nhân viên nhập hàng</label> <input
                                                             type="text" class="form-control"
                                                             value="${hanghoa.getNhanVienNhapKho().getTenNhanVien()}"
                                                             readonly>

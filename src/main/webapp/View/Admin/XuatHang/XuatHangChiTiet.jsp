@@ -40,108 +40,105 @@
                         kho</a></li>
                     <li class="breadcrumb-item active">Chi tiết</li>
                 </ol>
-            </div>
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table mr-1"></i> Thông tin phiếu xuất hàng
-                </div>
-                <div class="table-responsive">
-                    <div id="dataTable_wrapper"
-                         class="dataTables_wrapper dt-bootstrap4">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Mã phiếu: </label>
+                <div class="card mb-4">
+                    <div class="table-responsive pt-4 pb-4">
+                        <div id="dataTable_wrapper"
+                             class="dataTables_wrapper dt-bootstrap4">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Mã phiếu: </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label> ${phieuxuat.getMaPhieu()} </label>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9">
-                                            <label> ${phieuxuat.getMaPhieu()} </label>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Người xuất:</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label>${phieuxuat.getNguoiXuat().getTenNhanVien()} </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Người xuất:</label>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Bên nhận: </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label>${phieuxuat.getBenNhan()}</label>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9">
-                                            <label>${phieuxuat.getNguoiXuat().getTenNhanVien()} </label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Bên nhận: </label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <label>${phieuxuat.getBenNhan()}</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Ngày tạo:</label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <label><fmt:formatDate pattern="dd/MM/yyyy"
-                                                                   value="${phieuxuat.getNgayTao()}"/></label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Ngày xuất hàng dự kiến:</label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <label><fmt:formatDate pattern="dd/MM/yyyy"
-                                                                   value="${phieuxuat.getNgayXuat_DuKien()}"/></label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Ngày xuất hàng thực:</label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <c:if test="${phieuxuat.getNgayXuat_ThucTe()!=null}">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Ngày tạo:</label>
+                                            </div>
+                                            <div class="col-md-9">
                                                 <label><fmt:formatDate pattern="dd/MM/yyyy"
-                                                                       value="${phieuxuat.getNgayXuat_ThucTe()}"/></label>
-                                            </c:if>
-                                            <c:if test="${phieuxuat.getNgayXuat_ThucTe()==null}">
-                                                <form action="${pageContext.request.contextPath}/PhieuXuatHang/ChiTiet"
-                                                      method="post">
-                                                    <input type="date" value="${phieuxuat.getNgayXuat_ThucTe()}"
-                                                           name="ngayxuat">
-                                                    <input type="hidden" value="${phieuxuat.getMaPhieu()}"
-                                                           name="MaPhieu">
-                                                    <button type="submit" class="btn-dark">Lưu</button>
-                                                </form>
-                                            </c:if>
+                                                                       value="${phieuxuat.getNgayTao()}"/></label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered" id="dataTable" width="100%"
-                                                       cellspacing="0">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Mã hàng hóa</th>
-                                                        <th>Tên mặt hàng</th>
-                                                        <th>Ngày sản xuất</th>
-                                                        <th>Hạn sử dụng</th>
-                                                        <th>Tình trạng</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <c:forEach items="${phieuxuat.getHangHoas()}" var="hanghoa">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Ngày xuất hàng dự kiến:</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label><fmt:formatDate pattern="dd/MM/yyyy"
+                                                                       value="${phieuxuat.getNgayXuat_DuKien()}"/></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Ngày xuất hàng thực:</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <c:if test="${phieuxuat.getNgayXuat_ThucTe()!=null}">
+                                                    <label><fmt:formatDate pattern="dd/MM/yyyy"
+                                                                           value="${phieuxuat.getNgayXuat_ThucTe()}"/></label>
+                                                </c:if>
+                                                <c:if test="${phieuxuat.getNgayXuat_ThucTe()==null}">
+                                                    <form action="${pageContext.request.contextPath}/PhieuXuatHang/ChiTiet"
+                                                          method="post">
+                                                        <input type="date" value="${phieuxuat.getNgayXuat_ThucTe()}"
+                                                               name="ngayxuat">
+                                                        <input type="hidden" value="${phieuxuat.getMaPhieu()}"
+                                                               name="MaPhieu">
+                                                        <button type="submit" class="btn-dark">Lưu</button>
+                                                    </form>
+                                                </c:if>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered" id="dataTable" width="100%"
+                                                           cellspacing="0">
+                                                        <thead>
                                                         <tr>
-                                                            <td>${hanghoa.getMaHangHoa()}</td>
-                                                            <td>${hanghoa.getMatHang().getTenMatHang()}</td>
-                                                            <td><fmt:formatDate pattern="dd/MM/yyyy"
-                                                                                value="${hanghoa.getNgaySanXuat()}"/></td>
-                                                            <td><fmt:formatDate pattern="dd/MM/yyyy"
-                                                                                value="${hanghoa.getHanSuDung()}"/></td>
-                                                            <td>${hanghoa.getTinhTrang().getTenTinhTrang()}</td>
+                                                            <th>Mã hàng hóa</th>
+                                                            <th>Tên mặt hàng</th>
+                                                            <th>Ngày sản xuất</th>
+                                                            <th>Hạn sử dụng</th>
+                                                            <th>Tình trạng</th>
                                                         </tr>
-                                                    </c:forEach>
-                                                    </tbody>
-                                                </table>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${phieuxuat.getHangHoas()}" var="hanghoa">
+                                                            <tr>
+                                                                <td>${hanghoa.getMaHangHoa()}</td>
+                                                                <td>${hanghoa.getMatHang().getTenMatHang()}</td>
+                                                                <td><fmt:formatDate pattern="dd/MM/yyyy"
+                                                                                    value="${hanghoa.getNgaySanXuat()}"/></td>
+                                                                <td><fmt:formatDate pattern="dd/MM/yyyy"
+                                                                                    value="${hanghoa.getHanSuDung()}"/></td>
+                                                                <td>${hanghoa.getTinhTrang().getTenTinhTrang()}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -150,10 +147,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </main>
-
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>

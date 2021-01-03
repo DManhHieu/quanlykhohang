@@ -31,7 +31,7 @@
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid">
+            <div class="container-fluid pb-4">
                 <h1 class="mt-4">Tạo đơn nhập hàng</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang
@@ -117,7 +117,7 @@
                                         <td><input type="text" class="form-control" id="soluong"></td>
                                         <td><input type="text" class="form-control"></td>
                                         <td>
-                                            <button type="button" onclick="AddRow()">+</button>
+                                            <button type="button" style="border-radius: 5px; border: none; background-color: white; color: black" class="btn btn-primary float-right" onclick="AddRow()">Add</button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -125,11 +125,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <button type="submit" class="btn btn-primary pull-right" name="Submit" value="Create">Tạo
-                            </button>
-                        </div>
+                    <div class="w-100">
+                        <button type="submit" style="border-radius: 5px; border: none" class="btn btn-primary float-right" name="Submit" value="Create">Tạo</button>
                     </div>
                 </form>
             </div>

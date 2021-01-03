@@ -32,15 +32,21 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
+                <h1 class="mt-4">Phiếu xuất hàng</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="../index.jsp">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Phiếu xuất hàng</li>
+                </ol>
                 <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fas fa-table mr-1"></i>
-                        Danh sách đơn xuất hàng
+                        <div class="float-left">
+                            <i class="fas fa-table mr-1"></i>
+                            Phiếu xuất hàng
+                        </div>
                         <form method="post" action="${pageContext.request.contextPath}/PhieuXuatHang/PhieuMoi">
-                            <button type="submit" class="float-right btn-success">Tạo mới</button>
+                            <button type="submit" style="border-radius: 5px; border: none; background-color: #007bff"  class="float-right btn-success">Tạo mới</button>
                         </form>
                     </div>
-
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
