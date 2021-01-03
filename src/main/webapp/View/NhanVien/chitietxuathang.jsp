@@ -34,6 +34,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
+							<div class="card-header">
+								<i class="fas fa-table mr-1"></i> Bảng phiếu xuất hàng
+							</div>
 							<div class="card-body">
 								<form>
 									<div class="row">
@@ -86,9 +89,6 @@
 					</div>
 				</div>
 				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table mr-1"></i> Bảng phiếu xuất hàng
-					</div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

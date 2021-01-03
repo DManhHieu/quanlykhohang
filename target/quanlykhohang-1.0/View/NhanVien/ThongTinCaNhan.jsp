@@ -143,17 +143,17 @@
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Mật khẩu</label>
-                                                                <input type="password" class="form-control" name="MatKhauCu" id="matkhaucu" placeholder="Nhập mật khẩu cũ" >
-                                                                <input type="password" class="form-control" name="MatKhauMoi" id="matkhaumoi" placeholder="Nhập mật khẩu mới" >
-                                                                <input type="password" class="form-control" name="NhaplaiMatKhauMoi" id="matkhaumoi1" placeholder="Nhập lại mật khẩu mới" >
-                                                                <button type="button" onclick="DoiMatKhau()">Đổi mật khẩu</button>
+                                                                <input type="password" class="form-control mb-2" name="MatKhauCu" id="matkhaucu" placeholder="Nhập mật khẩu cũ" >
+                                                                <input type="password" class="form-control mb-2" name="MatKhauMoi" id="matkhaumoi" placeholder="Nhập mật khẩu mới" >
+                                                                <input type="password" class="form-control mb-2" name="NhaplaiMatKhauMoi" id="matkhaumoi1" placeholder="Nhập lại mật khẩu mới" >
+                                                                <button type="button" style="border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white" onclick="DoiMatKhau()">Đổi mật khẩu</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <button type="submit" class="float-right btn-success">Lưu</button>
+                                            <div class="w-100">
+                                                <button type="submit" style="border-radius: 5px; border-color: #007bff; background-color: #007bff" class="float-right btn-success">Lưu</button>
                                             </div>
                                         </div>
                                     </div>

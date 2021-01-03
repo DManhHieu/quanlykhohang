@@ -24,7 +24,7 @@
 <div id="layoutSidenav">
 	<div id="layoutSidenav_content">
 		<main>
-			<div class="container-fluid">
+			<div class="container-fluid mb-4">
 				<h1 class="mt-4">Chi tiết phiếu nhập hàng</h1>
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
@@ -34,6 +34,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
+							<div class="card-header">
+								<i class="fas fa-table mr-1"></i> Chi tiết phiếu nhập hàng
+							</div>
 							<div class="card-body">
 								<form>
 									<div class="row">
@@ -86,9 +89,6 @@
 					</div>
 				</div>
 				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table mr-1"></i> Chi tiết phiếu nhập hàng
-					</div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" id="dataTable" width="100%"
@@ -174,8 +174,8 @@
 											</div>
 										</div>
 										<input type="hidden" name="MP_NhapHang" value="${phieunhaphang.getMaPhieu()}"/>
-										<div class="col-md-2">
-											<button type="Submit" class="btn btn-primary pull-right" >Lưu</button>
+										<div class="w-100">
+											<button type="Submit" class="btn btn-primary float-right" >Lưu</button>
 										</div>
 									</div>
 								</form>

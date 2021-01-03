@@ -44,8 +44,8 @@
 						<div id="dataTable_wrapper"
 							 class="dataTables_wrapper dt-bootstrap4">
 							<div class="row">
-								<div class="col-sm-12">
-									<div class="container">
+								<div class="col-sm-12 pb-2">
+									<div style="background-color: white" class="container">
 										<form action="${pageContext.request.contextPath}/View/NhanVien/index.jsp">
 											<div class="row">
 												<div class="col-25">
@@ -142,9 +142,9 @@
 													</select>
 												</div>
 											</div>
-											<div class="row">
-												<a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp"><input type="submit" value="Save"></a>
-												<a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp"><input type="reset" value="Cancel"></a>
+											<div class="w-100">
+												<a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp"><input style="background-color: #007bff" class="float-right" type="submit" value="Save"></a>
+												<a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp"><input style="background-color: #007bff" class="float-right" type="reset" value="Cancel"></a>
 											</div>
 										</form>
 									</div>
