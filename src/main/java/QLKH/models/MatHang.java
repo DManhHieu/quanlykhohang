@@ -47,19 +47,19 @@ public class MatHang {
     }
 
     public void setMaMatHang(String maMatHang) {
-        this.MaMatHang = maMatHang;
+        this.MaMatHang =  maMatHang.trim();
     }
 
     public void setNhaSanXuat(String nhaSanXuat) {
-        this.NhaSanXuat = nhaSanXuat;
+        this.NhaSanXuat = nhaSanXuat.trim();
     }
 
     public void setTenMatHang(String tenMatHang) {
-        this.TenMatHang = tenMatHang;
+        this.TenMatHang = tenMatHang.trim();
     }
 
     public void setMoTa(String moTa) {
-        this.MoTa = moTa;
+        this.MoTa = moTa.trim();
     }
 
     public void setGiaTri(double giaTri) {
