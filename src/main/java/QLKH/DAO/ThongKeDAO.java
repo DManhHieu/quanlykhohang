@@ -54,8 +54,8 @@ public class ThongKeDAO {
             }
             e.printStackTrace();
         }
-        String dataPoints1 = gsonObj.toJson(list);
-        return dataPoints1;
+        String dataPoints = gsonObj.toJson(list);
+        return dataPoints;
     }
 
     public int TongSoMatHang() {

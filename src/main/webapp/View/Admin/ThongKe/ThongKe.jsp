@@ -24,6 +24,7 @@
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
             crossorigin="anonymous"></script>
+
     <script type="text/javascript">
         window.onload = function () {
 
@@ -63,7 +64,6 @@
             chart.render();
         }
     </script>
-
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
