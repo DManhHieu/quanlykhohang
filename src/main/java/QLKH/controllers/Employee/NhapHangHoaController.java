@@ -29,17 +29,42 @@ public class NhapHangHoaController extends HttpServlet {
         if (session != null && session.getAttribute("account") != null
                 && session.getAttribute("NhomNhanVien") != null &&
                 (int) session.getAttribute("NhomNhanVien") == 1) {
+            int loi=0;
             HangHoa hangHoa = new HangHoa();
+            HangHoa hangHoakt;
             String MP_NhapHang = request.getParameter("MP_NhapHang");
             PhieuNhapHang phieuNhapHang = phieuNhapHangDao.getPhieuHangNhap(MP_NhapHang);
             hangHoa.setPhieuNhap(phieuNhapHang);
             String MaMatHang = request.getParameter("MaMatHang");
             MatHang matHang = matHangDAO.getMatHang(MaMatHang);
-            hangHoa.setMatHang(matHang);
+            if (MaMatHang.equals("")){
+                request.setAttribute("mmhkhongtontai", "Yêu cầu nhập mã mặt hàng");
+                loi++;
+            } else if(matHang == null){
+                request.setAttribute("mmhkhongtontai", "Mã mặt hàng không tồn tại");
+                loi++;
+            } else {
+                hangHoa.setMatHang(matHang);
+            }
             String MaHangHoa = request.getParameter("MaHangHoa");
-            hangHoa.setMaHangHoa(MaHangHoa);
+            hangHoakt=hangHoaDAO.getHangHoa(MaHangHoa);
+            if (MaHangHoa.equals("")) {
+                request.setAttribute("hhtontai", "Yêu cầu nhập mã hàng hóa");
+                loi++;
+            }
+            else if(hangHoakt != null){
+                request.setAttribute("hhtontai", "Mã hàng hóa đã tồn tại");
+                loi++;
+            } else {
+                hangHoa.setMaHangHoa(MaHangHoa);
+            }
             String ViTri = request.getParameter("ViTri");
-            hangHoa.setViTri(ViTri);
+            if(ViTri.equals("")) {
+                request.setAttribute("tbvitri", "Yêu cầu nhập vị trí");
+                loi++;
+            } else {
+                hangHoa.setViTri(ViTri);
+            }
             int matinhtrang = Integer.parseInt(request.getParameter("TinhTrang"));
             TinhTrang tinhTrang = tinhTrangDAO.getTinhTrang(matinhtrang);
             hangHoa.setTinhTrang(tinhTrang);
@@ -60,7 +85,9 @@ public class NhapHangHoaController extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            hangHoaDAO.AddHangHoa(hangHoa);
+            if(loi == 0){
+                hangHoaDAO.AddHangHoa(hangHoa);
+            }
             PhieuNhapHang existingPhieuNhapHang = phieuNhapHangDao.getPhieuHangNhap(MP_NhapHang);
             request.setAttribute("phieunhaphang", existingPhieuNhapHang);
             String url = "/View/NhanVien/chitietnhaphang.jsp";

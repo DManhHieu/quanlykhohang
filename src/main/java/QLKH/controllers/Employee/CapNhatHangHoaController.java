@@ -34,9 +34,6 @@ public class CapNhatHangHoaController extends HttpServlet {
             HangHoa hangHoa = hangHoaDAO.getHangHoa(mahanghoa);
             NhanVien nhanVienXuatKho = (NhanVien) session.getAttribute("account");
             hangHoa.setNhanVienXuatKho(nhanVienXuatKho);
-        /*    int matinhtrang = Integer.parseInt(request.getParameter("tinhtrang"));
-            TinhTrang tinhTrang = tinhTrangDAO.getTinhTrang(matinhtrang);
-            hangHoa.setTinhTrang(tinhTrang);*/
             int matinhtrang = Integer.parseInt(request.getParameter("tinhtrang"));
             TinhTrang tinhTrang = tinhTrangDAO.getTinhTrang(matinhtrang);
             hangHoa.setTinhTrang(tinhTrang);
