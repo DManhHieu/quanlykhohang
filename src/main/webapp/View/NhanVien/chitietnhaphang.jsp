@@ -46,8 +46,8 @@
 													<div class="row">
 														<div class="col-md-6">
 															<div class="form-group">
-																<label class="bmd-label-floating">Mã đơn hàng</label> <input
-																	type="text" value="<c:out value="${phieunhaphang.getMaPhieu()}" />" class="form-control">
+																<label class="bmd-label-floating">Mã đơn hàng</label>
+																<input type="text" value="<c:out value="${phieunhaphang.getMaPhieu()}" />" class="form-control">
 															</div>
 														</div>
 														<div class="col-md-6">
@@ -121,14 +121,34 @@
 									<div class="row">
 										<div class="col-md-2">
 											<div class="form-group">
-												<label class="bmd-label-floating">Mã mặt hàng</label> <input
-													type="text" class="form-control" name="MaMatHang">
+												<label class="bmd-label-floating">Mã mặt hàng</label>
+												<%
+													String mmh=request.getParameter("MaMatHang");
+													if(mmh == null) {
+														mmh="";
+													}
+													String tbmamathang=(String) request.getAttribute("mmhkhongtontai");
+													if(tbmamathang == null)
+														tbmamathang="";
+												%>
+												<input type="text" class="form-control" name="MaMatHang" value="<%=mmh%>">
+												<div style="color: red ; font-size: 80%" class="font-weight-light my-lg-2"><%=tbmamathang%></div>
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="bmd-label-floating">Vị trí</label> <input
-													type="text" class="form-control" name="ViTri">
+												<label class="bmd-label-floating">Vị trí</label>
+												<%
+													String vitricu=request.getParameter("ViTri");
+													if(vitricu == null) {
+														vitricu="";
+													}
+													String tbvitri=(String) request.getAttribute("tbvitri");
+													if(tbvitri == null)
+														tbvitri="";
+												%>
+												<input type="text" class="form-control" name="ViTri" value="<%=vitricu%>">
+												<div style="color: red ; font-size: 80%" class="font-weight-light my-lg-2"><%=tbvitri%></div>
 											</div>
 										</div>
 										<div class="col-md-3">
@@ -147,15 +167,25 @@
 									<div class="row">
 										<div class="col-md-2">
 											<div class="form-group">
-												<label class="bmd-label-floating">Mã hàng hóa</label> <input
-													type="text" class="form-control" name="MaHangHoa">
+												<label class="bmd-label-floating">Mã hàng hóa</label>
+												<%
+													String mhh=request.getParameter("MaHangHoa");
+													if(mhh == null) {
+														mhh="";
+													}
+													String tbmahanghoa=(String) request.getAttribute("hhtontai");
+													if(tbmahanghoa == null)
+														tbmahanghoa="";
+													System.out.print(tbmahanghoa);
+												%>
+												<input type="text" class="form-control" name="MaHangHoa" value="<%=mhh%>">
+												<div style="color: red ; font-size: 80%" class="font-weight-light my-lg-2"><%=tbmahanghoa%></div>
 											</div>
 										</div>
 										<div class="col-md-3">
 											<label class="bmd-label-floating">Tình trạng</label>
 											<select class="form-control" id="exampleFormControlSelect1" name="TinhTrang">
-												<option value="0">Hỏng</option>
-												<option value="1">Tốt</option>
+												<option value="0" selected >Hỏng</option>
 												<option value="2">Cần kiểm tra</option>
 												<option value="3">Trung bình</option>
 												<option value="4">Hỏng, sau khi kiểm tra</option>
