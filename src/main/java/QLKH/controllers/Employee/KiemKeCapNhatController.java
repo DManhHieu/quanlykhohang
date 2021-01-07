@@ -23,6 +23,7 @@ public class KiemKeCapNhatController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String action = request.getParameter("submit");
         if (action.equals("capnhat")) {
             HttpSession session = request.getSession();

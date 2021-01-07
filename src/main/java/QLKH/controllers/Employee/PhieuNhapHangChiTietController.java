@@ -18,6 +18,7 @@ public class PhieuNhapHangChiTietController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String maphieunhap = request.getParameter("maphieu");
         PhieuNhapHang existingPhieuNhapHang = phieuNhapHangDao.getPhieuHangNhap(maphieunhap);
         request.setAttribute("phieunhaphang", existingPhieuNhapHang);

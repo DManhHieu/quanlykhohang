@@ -18,6 +18,7 @@ public class XuatHangChiTietController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         HttpSession session = req.getSession();
         if (session != null && session.getAttribute("account") != null
                 && session.getAttribute("NhomNhanVien") != null
@@ -33,6 +34,7 @@ public class XuatHangChiTietController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         HttpSession session = req.getSession();
         if (session != null && session.getAttribute("account") != null
                 && session.getAttribute("NhomNhanVien") != null

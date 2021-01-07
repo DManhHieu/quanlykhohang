@@ -19,6 +19,7 @@ public class HangTonKhoController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         HttpSession session = req.getSession();
         int nhom = (int) session.getAttribute("NhomNhanVien");
         if (session != null && session.getAttribute("account") != null && nhom == 0) {

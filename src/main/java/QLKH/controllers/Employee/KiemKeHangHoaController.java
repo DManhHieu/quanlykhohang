@@ -18,6 +18,7 @@ public class KiemKeHangHoaController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String mahanghoa = request.getParameter("mahanghoa");
         HangHoa hangHoa = hangHoaDAO.getHangHoa(mahanghoa);
         request.setAttribute("hanghoa", hangHoa);

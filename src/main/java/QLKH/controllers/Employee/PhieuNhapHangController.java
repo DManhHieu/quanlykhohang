@@ -19,6 +19,7 @@ public class PhieuNhapHangController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         List<PhieuNhapHang> phieuNhapHangs = phieuNhapHangDao.getPhieuNhapHangs();
         System.out.println(phieuNhapHangs);
         request.setAttribute("PhieuNhapHangs", phieuNhapHangs);

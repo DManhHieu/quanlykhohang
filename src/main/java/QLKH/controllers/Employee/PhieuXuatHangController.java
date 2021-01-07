@@ -19,6 +19,7 @@ public class PhieuXuatHangController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         List<PhieuXuatHang> phieuXuatHangs = phieuXuatHangDAO.getPhieuXuatHangs();
         request.setAttribute("PhieuXuatHangs", phieuXuatHangs);
         String url = "/View/NhanVien/phieuxuathang.jsp";

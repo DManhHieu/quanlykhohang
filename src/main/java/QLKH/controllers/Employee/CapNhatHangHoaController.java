@@ -25,6 +25,7 @@ public class CapNhatHangHoaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
         if (session != null && session.getAttribute("account") != null
                 && session.getAttribute("NhomNhanVien") != null &&
