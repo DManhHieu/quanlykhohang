@@ -1,5 +1,7 @@
 package QLKH.controllers.Admin;
 
+import QLKH.DAO.KiemKeDAO;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,7 @@ import java.io.IOException;
 
 @WebServlet("/KiemKe")
 public class KiemKeController extends HttpServlet {
+    KiemKeDAO kiemKeDAO=new KiemKeDAO();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
@@ -21,6 +24,7 @@ public class KiemKeController extends HttpServlet {
                 && (int) session.getAttribute("NhomNhanVien") == 0) {
             String KiemKeToanBo = req.getParameter("KiemKeToanBo");
             if(KiemKeToanBo!=null && !KiemKeToanBo.equals("")) {
+                kiemKeDAO.KiemKeToanBo();
                 resp.setContentType("text/html");
                 resp.setCharacterEncoding("UTF-8");
                 resp.getWriter().write("Đặt toàn bộ hàng hóa vào trạng thái kiểm kê");
@@ -28,16 +32,18 @@ public class KiemKeController extends HttpServlet {
             }
             String MatHang = req.getParameter("MatHang");
             if(MatHang!=null && !MatHang.equals("")) {
+                kiemKeDAO.KiemKeMatHang(MatHang);
                 resp.setContentType("text/html");
                 resp.setCharacterEncoding("UTF-8");
-                resp.getWriter().write("Đặt mặt hàng: "+MatHang+"vào trạng thái kiểm kê");
+                resp.getWriter().write("Đặt mặt hàng "+MatHang+" vào trạng thái kiểm kê");
                 return;
             }
             String DonNhap = req.getParameter("DonNhap");
             if(DonNhap!=null && !DonNhap.equals("")) {
+                kiemKeDAO.KiemKePhieuNhapHang(DonNhap);
                 resp.setContentType("text/html");
                 resp.setCharacterEncoding("UTF-8");
-                resp.getWriter().write("Đặt đơn nhập: "+DonNhap+" vào trạng thái kiểm kê");
+                resp.getWriter().write("Đặt đơn nhập "+DonNhap+" vào trạng thái kiểm kê");
                 return;
             }
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/KiemKe/kiemke.jsp");

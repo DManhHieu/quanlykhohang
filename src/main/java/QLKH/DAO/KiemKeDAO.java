@@ -55,6 +55,26 @@ public class KiemKeDAO {
             e.printStackTrace();
         }
     }
+    public void KiemKeMatHang(String matHang) {
+        Transaction transaction = null;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
+
+            transaction = session.beginTransaction();
+            TinhTrang tinhTrang = session.get(TinhTrang.class, 2);
+            Query query = session.createQuery("from HangHoa where matHang.MaMatHang=:mamathang and (tinhTrang.MaTinhTrang=1 or tinhTrang.MaTinhTrang=3) ");
+            query.setParameter("mamathang", matHang);
+            List<HangHoa> hangHoas = query.getResultList();
+            for (HangHoa hangHoa : hangHoas) {
+                hangHoa.setTinhTrang(tinhTrang);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 
     public void KiemKePhieuNhapHangs(List<PhieuNhapHang> phieuNhapHangs) {
         Transaction transaction = null;
@@ -103,6 +123,27 @@ public class KiemKeDAO {
         }
     }
 
+    public void KiemKePhieuNhapHang(String phieuNhapHang) {
+        Transaction transaction = null;
+
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
+
+            transaction = session.beginTransaction();
+            TinhTrang tinhTrang = session.get(TinhTrang.class, 2);
+            Query query = session.createQuery("from HangHoa where PhieuNhap.MaPhieu=:maphieu and (tinhTrang.MaTinhTrang=1 or tinhTrang.MaTinhTrang=3) ");
+            query.setParameter("maphieu", phieuNhapHang);
+            List<HangHoa> hangHoas = query.getResultList();
+            for (HangHoa hangHoa : hangHoas) {
+                hangHoa.setTinhTrang(tinhTrang);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
     public void KiemKeToanBo() {
         Transaction transaction = null;
 

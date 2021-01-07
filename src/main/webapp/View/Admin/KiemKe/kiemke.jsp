@@ -46,7 +46,7 @@
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.jsp">Quản lý kho hàng</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">Quản lý kho hàng</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
     </button>
     <!-- Navbar Search-->
@@ -158,7 +158,7 @@
                             <div style="width: 50%;margin-top: 15%; text-align: center; float: left"><input
                                     class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" onclick="KiemKeToanBo()" value="Có"></div>
                             <div style="width: 50%;margin-top: 15%; text-align: center; float: right"><input
-                                    class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" value="Bỏ qua"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" onclick="Out()" value="Bỏ qua"></div>
                         </div>
                     </div>
                     <div class="modal" id="kiemke-modal3">
@@ -170,7 +170,7 @@
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: left"><input
                                     class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" onclick="KiemKeMatHang()" value="Xác nhận"></div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: right"><input
-                                    class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" value="Bỏ qua"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" onclick="Out()" value="Bỏ qua"></div>
                         </div>
                     </div>
                     <div class="modal" id="kiemke-modal4">
@@ -182,7 +182,7 @@
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: left"><input
                                     class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" onclick="KiemKeDonNhap()" value="Xác nhận"></div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: right"><input
-                                    class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" value="Bỏ qua"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" onclick="Out()" value="Bỏ qua"></div>
                         </div>
                     </div>
                 </div>
@@ -194,28 +194,41 @@
     function KiemKeToanBo(){
         var xml = new XMLHttpRequest();
         xml.onreadystatechange = function () {
-            console.log(this.responseText)
+            if (this.readyState == 4 && this.status == 200) {
+                alert(this.responseText);
+            }
         }
         xml.open("GET", "${pageContext.request.contextPath}/KiemKe?KiemKeToanBo=true", true);
         xml.send();
+        document.location.href="#";
     }
     function KiemKeMatHang(){
-        var MatHang = parseInt(document.getElementById("MatHang").value);
+        var MatHang = document.getElementById('MatHang').value;
         var xml = new XMLHttpRequest();
         xml.onreadystatechange = function () {
-            console.log(this.responseText)
+            if (this.readyState == 4 && this.status == 200) {
+                alert(this.responseText);
+            }
         }
         xml.open("GET", "${pageContext.request.contextPath}/KiemKe?MatHang="+MatHang, true);
         xml.send();
+        document.location.href="#";
     }
     function KiemKeDonNhap(){
-        var DonNhap = parseInt(document.getElementById("DonNhap").value);
+        var DonNhap = document.getElementById('DonNhap').value;
         var xml = new XMLHttpRequest();
         xml.onreadystatechange = function () {
-            console.log(this.responseText)
+            if (this.readyState == 4 && this.status == 200) {
+                alert(this.responseText)
+            }
         }
         xml.open("GET", "${pageContext.request.contextPath}/KiemKe?DonNhap="+DonNhap, true);
         xml.send();
+        document.location.href="#";
+
+    }
+    function Out(){
+        document.location.href="#";
     }
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
