@@ -117,6 +117,7 @@ public class PhieuNhapHangMoiController extends HttpServlet {
                 NhanVien nhanVien = (NhanVien) session.getAttribute("account");
                 phieuNhapHang.setNguoiNhap(nhanVien);
                 phieuNhapHangDao.AddPhieuNhapHang(phieuNhapHang);
+                session.removeAttribute("phieunhap");
                 resp.sendRedirect(req.getContextPath() + "/APhieuNhapHang/ChiTiet?MaPhieu=" + phieuNhapHang.getMaPhieu());
                 return;
             }
