@@ -52,7 +52,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Hàng tồn kho
                     </a>
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/KiemKe">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Kiểm kê
                     </a>

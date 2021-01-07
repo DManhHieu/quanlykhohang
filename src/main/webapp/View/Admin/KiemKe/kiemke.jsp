@@ -156,7 +156,7 @@
                         <div style="width: 30%; height: 30%; position: relative; padding: 16px; background-color: #fff;">
                             <div style="text-align: center; margin-top: 5%">Bạn muốn kiểm kê toàn bộ?</div>
                             <div style="width: 50%;margin-top: 15%; text-align: center; float: left"><input
-                                    class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" value="Có"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" onclick="KiemKeToanBo()" value="Có"></div>
                             <div style="width: 50%;margin-top: 15%; text-align: center; float: right"><input
                                     class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" value="Bỏ qua"></div>
                         </div>
@@ -165,10 +165,10 @@
                         <a style="position: absolute; width: 100%; height: 100%; cursor: default;" href="#"></a>
                         <div style="width: 35%; position: relative; padding: 16px; background-color: #fff;">
                             <div style="margin-top: 2%">
-                                Mã hàng hóa:<input style="width: 75%" type="text">
+                                Mã hàng hóa:<input style="width: 75%" type="text" id="MatHang">
                             </div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: left"><input
-                                    class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" value="Xác nhận"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" onclick="KiemKeMatHang()" value="Xác nhận"></div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: right"><input
                                     class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" value="Bỏ qua"></div>
                         </div>
@@ -177,10 +177,10 @@
                         <a style="position: absolute; width: 100%; height: 100%; cursor: default;" href="#"></a>
                         <div style="width: 35%; position: relative; padding: 16px; background-color: #fff;">
                             <div style="margin-top: 2%">
-                                Mã đơn nhập:<input style="width: 75%" type="text">
+                                Mã đơn nhập:<input style="width: 75%" type="text" id="DonNhap">
                             </div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: left"><input
-                                    class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" value="Xác nhận"></div>
+                                    class="btn" style="margin: auto; border: none; background-color: #007bff; color: white" type="submit" onclick="KiemKeDonNhap()" value="Xác nhận"></div>
                             <div style="width: 50%;margin-top: 5%; text-align: center; float: right"><input
                                     class="btn" style="margin: auto; border: none; background-color: whitesmoke; color: black" type="submit" value="Bỏ qua"></div>
                         </div>
@@ -190,6 +190,34 @@
         </main>
     </div>
 </div>
+<script>
+    function KiemKeToanBo(){
+        var xml = new XMLHttpRequest();
+        xml.onreadystatechange = function () {
+            console.log(this.responseText)
+        }
+        xml.open("GET", "${pageContext.request.contextPath}/KiemKe?KiemKeToanBo=true", true);
+        xml.send();
+    }
+    function KiemKeMatHang(){
+        var MatHang = parseInt(document.getElementById("MatHang").value);
+        var xml = new XMLHttpRequest();
+        xml.onreadystatechange = function () {
+            console.log(this.responseText)
+        }
+        xml.open("GET", "${pageContext.request.contextPath}/KiemKe?MatHang="+MatHang, true);
+        xml.send();
+    }
+    function KiemKeDonNhap(){
+        var DonNhap = parseInt(document.getElementById("DonNhap").value);
+        var xml = new XMLHttpRequest();
+        xml.onreadystatechange = function () {
+            console.log(this.responseText)
+        }
+        xml.open("GET", "${pageContext.request.contextPath}/KiemKe?DonNhap="+DonNhap, true);
+        xml.send();
+    }
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>

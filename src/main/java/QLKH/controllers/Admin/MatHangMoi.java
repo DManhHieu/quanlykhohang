@@ -53,6 +53,7 @@ public class MatHangMoi extends HttpServlet {
             NhanVien nhanVien = (NhanVien) session.getAttribute("account");
             matHang.setNguoiNhap(nhanVien);
             matHangDAO.AddMatHang(matHang);
+            session.removeAttribute("mathang");
             req.setAttribute("mathang", matHang);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/MatHang/MatHangChiTiet.jsp");
             dispatcher.forward(req, resp);
