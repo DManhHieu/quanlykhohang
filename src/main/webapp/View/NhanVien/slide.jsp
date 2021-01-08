@@ -20,8 +20,8 @@
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading"></div>
                     <a class="nav-link" href="index.jsp">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Trang chủ
+                        <div class="sb-nav-link-icon"><i class="fas fa-home"></i>
+                        </div> Trang chủ
                     </a>
                     <div class="sb-sidenav-menu-heading">Nhân viên</div>
 
