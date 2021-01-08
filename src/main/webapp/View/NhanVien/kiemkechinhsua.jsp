@@ -62,18 +62,18 @@
                                             <select size="1" name="tinhtrang" class="form-control">
                                                 <option value="0" ${hanghoa.getTinhTrang().getMaTinhTrang() == 0 ? "selected" : ""}>Hỏng</option>
                                                 <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 1 ? "selected" : ""}>Tốt</option>
-                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 2 ? "selected" : ""}>Cần kiểm tra</option>
-                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 3 ? "selected" : ""}>Trung bình</option>
-                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 4 ? "selected" : ""}>Hỏng, sau khi kiểm tra</option>
-                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 5 ? "selected" : ""}>Đã lấy</option>
-                                                <option value="1" ${hanghoa.getTinhTrang().getMaTinhTrang() == 6 ? "selected" : ""}>Đã xuất hàng</option>
+                                                <option value="2" ${hanghoa.getTinhTrang().getMaTinhTrang() == 2 ? "selected" : ""}>Cần kiểm tra</option>
+                                                <option value="3" ${hanghoa.getTinhTrang().getMaTinhTrang() == 3 ? "selected" : ""}>Trung bình</option>
+                                                <option value="4" ${hanghoa.getTinhTrang().getMaTinhTrang() == 4 ? "selected" : ""}>Hỏng, sau khi kiểm tra</option>
+                                                <option value="5" ${hanghoa.getTinhTrang().getMaTinhTrang() == 5 ? "selected" : ""}>Đã lấy</option>
+                                                <option value="6" ${hanghoa.getTinhTrang().getMaTinhTrang() == 6 ? "selected" : ""}>Đã xuất hàng</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-100">
                                     <button type="submit" class="btn btn-primary float-right" style="margin-right:10px;margin-left: 13px;" value="capnhat" name="submit">Cập nhật</button>
-                                    <button type="reset" class="btn btn-primary float-right" style="margin-left:10px" name="submit" value="huy">Hủy</button>
+                                    <button type="reset" class="btn btn-primary float-right" style="margin-left:10px" name="submit" value="huy" onclick="thongbaohuybo()">Hủy</button>
                                 </div>
                             </form>
                         </div>
@@ -83,6 +83,11 @@
         </main>
     </div>
 </div>
+<script>
+    function thongbaohuybo(){
+        alert("Hủy bỏ cập nhật");
+    }
+</script>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>

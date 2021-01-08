@@ -35,7 +35,7 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Thông tin cá nhân</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Thông tin cá nhân</li>
                 </ol>
                 <div class="row">

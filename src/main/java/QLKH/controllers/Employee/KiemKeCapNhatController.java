@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 @WebServlet(name = "KiemKeCapNhatController", urlPatterns = {"/kiemke_capnhat"})
@@ -39,6 +40,10 @@ public class KiemKeCapNhatController extends HttpServlet {
                 hangHoa.setNhanVienKiemKe(nhanVienkiemke);
                 String vitri = request.getParameter("vitri");
                 hangHoa.setViTri(vitri);
+                Calendar calendar = Calendar.getInstance();
+                java.util.Date currentDate = calendar.getTime();
+                java.sql.Date date = new java.sql.Date(currentDate.getTime());
+                hangHoa.setNgay_KiemKe(date);
                 hangHoaDAO.updateHangHoa(hangHoa);
             }
         }

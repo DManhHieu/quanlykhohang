@@ -46,27 +46,27 @@
 													<div class="row">
 														<div class="col-md-6">
 															<div class="form-group">
-																<label class="bmd-label-floating">Mã đơn hàng</label>
+																<label class="bmd-label-floating"><b>Mã đơn hàng</b></label>
 																<input type="text" value="<c:out value="${phieunhaphang.getMaPhieu()}" />" class="form-control">
 															</div>
 														</div>
 														<div class="col-md-6">
 															<div class="form-group">
-																<label class="bmd-label-floating">Người tạo</label> <input
-																	type="text" value="<c:out value="${phieunhaphang.getNguoiNhap().getTenNhanVien()}" />" class="form-control">
+																<label class="bmd-label-floating"><b>Người tạo</b></label> <input
+																	type="text" value="<c:out value="${phieunhaphang.getNguoiNhap().getTenNhanVien()}"/>" class="form-control">
 															</div>
 														</div>
 													</div>
 													<div class="row">
 														<div class="col-md-6">
 															<div class="form-group">
-																<label class="bmd-label-floating">Nhập từ</label> <input
+																<label class="bmd-label-floating"><b>Nhập từ</b></label> <input
 																	type="text" value="<c:out value="${phieunhaphang.getNhapTu()}" />"  class="form-control">
 															</div>
 														</div>
 														<div class="col-md-6">
 															<div class="form-group">
-																<label class="bmd-label-floating">Ngày tạo</label> <input
+																<label class="bmd-label-floating"><b>Ngày tạo</b></label><input
 																	type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value = "${phieunhaphang.getNgayNhap()}" />" class="form-control">
 															</div>
 														</div>
@@ -74,7 +74,7 @@
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
-														<label class="bmd-label-floating">Mô tả </label>
+														<label class="bmd-label-floating"><b>Mô tả</b></label>
 													</div>
 													<textarea rows="6">
 														${phieunhaphang.getMoTa()}
@@ -118,13 +118,18 @@
 						<div class="card">
 							<div class="card-body">
 								<form action="${pageContext.request.contextPath}/PhieuNhapHang/ChiTiet/NhapHangHoa" method="post">
+									<div class="card-header">
+										<i class="fa fa-plus" aria-hidden="true"></i> Thêm hàng hóa <br>
+									</div>
+									<hr />
 									<div class="row">
-										<div class="col-md-2">
+										<div class="col-md-4">
 											<div class="form-group">
-												<label class="bmd-label-floating">Mã mặt hàng</label>
+												<label class="bmd-label-floating"><b>Mã mặt hàng</b></label>
 												<%
+													String thongbao=(String) session.getAttribute("thongbao");
 													String mmh=request.getParameter("MaMatHang");
-													if(mmh == null) {
+													if(thongbao.equals("themthanhcong") || mmh == null){
 														mmh="";
 													}
 													String tbmamathang=(String) request.getAttribute("mmhkhongtontai");
@@ -135,12 +140,12 @@
 												<div style="color: red ; font-size: 80%" class="font-weight-light my-lg-2"><%=tbmamathang%></div>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<div class="form-group">
-												<label class="bmd-label-floating">Vị trí</label>
+												<label class="bmd-label-floating"><b>Vị trí</b></label>
 												<%
 													String vitricu=request.getParameter("ViTri");
-													if(vitricu == null) {
+													if(thongbao.equals("themthanhcong") || vitricu == null) {
 														vitricu="";
 													}
 													String tbvitri=(String) request.getAttribute("tbvitri");
@@ -151,39 +156,58 @@
 												<div style="color: red ; font-size: 80%" class="font-weight-light my-lg-2"><%=tbvitri%></div>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<div class="form-group">
-												<label class="bmd-label-floating">Ngày sản xuất</label> <input
-													type="date" class="form-control" name="NgaySanXuat">
+												<label class="bmd-label-floating"><b>Ngày sản xuất</b></label>
+												<%
+													String NgaySanXuatstr = request.getParameter("NgaySanXuat");
+													if(thongbao.equals("themthanhcong")) {
+														NgaySanXuatstr=null;
+													}
+													String tbngaysanxuat=(String) request.getAttribute("tbngaysanxuat");
+													if(tbngaysanxuat == null)
+														tbngaysanxuat="";
+												%>
+												<input type="date" class="form-control" name="NgaySanXuat" value="<%=NgaySanXuatstr%>">
+												<div style="color: red ; font-size: 80%" class="font-weight-light my-lg-2"><%=tbngaysanxuat%></div>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<%--<div class="col-md-3">
 											<div class="form-group">
-												<label class="bmd-label-floating">Ngày nhập kho</label> <input
-													type="date" class="form-control" name="NgayNhapKho">
+												<label class="bmd-label-floating">Ngày nhập kho</label>
+												<%
+													String NgayNhapKhostr = request.getParameter("NgayNhapKho");
+													if(thongbao.equals("themthanhcong")) {
+														NgayNhapKhostr=null;
+													}
+													String tbngaynhapkho=(String) request.getAttribute("tbngaynhapkho");
+													if(tbngaynhapkho == null)
+														tbngaynhapkho="";
+												%>
+												<input type="date" class="form-control" name="NgayNhapKho" value="<%=NgayNhapKhostr%>">
+												<div style="color: red ; font-size: 80%" class="font-weight-light my-lg-2"><%=tbngaynhapkho%></div>
 											</div>
-										</div>
+										</div>--%>
 									</div>
 									<div class="row">
-										<div class="col-md-2">
+										<div class="col-md-4">
 											<div class="form-group">
-												<label class="bmd-label-floating">Mã hàng hóa</label>
+												<label class="bmd-label-floating"><b>Mã hàng hóa</b></label>
 												<%
 													String mhh=request.getParameter("MaHangHoa");
-													if(mhh == null) {
+													if(thongbao.equals("themthanhcong") || mhh == null) {
 														mhh="";
 													}
 													String tbmahanghoa=(String) request.getAttribute("hhtontai");
 													if(tbmahanghoa == null)
 														tbmahanghoa="";
-													System.out.print(tbmahanghoa);
 												%>
 												<input type="text" class="form-control" name="MaHangHoa" value="<%=mhh%>">
 												<div style="color: red ; font-size: 80%" class="font-weight-light my-lg-2"><%=tbmahanghoa%></div>
 											</div>
 										</div>
-										<div class="col-md-3">
-											<label class="bmd-label-floating">Tình trạng</label>
+										<div class="col-md-4">
+											<label class="bmd-label-floating"><b>Tình trạng</b></label>
 											<select class="form-control" id="exampleFormControlSelect1" name="TinhTrang">
 												<option value="0" selected >Hỏng</option>
 												<option value="2">Cần kiểm tra</option>
@@ -193,13 +217,23 @@
 												<option value="6">Đã xuất hàng</option>
 											</select>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<div class="form-group">
-												<label class="bmd-label-floating">Hạn sử dụng</label> <input
-													type="date" class="form-control" name="HanSuDung">
+												<label class="bmd-label-floating"><b>Hạn sử dụng</b></label>
+												<%
+													String HanSuDungstr = request.getParameter("HanSuDung");
+													if(thongbao.equals("themthanhcong")) {
+														HanSuDungstr=null;
+													}
+													String tbhansudung=(String) request.getAttribute("tbhansudung");
+													if(tbhansudung == null)
+														tbhansudung="";
+												%>
+												<input type="date" class="form-control" name="HanSuDung" value="<%=HanSuDungstr%>">
+												<div style="color: red ; font-size: 80%" class="font-weight-light my-lg-2"><%=tbhansudung%></div>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<div class="form-group">
 											</div>
 										</div>

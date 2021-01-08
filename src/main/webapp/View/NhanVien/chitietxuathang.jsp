@@ -58,10 +58,16 @@
 														</div>
 													</div>
 													<div class="row">
-														<div class="col-md-6">
+												<%--		<div class="col-md-6">
 															<div class="form-group">
 																<label class="bmd-label-floating">Tìm kiếm</label> <input
 																	type="text" class="form-control">
+															</div>
+														</div>--%>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="bmd-label-floating">Bên nhận</label>
+																<input type="text" value="<c:out value="${phieuxuathang.getBenNhan()}" />" class="form-control">
 															</div>
 														</div>
 														<div class="col-md-6">
@@ -109,14 +115,14 @@
 										<td>${hangxuat.getViTri()}</td>
 										<form action="${pageContext.request.contextPath}/View/NhanVien/PhieuXuatCapNhat" method="post">
 											<td>
-												<select size="1" name="tinhtrang" id="tinhtrang" style="width: 180px; margin-right: 0px; margin-left: 0px">
+												<select size="1" name="tinhtrang" id="tinhtrang" style="width: 200px; margin-right: 0px; margin-left: 0px">
 													<option value ="0"  ${hangxuat.getTinhTrang().getMaTinhTrang() == 0 ? "selected" : ""}>Hỏng</option>
 													<option value ="1"  ${hangxuat.getTinhTrang().getMaTinhTrang() == 1 ? "selected" : ""}>Tốt</option>
 													<option value ="2"  ${hangxuat.getTinhTrang().getMaTinhTrang() == 2 ? "selected" : ""}>Cần kiểm tra</option>
 													<option value ="3"  ${hangxuat.getTinhTrang().getMaTinhTrang() == 3 ? "selected" : ""}>Trung bình</option>
 													<option value ="4"  ${hangxuat.getTinhTrang().getMaTinhTrang() == 4 ? "selected" : ""}>Hỏng, sau khi kiểm tra</option>
 													<option value ="5"  ${hangxuat.getTinhTrang().getMaTinhTrang() == 5 ? "selected" : ""}>Đã lấy</option>
-													<option value ="6"  ${hangxuat.getTinhTrang().getMaTinhTrang() == 1 ? "selected" : ""}>Đã xuất hàng</option>
+													<option value ="6"  ${hangxuat.getTinhTrang().getMaTinhTrang() == 6 ? "selected" : ""}>Đã xuất hàng</option>
 												</select>
 											</td>
 											<td width="200px">
