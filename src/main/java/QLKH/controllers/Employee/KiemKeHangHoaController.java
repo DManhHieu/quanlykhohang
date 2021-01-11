@@ -15,7 +15,6 @@ import java.util.List;
 @WebServlet(name = "KiemKeHangHoaController", urlPatterns = {"/KiemKeNV"})
 public class KiemKeHangHoaController extends HttpServlet {
     HangHoaDAO hangHoaDAO = new HangHoaDAO();
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");

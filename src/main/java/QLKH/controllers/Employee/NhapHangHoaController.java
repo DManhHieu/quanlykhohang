@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Calendar;
 
 @WebServlet("/PhieuNhapHang/ChiTiet/NhapHangHoa")
 public class NhapHangHoaController extends HttpServlet {
@@ -33,12 +34,18 @@ public class NhapHangHoaController extends HttpServlet {
             int loi=0;
             HangHoa hangHoa = new HangHoa();
             HangHoa hangHoakt;
-            String MP_NhapHang = request.getParameter("MP_NhapHang");
+            String MP_NhapHang=(String) session.getAttribute("MP_NhapHang");
+/*            String MP_NhapHang =(String) request.getAttribute("MP_NhapHang");*/
             PhieuNhapHang phieuNhapHang = phieuNhapHangDao.getPhieuHangNhap(MP_NhapHang);
             hangHoa.setPhieuNhap(phieuNhapHang);
-            String MaMatHang = request.getParameter("MaMatHang");
+            Calendar calendar = Calendar.getInstance();
+            java.util.Date currentDate = calendar.getTime();
+            java.sql.Date date = new java.sql.Date(currentDate.getTime());
+            hangHoa.setNgayNhapKho(date);
+            String MaMatHang=(String) session.getAttribute("MaMatHang");
             MatHang matHang = matHangDAO.getMatHang(MaMatHang);
             if (MaMatHang.equals("")){
+                session.setAttribute("thongbao","");
                 request.setAttribute("mmhkhongtontai", "Yêu cầu nhập mã mặt hàng");
                 loi++;
             } else if(matHang == null){
@@ -50,10 +57,12 @@ public class NhapHangHoaController extends HttpServlet {
             String MaHangHoa = request.getParameter("MaHangHoa");
             hangHoakt=hangHoaDAO.getHangHoa(MaHangHoa);
             if (MaHangHoa.equals("")) {
+                session.setAttribute("thongbao","");
                 request.setAttribute("hhtontai", "Yêu cầu nhập mã hàng hóa");
                 loi++;
             }
             else if(hangHoakt != null){
+                session.setAttribute("thongbao","");
                 request.setAttribute("hhtontai", "Mã hàng hóa đã tồn tại");
                 loi++;
             } else {
@@ -61,6 +70,7 @@ public class NhapHangHoaController extends HttpServlet {
             }
             String ViTri = request.getParameter("ViTri");
             if(ViTri.equals("")) {
+                session.setAttribute("thongbao","");
                 request.setAttribute("tbvitri", "Yêu cầu nhập vị trí");
                 loi++;
             } else {
@@ -74,24 +84,33 @@ public class NhapHangHoaController extends HttpServlet {
             try {
                 String NgaySanXuatstr = request.getParameter("NgaySanXuat");
                 String HanSuDungstr = request.getParameter("HanSuDung");
-                String NgayNhapKhostr = request.getParameter("NgayNhapKho");
-                if (NgaySanXuatstr != null && HanSuDungstr != null && NgayNhapKhostr != null) {
+                if(NgaySanXuatstr.equals("")){
+                    loi++;
+                    session.setAttribute("thongbao","");
+                    request.setAttribute("tbngaysanxuat", "Yêu cầu nhập ngày sản xuất");
+                }
+                if(HanSuDungstr.equals("")){
+                    loi++;
+                    session.setAttribute("thongbao","");
+                    request.setAttribute("tbhansudung", "Yêu cầu nhập hạn sử dụng");
+                }
+                if (!NgaySanXuatstr.equals("") && !HanSuDungstr.equals("")) {
                     Date NgaySanXuat = Date.valueOf(NgaySanXuatstr);
                     Date HanSuDung = Date.valueOf(HanSuDungstr);
-                    Date NgayNhapkho = Date.valueOf(NgayNhapKhostr);
                     hangHoa.setNgaySanXuat(NgaySanXuat);
                     hangHoa.setHanSuDung(HanSuDung);
-                    hangHoa.setNgayNhapKho(NgayNhapkho);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
             if(loi == 0){
+                session.setAttribute("thongbao","themthanhcong");
                 hangHoaDAO.AddHangHoa(hangHoa);
             }
+            request.setCharacterEncoding("utf-8");
             PhieuNhapHang existingPhieuNhapHang = phieuNhapHangDao.getPhieuHangNhap(MP_NhapHang);
             request.setAttribute("phieunhaphang", existingPhieuNhapHang);
-            String url = "/View/NhanVien/chitietnhaphang.jsp";
+            String url = "/View/NhanVien/themhanghoa.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
         }
