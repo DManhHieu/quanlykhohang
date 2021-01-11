@@ -1,6 +1,7 @@
 package QLKH.DAO;
 
 import QLKH.models.HangHoa;
+import QLKH.models.MatHang;
 import QLKH.until.HibernaterUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,11 +15,65 @@ public class HangHoaDAO {
         Transaction transaction = null;
         List<HangHoa> hangHoas = null;
         try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
-
             transaction = session.beginTransaction();
             hangHoas = session.createQuery("from HangHoa").getResultList();
             transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return hangHoas;
+    }
+    public List<HangHoa> getHangHoa_thh(String TenMatHang){
+        Transaction transaction = null;
+        List<HangHoa> hangHoas = null;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("from HangHoa where matHang.TenMatHang= :TenMatHang");
+            query.setParameter("TenMatHang",TenMatHang);
+            List queryList = query.list();
+            hangHoas=queryList;
+            transaction.commit();
+        }  catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return hangHoas;
+    }
+    public List<HangHoa> getHangHoa_vt(String Vitri){
+        Transaction transaction = null;
+        List<HangHoa> hangHoas = null;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("from HangHoa where ViTri= :Vitri");
+            query.setParameter("Vitri",Vitri);
+            List queryList = query.list();
+            hangHoas=queryList;
+            transaction.commit();
+        }  catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return hangHoas;
+    }
+
+    public List<HangHoa> getHangHoa_tt(String TinhTrang){
+        Transaction transaction = null;
+        List<HangHoa> hangHoas = null;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("from HangHoa where tinhTrang.TenTinhTrang= :TinhTrang");
+            query.setParameter("TinhTrang",TinhTrang);
+            List queryList = query.list();
+            hangHoas=queryList;
+            transaction.commit();
+        }  catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
@@ -48,7 +103,6 @@ public class HangHoaDAO {
         HangHoa hangHoa = null;
         try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-
             Query query = session.createQuery("from HangHoa where MaHangHoa= :MaHangHoa AND( tinhTrang.MaTinhTrang=1 or tinhTrang.MaTinhTrang=2 or tinhTrang.MaTinhTrang=3)" +
                     "AND PhieuXuat=null");
             query.setParameter("MaHangHoa", MaHangHoa);

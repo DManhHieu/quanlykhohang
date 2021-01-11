@@ -107,11 +107,12 @@
 										<td>${hangnhap.getHangNhapId().getMaHangNhap()}</td>
 										<td>${hangnhap.getMatHang().getTenMatHang()}</td>
 										<td>${hangnhap.getSoLuong()}</td>
-										<td>
+										<td width="150px">
 											<form action="${pageContext.request.contextPath}/View/NhanVien/ChiTiet" method="post">
 												<input type="hidden" value="${phieunhaphang.getMaPhieu()}" name="MP_NhapHang">
 												<input type="hidden" value="${hangnhap.getHangNhapId().getMaHangNhap()}" name="MaMatHang">
-												<button type="submit">Nhập hàng hóa</button>
+												<button type="submit" style="border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Nhập hàng hóa</button>
+												<%--<button type="submit">Nhập hàng hóa</button>--%>
 											</form>
 										</td>
 									</tr>

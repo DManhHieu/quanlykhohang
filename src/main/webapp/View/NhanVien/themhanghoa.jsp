@@ -151,7 +151,7 @@
 </div>
 <script>
     function thongbaohuybo(){
-        alert("Không thêm hàng hóa");
+        alert("Hủy bỏ cập nhật !");
     }
 </script>
 </body>

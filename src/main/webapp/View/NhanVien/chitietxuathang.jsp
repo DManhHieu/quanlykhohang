@@ -128,8 +128,11 @@
 											<td width="200px">
 												<input type="hidden" name="mahanghoa" value="${hangxuat.getMaHangHoa()}">
 												<input type="hidden" name="maphieuxuat" value="${phieuxuathang.getMaPhieu()}">
-												<input type="submit" value="Cập nhật" style="width: 80px">
-												<input type="reset" value="Hủy bỏ" style="width: 80px" onclick="thongbaohuybo()">
+												<button type="submit" style="width: 80px;margin-right: 10px;border-radius: 5px; border-color: #007bff; background-color: #007bff; color: #ffffff">Cập nhật</button>
+												<button type="reset" style="width: 80px;border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white" onclick="thongbaohuybo()">Hủy bỏ</button>
+
+											<%--							<input type="submit" value="Cập nhật" style="width: 80px">--%>
+												<%--<input type="reset" value="Hủy bỏ" style="width: 80px" onclick="thongbaohuybo()">--%>
 											</td>
 										</form>
 									</tr>

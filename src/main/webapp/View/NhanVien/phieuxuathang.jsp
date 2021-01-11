@@ -53,8 +53,8 @@
                                         <td><fmt:formatDate pattern="dd/MM/yyyy"  value = "${phieuxuat.getNgayXuat_DuKien()}"/></td>
                                         <td>${phieuxuat.getNguoiXuat().getTenNhanVien()}</td>
                                         <td>${phieuxuat.getBenNhan()}</td>
-                                        <td>
-                                            <a href="${pageContext.request.contextPath}/View/NhanVien/PhieuXuatChiTiet?maphieu=<c:out value='${phieuxuat.getMaPhieu()}'/>">Chi tiết</a>
+                                        <td width="110px">
+                                            <a href="${pageContext.request.contextPath}/View/NhanVien/PhieuXuatChiTiet?maphieu=<c:out value='${phieuxuat.getMaPhieu()}'/>"><button type="button" style="width: 90px;border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Chi tiết</button></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

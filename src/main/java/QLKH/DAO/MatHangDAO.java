@@ -1,8 +1,10 @@
 package QLKH.DAO;
 
+import QLKH.models.HangHoa;
 import QLKH.models.MatHang;
 import QLKH.models.NhanVien;
 import QLKH.until.HibernaterUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -24,7 +26,25 @@ public class MatHangDAO {
         }
         return matHangs;
     }
-
+//    public List<HangHoa> getHangHoa_thh(String TenMatHang){
+//        Transaction transaction = null;
+//        List<HangHoa> hangHoas = null;
+//        MatHang matHang = null;
+//        try (Session session = HibernaterUtil.getSessionFactory().openSession()){
+//            transaction = session.getTransaction();
+//            Query query= session.createQuery("from MatHang WHERE TenMatHang= :TenMatHang");
+//            query.setParameter("TenMatHang", TenMatHang);
+//            List queryList = query.list();
+//            if (queryList != null && !queryList.isEmpty()) {
+//                matHang = (MatHang) queryList.get(0);
+//            }
+//            hangHoas=matHang.getHangHoas();
+//            transaction.commit();
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return hangHoas;
+//    }
     public MatHang getMatHang(String MaMatHang) {
         Transaction transaction = null;
         MatHang matHang = null;
@@ -36,7 +56,6 @@ public class MatHangDAO {
         }
         return matHang;
     }
-
     public void UpdateMatHang(MatHang matHang) {
         Transaction transaction = null;
         try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
