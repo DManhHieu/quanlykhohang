@@ -42,6 +42,7 @@ public class CapNhatHangHoaController extends HttpServlet {
             String maphieuxuat = request.getParameter("maphieuxuat");
             PhieuXuatHang phieuXuatHang = phieuXuatHangDAO.getPhieuXuatHang(maphieuxuat);
             request.setAttribute("phieuxuathang", phieuXuatHang);
+            request.setAttribute("messenger","Cập nhật thành công");
             String url = "/View/NhanVien/chitietxuathang.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);

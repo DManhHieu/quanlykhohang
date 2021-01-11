@@ -33,6 +33,9 @@
                         Chỉnh sửa hàng hóa
                     </div>
                     <div class="card-body">
+                        <c:if test="${not empty messenger}">
+                            <div class="alert alert-success" role="alert">${messenger}</div>
+                        </c:if>
                         <div>
                             <form action="kiemke_capnhat" method="post">
                                 <div class="row">
@@ -73,7 +76,9 @@
                                 </div>
                                 <div class="w-100">
                                     <button type="submit" class="btn btn-primary float-right" style="width: 90px;margin-right:10px;margin-left: 13px;" value="capnhat" name="submit">Cập nhật</button>
-                                    <button type="reset" class="btn btn-primary float-right" style="width: 90px;margin-left:10px" name="submit" value="huy" onclick="thongbaohuybo()">Hủy</button>
+                                    <a href="${pageContext.request.contextPath}/KiemKeNV?mahanghoa=<c:out value='${hanghoa.getMaHangHoa()}'/>" methods="POST">
+                                        <button type="button" class="btn btn-primary float-right" style="width: 90px;margin-left:10px" name="submit" value="huy" onclick="thongbaohuybo()">Hủy</button>
+                                    </a>
                                 </div>
                             </form>
                         </div>

@@ -20,7 +20,7 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Phiếu kiểm kê hàng hóa</h1>
+                <h1 class="mt-4">Phiếu nhập hàng hóa</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/PhieuNhapHang">Phiếu nhập hàng</a></li>
@@ -34,6 +34,9 @@
                         <i class="fas fa-file-import"></i> Nhập hàng hóa
                     </div>
                     <div class="card-body">
+                        <c:if test="${not empty messenger}">
+                        <div class="alert alert-success" role="alert">${messenger}</div>
+                        </c:if>
                         <div>
                             <form action="${pageContext.request.contextPath}/PhieuNhapHang/ChiTiet/NhapHangHoa" method="post">
                                 <div class="row">

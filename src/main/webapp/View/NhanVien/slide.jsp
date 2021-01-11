@@ -19,7 +19,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading"></div>
-                    <a class="nav-link" href="index.jsp">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">
                         <div class="sb-nav-link-icon"><i class="fas fa-home"></i>
                         </div> Trang chủ
                     </a>

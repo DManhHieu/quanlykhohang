@@ -106,6 +106,7 @@ public class NhapHangHoaController extends HttpServlet {
             if(loi == 0){
                 session.setAttribute("thongbao","themthanhcong");
                 hangHoaDAO.AddHangHoa(hangHoa);
+                request.setAttribute("messenger","Thêm hàng hóa thành công");
             }
             request.setCharacterEncoding("utf-8");
             PhieuNhapHang existingPhieuNhapHang = phieuNhapHangDao.getPhieuHangNhap(MP_NhapHang);

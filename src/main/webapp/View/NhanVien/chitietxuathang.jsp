@@ -58,12 +58,6 @@
 														</div>
 													</div>
 													<div class="row">
-												<%--		<div class="col-md-6">
-															<div class="form-group">
-																<label class="bmd-label-floating">Tìm kiếm</label> <input
-																	type="text" class="form-control">
-															</div>
-														</div>--%>
 														<div class="col-md-6">
 															<div class="form-group">
 																<label class="bmd-label-floating">Bên nhận</label>
@@ -96,6 +90,9 @@
 				</div>
 				<div class="card mb-4">
 					<div class="card-body">
+						<c:if test="${not empty messenger}">
+							<div class="alert alert-success" role="alert">${messenger}</div>
+						</c:if>
 						<div class="table-responsive">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead>
@@ -126,13 +123,11 @@
 												</select>
 											</td>
 											<td width="200px">
-												<input type="hidden" name="mahanghoa" value="${hangxuat.getMaHangHoa()}">
+												<input type="hidden" name="mahanghoa" id="mahanghoa" value="${hangxuat.getMaHangHoa()}">
 												<input type="hidden" name="maphieuxuat" value="${phieuxuathang.getMaPhieu()}">
-												<button type="submit" style="width: 80px;margin-right: 10px;border-radius: 5px; border-color: #007bff; background-color: #007bff; color: #ffffff">Cập nhật</button>
-												<button type="reset" style="width: 80px;border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white" onclick="thongbaohuybo()">Hủy bỏ</button>
-
-											<%--							<input type="submit" value="Cập nhật" style="width: 80px">--%>
-												<%--<input type="reset" value="Hủy bỏ" style="width: 80px" onclick="thongbaohuybo()">--%>
+												<button type="submit" style="width: 80px;margin-right: 10px;border-radius: 5px; border-color: #007bff; background-color: #007bff; color: #ffffff" onclick="thongbaocapnhat()">Cập nhật</button>
+												<a href="${pageContext.request.contextPath}/View/NhanVien/PhieuXuatChiTiet?maphieu=<c:out value='${phieuxuathang.getMaPhieu()}'/>"><button type="button" style="width: 80px;border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Hủy bỏ</button></a>
+<%--												<button type="reset" style="width: 80px;border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white" onclick="thongbaohuybo()">Hủy bỏ</button>--%>
 											</td>
 										</form>
 									</tr>
@@ -146,11 +141,6 @@
 		</main>
 	</div>
 </div>
-<script>
-	function thongbaohuybo(){
-		alert("Hủy bỏ cập nhật");
-	}
-</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="../Static/js/scripts.js"></script>

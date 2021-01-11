@@ -47,9 +47,13 @@ public class KiemKeCapNhatController extends HttpServlet {
                 hangHoaDAO.updateHangHoa(hangHoa);
             }
         }
-        List<HangHoa> hangHoas = hangHoaDAO.getHangHoas();
-        request.setAttribute("listhanghoa", hangHoas);
-        String url = "/View/NhanVien/kiemke.jsp";
+//        List<HangHoa> hangHoas = hangHoaDAO.getHangHoas();
+//        request.setAttribute("listhanghoa", hangHoas);
+        String mahanghoa = request.getParameter("mahanghoa");
+        HangHoa hangHoa = hangHoaDAO.getHangHoa(mahanghoa);
+        request.setAttribute("hanghoa", hangHoa);
+        request.setAttribute("messenger","Cập nhật thành công");
+        String url = "/View/NhanVien/kiemkechinhsua.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

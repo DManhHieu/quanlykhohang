@@ -43,7 +43,7 @@
                                 <div style="margin-bottom: 10px">
                                     <%
                                         String theloai=(String) session.getAttribute("theloaicu");
-                                        if(theloai.equals("mahanghoa") || theloai == null){
+                                        if(theloai.equals("mahanghoa") || theloai.equals("")){
                                     %>
                                     <input name="loai" type="radio" value="mahanghoa" checked="checked"/> Mã hàng hóa &nbsp; &nbsp;
                                     <%
@@ -113,7 +113,7 @@
                                         <td width="130px">
                                             <form action="KiemKeNV" method="post">
                                                 <input type="hidden" value="${hanghoa.getMaHangHoa()}" name="mahanghoa">
-                                                <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Chỉnh sửa</button>
+                                                <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Kiểm kê</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -131,7 +131,7 @@
                                     <td width="130px">
                                         <form action="KiemKeNV" method="post">
                                             <input type="hidden" value="${hanghoasearch.getMaHangHoa()}" name="mahanghoa">
-                                            <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Chỉnh sửa</button>
+                                            <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Kiểm kê</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -155,7 +155,7 @@
                                         <td width="130px">
                                             <form action="KiemKeNV" method="post">
                                                 <input type="hidden" value="${hanghoa.getMaHangHoa()}" name="mahanghoa">
-                                                <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Chỉnh sửa</button>
+                                                <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Kiểm kê</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -180,7 +180,7 @@
                                         <td width="130px">
                                             <form action="KiemKeNV" method="post">
                                                 <input type="hidden" value="${hanghoa.getMaHangHoa()}" name="mahanghoa">
-                                                <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Chỉnh sửa</button>
+                                                <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Kiểm kê</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -204,7 +204,7 @@
                                         <td width="130px">
                                             <form action="KiemKeNV" method="post">
                                                 <input type="hidden" value="${hanghoa.getMaHangHoa()}" name="mahanghoa">
-                                                <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Chỉnh sửa</button>
+                                                <button type="submit" style="width: 90px; border-radius: 5px; border-color: #007bff; background-color: #007bff; color: white">Kiểm kê</button>
                                             </form>
                                         </td>
                                     </tr>
