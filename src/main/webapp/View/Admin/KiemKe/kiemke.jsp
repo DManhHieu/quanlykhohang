@@ -46,7 +46,7 @@
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">Quản lý kho hàng</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/View/Admin/index.jsp">Quản lý kho hàng</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
     </button>
     <!-- Navbar Search-->
@@ -77,7 +77,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading"></div>
-                    <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/View/Admin/index.jsp">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Trang chủ
                     </a>
