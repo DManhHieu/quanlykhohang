@@ -108,11 +108,17 @@ public class PhieuNhapHangMoiController extends HttpServlet {
             }
             String messenger=null;
             phieuNhapHang.setMaPhieu(req.getParameter("MaPhieu"));
-            if(phieuNhapHang.getMaPhieu()==null || phieuNhapHang.getMaPhieu().equals("")){
+            if(messenger==null && ( phieuNhapHang.getMaPhieu()==null || phieuNhapHang.getMaPhieu().equals(""))){
                 messenger="Xin kiểm tra lại";
+            }
+            if(messenger==null){
+                messenger= phieuNhapHangDao.CheckMaPhieu(phieuNhapHang.getMaPhieu());
             }
             phieuNhapHang.setMoTa(req.getParameter("MoTa"));
             phieuNhapHang.setNhapTu(req.getParameter("NhapTu"));
+            if(messenger==null && ( phieuNhapHang.getNhapTu()==null || phieuNhapHang.getNhapTu().equals(""))){
+                messenger="Xin kiểm tra lại";
+            }
             if (phieuNhapHang.getHangNhaps() == null) {
                 phieuNhapHang.setHangNhaps(new ArrayList<HangNhap>());
             }
