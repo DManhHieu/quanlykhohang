@@ -47,6 +47,9 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <c:if test="${not empty messenger}">
+                                                <div class="alert alert-success" role="alert">${messenger}</div>
+                                            </c:if>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="row">
@@ -55,7 +58,7 @@
                                                                 <label class="bmd-label-floating">Mã đơn hàng</label>
                                                                 <input name="MaPhieu"
                                                                        type="text" class="form-control"
-                                                                       value="${sessionScope.phieunhap.getMaPhieu()}">
+                                                                       value="${sessionScope.phieunhap.getMaPhieu()}" checked>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -103,24 +106,28 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${sessionScope.hangnhaps}" var="hangnhap">
+                                    <c:forEach items="${hangnhaps}" var="hangnhap">
                                         <tr>
                                             <td>${hangnhap.getMaMatHang()}</td>
                                             <td>${hangnhap.getTenMatHang()}</td>
                                             <td>${hangnhap.getSoluong()}</td>
                                             <td>${hangnhap.getGiaTri()}</td>
+                                            <td><button type="button" class="btn btn-primary float-right" onclick="DeleteRow()">Xóa</button></td>
                                         </tr>
                                     </c:forEach>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered"  width="100%"
+                                       cellspacing="0">
                                     <tr>
+                                        <td>Mã mặt hàng</td>
                                         <td><input type="text" class="form-control" id="mamathang"></td>
-                                        <td><input type="text" class="form-control"></td>
+                                        <td>Số lượng</td>
                                         <td><input type="text" class="form-control" id="soluong"></td>
-                                        <td><input type="text" class="form-control"></td>
                                         <td>
-                                            <button type="button" style="border-radius: 5px; border: none; background-color: white; color: black" class="btn btn-primary float-right" onclick="AddRow()">Add</button>
+                                            <button type="button" style="border-radius: 5px; border: none; background-color: white; color: black" class="btn btn-primary float-right" onclick="AddRow()">Thêm</button>
                                         </td>
                                     </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -180,11 +187,13 @@
                     cell2.innerHTML = mathang.TenMatHang;
                     cell3.innerHTML = mathang.Soluong;
                     cell4.innerHTML = mathang.GiaTri;
-                    cell5.innerHTML = '<button type="button" onclick="DeleteRow()">-</button>';
-                    table.rows[table.rows.length - 1].cells[0].innerHTML = '<input type="text" class="form-control" id="mamathang">';
+                    cell5.innerHTML = '<button type="button" class="btn btn-primary float-right" onclick="DeleteRow()">Xóa</button>';
+                  /*  table.rows[table.rows.length - 1].cells[0].innerHTML = '<input type="text" class="form-control" id="mamathang">';
                     table.rows[table.rows.length - 1].cells[1].innerHTML = '<input type="text" class="form-control" >';
                     table.rows[table.rows.length - 1].cells[2].innerHTML = '<input type="text" class="form-control" id="soluong">';
-                    table.rows[table.rows.length - 1].cells[3].innerHTML = '<input type="text" class="form-control">';
+                    table.rows[table.rows.length - 1].cells[3].innerHTML = '<input type="text" class="form-control">';*/
+                    document.getElementById("mamathang").value="";
+                    document.getElementById("soluong").value="";
                 }
             }
         }

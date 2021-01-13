@@ -100,9 +100,17 @@ public class PhieuNhapHangMoiController extends HttpServlet {
             PhieuNhapHang phieuNhapHang = (PhieuNhapHang) session.getAttribute("phieunhap");
             if (phieuNhapHang == null) {
                 phieuNhapHang = new PhieuNhapHang();
+                phieuNhapHang.setHangNhaps(new ArrayList<HangNhap>());
+                session.setAttribute("phieunhap", phieuNhapHang);
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/NhapHang/phieunhaphangMoi.jsp");
+                dispatcher.forward(req, resp);
+                return;
             }
-
+            String messenger=null;
             phieuNhapHang.setMaPhieu(req.getParameter("MaPhieu"));
+            if(phieuNhapHang.getMaPhieu()==null || phieuNhapHang.getMaPhieu().equals("")){
+                messenger="Xin kiểm tra lại";
+            }
             phieuNhapHang.setMoTa(req.getParameter("MoTa"));
             phieuNhapHang.setNhapTu(req.getParameter("NhapTu"));
             if (phieuNhapHang.getHangNhaps() == null) {
@@ -110,7 +118,7 @@ public class PhieuNhapHangMoiController extends HttpServlet {
             }
 
             String action = req.getParameter("Submit");
-            if (action != null && action.equals("Create")) {
+            if (action != null && action.equals("Create") && messenger==null) {
                 session.removeAttribute("phieunhap");
                 Calendar calendar = Calendar.getInstance();
                 java.util.Date currentDate = calendar.getTime();
@@ -119,10 +127,12 @@ public class PhieuNhapHangMoiController extends HttpServlet {
                 NhanVien nhanVien = (NhanVien) session.getAttribute("account");
                 phieuNhapHang.setNguoiNhap(nhanVien);
                 phieuNhapHangDao.AddPhieuNhapHang(phieuNhapHang);
-                session.removeAttribute("phieunhap");
                 resp.sendRedirect(req.getContextPath() + "/APhieuNhapHang/ChiTiet?MaPhieu=" + phieuNhapHang.getMaPhieu());
                 return;
             }
+
+
+            req.setAttribute("messenger",messenger);
             session.setAttribute("phieunhap", phieuNhapHang);
             List<MatHangView> matHangViewList = new ArrayList<MatHangView>();
             phieuNhapHang.getHangNhaps().forEach((element) -> {
