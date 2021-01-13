@@ -76,9 +76,7 @@
 													<div class="form-group">
 														<label class="bmd-label-floating"><b>Mô tả</b></label>
 													</div>
-													<textarea rows="6">
-														${phieunhaphang.getMoTa()}
-													</textarea>
+													<textarea rows="6">${phieunhaphang.getMoTa()}</textarea>
 												</div>
 											</div>
 										</div>
