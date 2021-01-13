@@ -111,11 +111,12 @@
                                         <label class="bmd-label-floating"><b>Tình trạng</b></label>
                                         <select class="form-control" id="exampleFormControlSelect1" name="TinhTrang">
                                             <option value="0" selected >Hỏng</option>
-                                            <option value="2">Cần kiểm tra</option>
+                                            <option value="1">Tốt</option>
+<%--                                            <option value="2">Cần kiểm tra</option>--%>
                                             <option value="3">Trung bình</option>
-                                            <option value="4">Hỏng, sau khi kiểm tra</option>
-                                            <option value="5">Đã lấy</option>
-                                            <option value="6">Đã xuất hàng</option>
+<%--                                            <option value="4">Hỏng, sau khi kiểm tra</option>--%>
+<%--                                            <option value="5">Đã lấy</option>--%>
+<%--                                            <option value="6">Đã xuất hàng</option>--%>
                                         </select>
                                     </div>
                                     <div class="col-md-4">
