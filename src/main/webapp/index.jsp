@@ -81,11 +81,11 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand pl-5 pr-5 position-fixed shadow">
     <div class="sb-topnav navbar pl-5 pr-5 w-100">
-        <a style="color: dimgray" class="navbar-brand font-weight-bold float-left" href="index.jsp">Quản lý kho hàng</a>
+        <a style="color: dimgray" class="navbar-brand font-weight-bold float-left" href="${pageContext.request.contextPath}/index.jsp">Quản lý kho hàng</a>
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto ml-md-0 float-right">
             <li class="nav-item dropdown">
-                <a style="color: dimgray" class="nav-link" id="userDropdown" href="View/login.jsp" role="button"
+                <a style="color: dimgray" class="nav-link" id="userDropdown" href="${pageContext.request.contextPath}/Login" role="button"
                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             </li>
         </ul>
