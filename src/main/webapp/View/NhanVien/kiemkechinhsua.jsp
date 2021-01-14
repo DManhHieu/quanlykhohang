@@ -24,13 +24,14 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/NhanVien/index.jsp">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/KiemKeNV">Hàng hóa kiểm kê</a></li>
-                    <li class="breadcrumb-item active">Chỉnh sửa hàng kiểm kê</li>
+                    <li class="breadcrumb-item active">Kiểm kê</li>
                 </ol>
                 <div class="card mb-4">
                 </div>
                 <div class="card mb-4">
                     <div class="card-header">
-                        Chỉnh sửa hàng hóa
+                        <i class="fas fa-clipboard-check"></i>
+                        Kiểm kê hàng hóa
                     </div>
                     <div class="card-body">
                         <c:if test="${not empty messenger}">

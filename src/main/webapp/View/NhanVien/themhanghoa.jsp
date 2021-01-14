@@ -31,7 +31,9 @@
                 </div>
                 <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fas fa-file-import"></i> Nhập hàng hóa
+<%--                        <i class="fas fa-file-import"></i> --%>
+                         <i class="fas fa-arrow-alt-circle-down"></i>
+                        Nhập hàng hóa
                     </div>
                     <div class="card-body">
                         <c:if test="${not empty messenger}">
@@ -111,9 +113,9 @@
                                         <label class="bmd-label-floating"><b>Tình trạng</b></label>
                                         <select class="form-control" id="exampleFormControlSelect1" name="TinhTrang">
                                             <option value="0" selected >Hỏng</option>
+                                            <option value="3">Trung bình</option>
                                             <option value="1">Tốt</option>
 <%--                                            <option value="2">Cần kiểm tra</option>--%>
-                                            <option value="3">Trung bình</option>
 <%--                                            <option value="4">Hỏng, sau khi kiểm tra</option>--%>
 <%--                                            <option value="5">Đã lấy</option>--%>
 <%--                                            <option value="6">Đã xuất hàng</option>--%>

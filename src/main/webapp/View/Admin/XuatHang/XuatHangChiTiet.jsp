@@ -36,8 +36,7 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/View/Admin/index.jsp">Trang
                         chủ</a></li>
-                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/PhieuXuatHang">Hàng tồn
-                        kho</a></li>
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/PhieuXuatHang">Phiếu xuất hàng</a></li>
                     <li class="breadcrumb-item active">Chi tiết</li>
                 </ol>
                 <div class="card mb-4">
