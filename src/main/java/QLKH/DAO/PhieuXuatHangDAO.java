@@ -86,4 +86,20 @@ public class PhieuXuatHangDAO {
             e.printStackTrace();
         }
     }
+
+    public String CheckMaPhieu(String maPhieu) {
+        Transaction transaction = null;
+        String messager=null;
+        PhieuXuatHang phieuXuatHang = null;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
+            transaction = session.getTransaction();
+            phieuXuatHang = session.get(PhieuXuatHang.class, maPhieu);
+            if(phieuXuatHang!=null){
+                messager="Mã phiếu đã tồn tại";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return messager;
+    }
 }

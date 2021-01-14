@@ -1,10 +1,8 @@
 package QLKH.DAO;
 
-import QLKH.models.HangHoa;
 import QLKH.models.MatHang;
 import QLKH.models.NhanVien;
 import QLKH.until.HibernaterUtil;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -84,5 +82,21 @@ public class MatHangDAO {
             }
             e.printStackTrace();
         }
+    }
+
+    public String CheckMaMatHang(String maMatHang) {
+        Transaction transaction = null;
+        String messager=null;
+        MatHang matHang = null;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
+            transaction = session.getTransaction();
+            matHang = session.get(MatHang.class, maMatHang);
+            if(matHang!=null){
+                messager="Mã mặt hàng đã tồn tại";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return messager;
     }
 }

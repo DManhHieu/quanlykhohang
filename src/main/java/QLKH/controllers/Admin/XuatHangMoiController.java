@@ -77,16 +77,15 @@ public class XuatHangMoiController extends HttpServlet {
                 dispatcher.forward(req, resp);
                 return;
             }
-
-            String submit = req.getParameter("submit");
-            if (submit == null) {
-
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang/XuatHangMoi.jsp");
-                dispatcher.forward(req, resp);
-                return;
-            }
+            String messenger=null;
 
             phieuXuatHang.setMaPhieu(req.getParameter("MaPhieu"));
+            if(messenger==null && ( phieuXuatHang.getMaPhieu()==null || phieuXuatHang.getMaPhieu().equals(""))){
+                messenger="Xin kiểm tra lại";
+            }
+            if(messenger==null){
+                messenger= phieuXuatHangDAO.CheckMaPhieu(phieuXuatHang.getMaPhieu());
+            }
             phieuXuatHang.setBenNhan(req.getParameter("BenNhan"));
             if (phieuXuatHang.getHangHoas() == null)
                 phieuXuatHang.setHangHoas(new ArrayList<HangHoa>());
@@ -100,6 +99,16 @@ public class XuatHangMoiController extends HttpServlet {
                 e.printStackTrace();
             }
             phieuXuatHang.setMoTa(req.getParameter("MoTa"));
+
+            String submit = req.getParameter("submit");
+            if (submit == null || messenger!=null) {
+                session.setAttribute("phieuxuathang", phieuXuatHang);
+                req.setAttribute("messenger",messenger);
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang/XuatHangMoi.jsp");
+                dispatcher.forward(req, resp);
+                return;
+            }
+
             NhanVien nhanVien = (NhanVien) session.getAttribute("account");
 
             phieuXuatHang.setNguoiXuat(nhanVien);

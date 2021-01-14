@@ -47,6 +47,9 @@
                                 <form method="post" action="${pageContext.request.contextPath}/MatHang/Moi">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <c:if test="${not empty messenger}">
+                                                <div class="alert alert-success" role="alert">${messenger}</div>
+                                            </c:if>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="row">
@@ -97,7 +100,7 @@
                                                         <label class="bmd-label-floating">Mô tả</label>
                                                     </div>
                                                     <textarea rows="6" name="MoTa">
-                                                        ${matHang.getMoTa()}
+                                                      <c:out value="${mathang.getMoTa()}"/>
                                                     </textarea>
                                                 </div>
                                             </div>

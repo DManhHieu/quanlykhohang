@@ -46,6 +46,9 @@
                         <form action="${pageContext.request.contextPath}/PhieuXuatHang/PhieuMoi" method="post">
                             <div class="row">
                                 <div class="col-md-12">
+                                    <c:if test="${not empty messenger}">
+                                        <div class="alert alert-success" role="alert">${messenger}</div>
+                                    </c:if>
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">

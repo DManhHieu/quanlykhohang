@@ -47,11 +47,26 @@ public class MatHangMoi extends HttpServlet {
                 dispatcher.forward(req, resp);
                 return;
             }
+            String messenger=null;
             matHang.setMaMatHang(req.getParameter("MaMatHang"));
             matHang.setTenMatHang(req.getParameter("TenMatHang"));
             matHang.setGiaTri(Double.parseDouble(req.getParameter("GiaTri")));
             matHang.setNhaSanXuat(req.getParameter("NhaSanXuat"));
             matHang.setMoTa(req.getParameter("MoTa"));
+            if(messenger==null && ( matHang.getMaMatHang()==null || matHang.getMaMatHang().equals(""))){
+                messenger="Xin kiểm tra lại";
+            }
+            if(messenger==null){
+                messenger= matHangDAO.CheckMaMatHang(matHang.getMaMatHang());
+            }
+            if (messenger != null) {
+                req.setAttribute("messenger",messenger);
+                session.setAttribute("mathang", matHang);
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/MatHang/MatHangMoi.jsp");
+                dispatcher.forward(req, resp);
+                return;
+            }
+
             NhanVien nhanVien = (NhanVien) session.getAttribute("account");
             matHang.setNguoiNhap(nhanVien);
             matHangDAO.AddMatHang(matHang);
