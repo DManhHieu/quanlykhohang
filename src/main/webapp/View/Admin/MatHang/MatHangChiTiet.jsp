@@ -96,8 +96,8 @@
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Mô tả</label>
                                                     </div>
-                                                    <textarea rows="6" name="MoTa">
-                                                        ${matHang.getMoTa()}
+                                                   <textarea rows="6" name="MoTa">
+                                                         <c:out value="${mathang.getMoTa()}"/>
                                                     </textarea>
                                                     <div class="row">
                                                         <div class="col-md-12">
