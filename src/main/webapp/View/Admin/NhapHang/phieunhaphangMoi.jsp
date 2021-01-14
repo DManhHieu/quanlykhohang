@@ -58,7 +58,7 @@
                                                                 <label class="bmd-label-floating">Mã đơn hàng</label>
                                                                 <input name="MaPhieu"
                                                                        type="text" class="form-control"
-                                                                       value="${sessionScope.phieunhap.getMaPhieu()}" checked>
+                                                                       value="${sessionScope.phieunhap.getMaPhieu()}" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -123,7 +123,7 @@
                                         <td>Mã mặt hàng</td>
                                         <td><input type="text" class="form-control" id="mamathang"></td>
                                         <td>Số lượng</td>
-                                        <td><input type="text" class="form-control" id="soluong"></td>
+                                        <td><input type="number" class="form-control" id="soluong"></td>
                                         <td>
                                             <button type="button" style="border-radius: 5px; border: none; background-color: white; color: black" class="btn btn-primary float-right" onclick="AddRow()">Thêm</button>
                                         </td>
