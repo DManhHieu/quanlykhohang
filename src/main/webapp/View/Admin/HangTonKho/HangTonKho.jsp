@@ -40,7 +40,7 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>
-                        Bảng phiếu nhập hàng
+                        Bảng hàng hóa tồn kho
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
