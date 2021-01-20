@@ -102,4 +102,15 @@ public class PhieuXuatHangDAO {
         }
         return messager;
     }
+    public String MaPhieuMoi(){
+        Transaction transaction = null;
+        long count = 0;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
+            transaction = session.getTransaction();
+            count = (long) session.createQuery(" SELECT  count (*) from PhieuXuatHang").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "XH" + (count+1);
+    }
 }

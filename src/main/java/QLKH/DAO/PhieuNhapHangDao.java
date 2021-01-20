@@ -76,4 +76,15 @@ public class PhieuNhapHangDao {
         }
         return messager;
     }
+    public String MaPhieuMoi(){
+        Transaction transaction = null;
+        long count = 0;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
+            transaction = session.getTransaction();
+            count = (long) session.createQuery(" SELECT  count (*) from PhieuNhapHang").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "NH" + (count+1);
+    }
 }

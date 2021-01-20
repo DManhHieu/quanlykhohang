@@ -1,12 +1,10 @@
 package QLKH.DAO;
 
 import QLKH.models.HangHoa;
-import QLKH.models.MatHang;
 import QLKH.until.HibernaterUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import org.hibernate.Query;
 
 import java.util.List;
 
@@ -150,5 +148,19 @@ public class HangHoaDAO {
             }
             e.printStackTrace();
         }
+    }
+    public String MaHangHoaMoi(String MaPhieuNhap, String MaMatHang){
+        Transaction transaction = null;
+        long count = 0;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
+            transaction = session.getTransaction();
+            Query query  = session.createQuery(" SELECT  count (*) from HangHoa WHERE matHang.MaMatHang=:MaMatHang and PhieuNhap.MaPhieu=:MaPhieuNhap");
+            query.setParameter("MaMatHang", MaMatHang);
+            query.setParameter("MaPhieuNhap", MaPhieuNhap);
+            count=(long)query.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return MaPhieuNhap+MaMatHang+ (count+1);
     }
 }

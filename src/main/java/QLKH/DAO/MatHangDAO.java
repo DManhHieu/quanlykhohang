@@ -99,4 +99,15 @@ public class MatHangDAO {
         }
         return messager;
     }
+    public String MaMatHangMoi(){
+        Transaction transaction = null;
+        long count = 0;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
+            transaction = session.getTransaction();
+            count = (long) session.createQuery(" SELECT  count (*) from MatHang").getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "MH" + (count+1);
+    }
 }

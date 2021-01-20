@@ -97,10 +97,10 @@
                                         <div class="form-group">
                                             <label class="bmd-label-floating"><b>Mã hàng hóa</b></label>
                                             <%
-                                                String mhh=request.getParameter("MaHangHoa");
-                                                if(thongbao.equals("themthanhcong") || mhh == null) {
+                                                String mhh=(String) session.getAttribute("MaHangHoa");
+                                                /*if(thongbao.equals("themthanhcong") || mhh == null) {
                                                     mhh="";
-                                                }
+                                                }*/
                                                 String tbmahanghoa=(String) request.getAttribute("hhtontai");
                                                 if(tbmahanghoa == null)
                                                     tbmahanghoa="";

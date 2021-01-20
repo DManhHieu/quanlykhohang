@@ -42,6 +42,7 @@ public class MatHangMoi extends HttpServlet {
             if (matHang == null) {
 
                 matHang = new MatHang();
+                matHang.setMaMatHang(matHangDAO.MaMatHangMoi());
                 session.setAttribute("mathang", matHang);
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/MatHang/MatHangMoi.jsp");
                 dispatcher.forward(req, resp);

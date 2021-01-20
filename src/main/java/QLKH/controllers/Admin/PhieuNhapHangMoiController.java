@@ -100,6 +100,7 @@ public class PhieuNhapHangMoiController extends HttpServlet {
             PhieuNhapHang phieuNhapHang = (PhieuNhapHang) session.getAttribute("phieunhap");
             if (phieuNhapHang == null) {
                 phieuNhapHang = new PhieuNhapHang();
+                phieuNhapHang.setMaPhieu(phieuNhapHangDao.MaPhieuMoi());
                 phieuNhapHang.setHangNhaps(new ArrayList<HangNhap>());
                 session.setAttribute("phieunhap", phieuNhapHang);
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/NhapHang/phieunhaphangMoi.jsp");

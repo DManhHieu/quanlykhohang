@@ -71,6 +71,7 @@ public class XuatHangMoiController extends HttpServlet {
             if (phieuXuatHang == null) {
 
                 phieuXuatHang = new PhieuXuatHang();
+                phieuXuatHang.setMaPhieu(phieuXuatHangDAO.MaPhieuMoi());
                 phieuXuatHang.setHangHoas(new ArrayList<HangHoa>());
                 session.setAttribute("phieuxuathang", phieuXuatHang);
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/View/Admin/XuatHang/XuatHangMoi.jsp");

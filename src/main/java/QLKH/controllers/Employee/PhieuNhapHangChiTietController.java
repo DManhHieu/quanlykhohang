@@ -1,5 +1,6 @@
 package QLKH.controllers.Employee;
 
+import QLKH.DAO.HangHoaDAO;
 import QLKH.DAO.PhieuNhapHangDao;
 import QLKH.models.PhieuNhapHang;
 
@@ -15,7 +16,7 @@ import java.io.IOException;
 @WebServlet("/View/NhanVien/ChiTiet")
 public class PhieuNhapHangChiTietController extends HttpServlet {
     PhieuNhapHangDao phieuNhapHangDao = new PhieuNhapHangDao();
-
+    HangHoaDAO hangHoaDAO=new HangHoaDAO();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,8 +36,11 @@ public class PhieuNhapHangChiTietController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String maphieunhap=request.getParameter("MP_NhapHang");
         String mamathang=request.getParameter("MaMatHang");
+        String maHangHoa=hangHoaDAO.MaHangHoaMoi(maphieunhap,mamathang);
+
         session.setAttribute("MP_NhapHang",maphieunhap);
         session.setAttribute("MaMatHang",mamathang);
+        session.setAttribute("MaHangHoa",maHangHoa);
         String url = "/View/NhanVien/themhanghoa.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
