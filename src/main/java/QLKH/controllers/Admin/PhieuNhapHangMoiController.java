@@ -39,7 +39,9 @@ public class PhieuNhapHangMoiController extends HttpServlet {
             HangNhap hangNhap = null;
 
             MatHang matHang = matHangDAO.getMatHang(mamathang);
-
+            if(matHang==null){
+                matHang=matHangDAO.getMatHangByName(mamathang);
+            }
             phieuNhapHang = (PhieuNhapHang) session.getAttribute("phieunhap");
 
 

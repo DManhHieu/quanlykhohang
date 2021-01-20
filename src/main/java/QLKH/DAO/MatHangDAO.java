@@ -3,6 +3,7 @@ package QLKH.DAO;
 import QLKH.models.MatHang;
 import QLKH.models.NhanVien;
 import QLKH.until.HibernaterUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -50,6 +51,25 @@ public class MatHangDAO {
             transaction = session.getTransaction();
             matHang = session.get(MatHang.class, MaMatHang);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return matHang;
+    }
+    public MatHang getMatHangByName(String tenMatHang) {
+        Transaction transaction = null;
+        MatHang matHang = null;
+        try (Session session = HibernaterUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Query query=session.createQuery("from MatHang where TenMatHang like :TenMatHang");
+            tenMatHang="%"+tenMatHang+"%";
+            query.setParameter("TenMatHang",tenMatHang);
+            query.setMaxResults(1);
+            matHang=(MatHang) query.getSingleResult();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
         }
         return matHang;
