@@ -121,14 +121,14 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="${pageContext.request.contextPath}/View/Static/assets/img/avatar.jpg" alt="" />
                     <h4>Nguyễn Văn Từ</h4>
-                    <p class="text-muted">BA</p>
+                    <p class="text-muted">DEV</p>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="${pageContext.request.contextPath}/View/Static/assets/img/avatar.jpg" alt="" />
                     <h4>Nguyễn Khắc Thành Sang</h4>
-                    <p class="text-muted">Tester</p>
+                    <p class="text-muted">DEV</p>
                 </div>
             </div>
         </div>
