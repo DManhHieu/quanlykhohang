@@ -19,8 +19,8 @@ public class LoginController extends HttpServlet {
         HttpSession session = req.getSession(false);
         if (req.getParameter("Logout") != null) {
             session.removeAttribute("account");
-           req.getRequestDispatcher("View/login.jsp").forward(req, resp);
-            /* req.getRequestDispatcher("/index.jsp").forward(req, resp);*/
+/*           req.getRequestDispatcher("View/login.jsp").forward(req, resp);*/
+             req.getRequestDispatcher("/index.jsp").forward(req, resp);
             return;
         }
         if (session != null && session.getAttribute("account") != null) {
