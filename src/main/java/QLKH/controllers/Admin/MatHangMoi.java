@@ -51,7 +51,9 @@ public class MatHangMoi extends HttpServlet {
             String messenger=null;
             matHang.setMaMatHang(req.getParameter("MaMatHang"));
             matHang.setTenMatHang(req.getParameter("TenMatHang"));
-            matHang.setGiaTri(Double.parseDouble(req.getParameter("GiaTri")));
+            if(req.getParameter("GiaiTri")!=null) {
+                matHang.setGiaTri(Double.parseDouble(req.getParameter("GiaTri")));
+            }
             matHang.setNhaSanXuat(req.getParameter("NhaSanXuat"));
             matHang.setMoTa(req.getParameter("MoTa"));
             if(messenger==null && ( matHang.getMaMatHang()==null || matHang.getMaMatHang().equals(""))){

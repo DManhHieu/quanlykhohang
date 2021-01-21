@@ -47,19 +47,39 @@ public class MatHang {
     }
 
     public void setMaMatHang(String maMatHang) {
-        this.MaMatHang =  maMatHang.trim();
+        if(maMatHang!=null) {
+            this.MaMatHang = maMatHang.trim();
+        }
+        else {
+            this.MaMatHang = "";
+        }
     }
 
     public void setNhaSanXuat(String nhaSanXuat) {
-        this.NhaSanXuat = nhaSanXuat.trim();
+        if(nhaSanXuat!=null) {
+            this.NhaSanXuat = nhaSanXuat.trim();
+        }
+        else {
+            this.NhaSanXuat = "";
+        }
     }
 
     public void setTenMatHang(String tenMatHang) {
-        this.TenMatHang = tenMatHang.trim();
+        if(tenMatHang!=null) {
+            this.TenMatHang = tenMatHang.trim();
+        }
+        else {
+            this.TenMatHang = "";
+        }
     }
 
     public void setMoTa(String moTa) {
-        this.MoTa = moTa.trim();
+        if(moTa!=null) {
+            this.MoTa = moTa.trim();
+        }
+        else {
+            this.MoTa = "";
+        }
     }
 
     public void setGiaTri(double giaTri) {
